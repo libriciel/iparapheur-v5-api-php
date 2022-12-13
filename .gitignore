@@ -1,0 +1,7 @@
+.idea
+vendor
+.phpunit.result.cache
+phpcs.xml
+phpstan.neon
+phpunit.xml
+exemples/.env
