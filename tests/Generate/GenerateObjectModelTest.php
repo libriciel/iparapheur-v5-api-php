@@ -3,10 +3,10 @@
 namespace IparapheurV5Client\Tests\Generate;
 
 use IparapheurV5Client\Exception\IparapheurV5Exception;
-use IparapheurV5Client\Generate\Generate;
+use IparapheurV5Client\Generate\GenerateObjectModel;
 use PHPUnit\Framework\TestCase;
 
-class GenerateTest extends TestCase
+class GenerateObjectModelTest extends TestCase
 {
     public function testGenerate(): void
     {
@@ -19,7 +19,7 @@ class GenerateTest extends TestCase
         if (! is_array($jsonContent)) {
             throw new IparapheurV5Exception("Unable to decode openapi file");
         }
-        $generate = new Generate();
+        $generate = new GenerateObjectModel();
         $result = $generate->generate($jsonContent);
         //file_put_contents(__DIR__ . "/fixtures/result.json",json_encode($result));
         //self::assertJsonStringEqualsJsonFile(__DIR__ . "/fixtures/result.json", json_encode($result));

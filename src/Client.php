@@ -9,8 +9,6 @@ use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Exception;
 use IparapheurV5Client\Api\Authenticate;
-use IparapheurV5Client\Api\Tenant;
-use IparapheurV5Client\Api\TrashBinFolders;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use IparapheurV5Client\HttpClient\Builder;
 use IparapheurV5Client\HttpClient\Plugin\Authentication;
@@ -98,14 +96,5 @@ final class Client
         $this->getHttpClientBuilder()->addPlugin(
             new Authentication($tokenResult)
         );
-    }
-    public function tenant(): Tenant
-    {
-        return new Tenant($this);
-    }
-
-    public function trashbinFolder(): TrashBinFolders
-    {
-        return new TrashBinFolders($this);
     }
 }

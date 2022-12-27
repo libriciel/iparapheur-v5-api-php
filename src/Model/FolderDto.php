@@ -20,6 +20,7 @@ class FolderDto
     public array $stepList;
     /** @var DocumentDto[] */
     public array $documentList;
-    public string $readByUserIds;
+    /** @var string[] */
+    public array $readByUserIds;
     public bool $readByCurrentUser;
 }

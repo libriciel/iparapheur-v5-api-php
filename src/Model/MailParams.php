@@ -8,9 +8,12 @@ class MailParams
     public string $privateAnnotation;
     /** @var string[] */
     public array $metadata;
-    public string $to;
-    public string $cc;
-    public string $bcc;
+    /** @var string[] */
+    public array $to;
+    /** @var string[] */
+    public array $cc;
+    /** @var string[] */
+    public array $bcc;
     public string $object;
     public string $message;
     public string $password;

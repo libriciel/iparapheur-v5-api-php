@@ -5,7 +5,7 @@ namespace IparapheurV5Client\Generate;
 use Exception;
 use RuntimeException;
 
-class Generate
+class GenerateObjectModel
 {
     public function generate(array $openApiDefinition): array
     {
@@ -29,13 +29,17 @@ class Generate
                 'creationPermittedDeskIds',
                 'filterableByDeskIds'
             ],
-            'TypeDto' => ['signatureLocation', 'signatureZipCode']
+            'TypeDto' => ['signatureLocation', 'signatureZipCode'],
+            'ExternalSignatureConfig' => ['login','password'],
         ];
 
         foreach ($allNullable as $structureName => $nullables) {
             foreach ($nullables as $nullable) {
                 $origType = $result[$structureName]->properties[$nullable]->type;
                 $result[$structureName]->properties[$nullable]->type = '?' . $origType;
+                if ($result[$structureName]->properties[$nullable]->subType !== null) {
+                    $result[$structureName]->properties[$nullable]->subType .= "|null";
+                }
             }
         }
         return $result;
@@ -83,20 +87,21 @@ class Generate
                         } elseif ($type === 'array' && isset($propertyContent['items']['$ref'])) {
                             $trueType = $this->extractDataTypeFromRef($propertyContent['items']['$ref']);
                             $properties->type = 'array';
-                            $properties->subType = $trueType;
+                            $properties->subType = $trueType . '[]';
                         } elseif ($type === 'array' && isset($propertyContent['items']['type'])) {
                             $type = $propertyContent['items']['type'];
-                            $properties->type = $type;
+                            $properties->type = 'array';
+                            $properties->subType = $type . '[]';
                         } elseif ($type === 'object' && isset($propertyContent['additionalProperties']['$ref'])) {
                             $trueType = $this->extractDataTypeFromRef($propertyContent['additionalProperties']['$ref']);
                             $properties->type = 'array';
-                            $properties->subType = $trueType;
+                            $properties->subType = $trueType . '[]';
                         } elseif ($type === 'object' && isset($propertyContent['additionalProperties']['type'])) {
                             $type = $propertyContent['additionalProperties']['type'];
                             $properties->type = 'array';
-                            $properties->subType = $type;
+                            $properties->subType = $type . '[]';
                         } else {
-                            throw new RuntimeException("Unknow type $type for $dtoId");
+                            throw new RuntimeException("Unknown type $type for $dtoId");
                         }
                     } elseif (isset($propertyContent['$ref'])) {
                         $type = $propertyContent['$ref'];
@@ -137,7 +142,7 @@ class Generate
                  */
                 foreach ($structureContent->properties as $propertiesContent) {
                     if ($propertiesContent->subType !== null) {
-                        $content .= "    /** @var {$propertiesContent->subType}[] */\n";
+                        $content .= "    /** @var {$propertiesContent->subType} */\n";
                     }
                     $content .= "    public {$propertiesContent->type} \${$propertiesContent->name};\n";
                 }

@@ -9,5 +9,6 @@ class MetadataDto
     public string $key;
     public int $index;
     public MetadataType $type;
-    public string $restrictedValues;
+    /** @var string[] */
+    public array $restrictedValues;
 }

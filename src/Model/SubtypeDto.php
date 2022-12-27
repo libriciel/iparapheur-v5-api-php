@@ -16,8 +16,10 @@ class SubtypeDto
     public ?string $externalSignatureConfigId;
     public ExternalSignatureConfig $externalSignatureConfig;
     public bool $externalSignatureAutomatic;
-    public ?string $creationPermittedDeskIds;
-    public ?string $filterableByDeskIds;
+    /** @var string[]|null */
+    public ?array $creationPermittedDeskIds;
+    /** @var string[]|null */
+    public ?array $filterableByDeskIds;
     /** @var SubtypeMetadataDto[] */
     public array $subtypeMetadataList;
     /** @var SubtypeLayerDto[] */

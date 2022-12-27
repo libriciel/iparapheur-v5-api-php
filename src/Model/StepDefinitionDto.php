@@ -6,16 +6,20 @@ class StepDefinitionDto
 {
     public string $id;
     public Action $type;
-    public string $validatingDeskIds;
+    /** @var string[] */
+    public array $validatingDeskIds;
     /** @var DeskRepresentation[] */
     public array $validatingDesks;
-    public string $notifiedDeskIds;
+    /** @var string[] */
+    public array $notifiedDeskIds;
     /** @var DeskRepresentation[] */
     public array $notifiedDesks;
-    public string $mandatoryValidationMetadataIds;
+    /** @var string[] */
+    public array $mandatoryValidationMetadataIds;
     /** @var MetadataDto[] */
     public array $mandatoryValidationMetadata;
-    public string $mandatoryRejectionMetadataIds;
+    /** @var string[] */
+    public array $mandatoryRejectionMetadataIds;
     /** @var MetadataDto[] */
     public array $mandatoryRejectionMetadata;
     public StepDefinitionParallelType $parallelType;

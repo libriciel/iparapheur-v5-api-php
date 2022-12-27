@@ -15,7 +15,8 @@ class WorkflowDefinitionDto
     public array $steps;
     public string $finalDeskId;
     public DeskRepresentation $finalDesk;
-    public string $finalNotifiedDeskIds;
+    /** @var string[] */
+    public array $finalNotifiedDeskIds;
     /** @var DeskRepresentation[] */
     public array $finalNotifiedDesks;
 }

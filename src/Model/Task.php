@@ -15,7 +15,8 @@ class Task
     public array $desks;
     public DeskRepresentation $delegatedByDesk;
     public User $user;
-    public string $readByUserIds;
+    /** @var string[] */
+    public array $readByUserIds;
     public string $publicCertificateBase64;
     public string $externalSignatureProcedureId;
     public \Datetime $beginDate;
@@ -27,6 +28,8 @@ class Task
     public array $notifiedDesks;
     public int $workflowIndex;
     public int $stepIndex;
-    public string $mandatoryValidationMetadata;
-    public string $mandatoryRejectionMetadata;
+    /** @var string[] */
+    public array $mandatoryValidationMetadata;
+    /** @var string[] */
+    public array $mandatoryRejectionMetadata;
 }

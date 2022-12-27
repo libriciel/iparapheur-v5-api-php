@@ -16,6 +16,10 @@ class UrlEncoder implements EncoderInterface
         }
 
         foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                //TODO
+                continue;
+            }
             $str .= rawurlencode($key) . "=" . rawurlencode($value) . "&";
         }
 
