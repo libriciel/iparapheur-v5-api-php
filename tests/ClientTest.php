@@ -82,7 +82,7 @@ class ClientTest extends TestCase
             ->willReturn(new Response(
                 404,
                 ['Content-type' => 'application/json'],
-                json_encode(['foo' => 'bar']) ?: ""
+                json_encode(['foo' => 'bar'], JSON_THROW_ON_ERROR) ?: ""
             ));
         /** @var ClientInterface $clientInterface */
         $client = Client::createWithHttpClient($clientInterface);
@@ -107,7 +107,7 @@ class ClientTest extends TestCase
             ->willReturn(new Response(
                 200,
                 [],
-                json_encode(['foo' => 'bar']) ?: ""
+                json_encode(['foo' => 'bar'], JSON_THROW_ON_ERROR) ?: ""
             ));
         /** @var ClientInterface $clientInterface */
         $client = Client::createWithHttpClient($clientInterface);
