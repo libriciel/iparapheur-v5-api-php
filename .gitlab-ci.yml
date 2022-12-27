@@ -1,0 +1,48 @@
+stages:
+  - build
+  - coding-standards
+  - test
+  - quality
+
+variables:
+  CONTAINER_IMAGE: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"
+
+build:
+  stage: build
+  tags:
+    - docker-build
+  script:
+    - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
+    - docker build --pull -t "$CONTAINER_IMAGE" .
+    - docker push "$CONTAINER_IMAGE"
+
+lint:
+  stage: coding-standards
+  image: "$CONTAINER_IMAGE"
+  script:
+    - cd /app
+    - vendor/bin/phpcs
+
+phpstan:
+  stage: coding-standards
+  image: "$CONTAINER_IMAGE"
+  script:
+    - cd /app
+    - vendor/bin/phpstan
+
+test:
+  stage: test
+  image: "$CONTAINER_IMAGE"
+  variables:
+    XDEBUG_MODE: coverage
+  script:
+    - cd /app
+    - vendor/bin/phpunit --coverage-text
+
+quality:
+  stage: quality
+  only:
+    - master
+  image: gitlab.libriciel.fr:4567/docker/sonar-scanner:latest
+  script:
+    - /sonar-scanner -Dsonar.login=$SONAR_LOGIN -Dsonar.host.url=$SONAR_HOST_URL

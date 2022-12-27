@@ -1,0 +1,49 @@
+{
+  "name": "libriciel/iparapheur-v5-api-php",
+  "description": "iparapheur v5 Client",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Libriciel",
+      "homepage": "https://libriciel.fr"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "php-http/client-common": "^2.5",
+    "php-http/discovery": "^1.14",
+    "php-http/httplug": "^2.3",
+    "phpdocumentor/reflection-docblock": "^5.3",
+    "psr/http-client": "^1.0",
+    "psr/http-client-implementation": "^1.0",
+    "psr/http-factory": "^1.0",
+    "psr/http-factory-implementation": "^1.0",
+    "psr/http-message": "^1.0",
+    "symfony/property-access": "^6.2",
+    "symfony/serializer": "^6.2"
+  },
+  "require-dev": {
+    "guzzlehttp/guzzle": "^7.4",
+    "phpstan/phpstan": "^1.8",
+    "phpstan/phpstan-deprecation-rules": "^1.0",
+    "phpstan/phpstan-phpunit": "^1.1",
+    "phpunit/phpunit": "^9.5",
+    "squizlabs/php_codesniffer": "^3.7",
+    "symfony/dotenv": "^6.2",
+    "symfony/http-client": "^6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "IparapheurV5Client\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "IparapheurV5Client\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
