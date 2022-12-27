@@ -2,8 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-class Tenant
+class StartWorkflowResponse
 {
     public string $id;
-    public string $name;
 }

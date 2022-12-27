@@ -3,8 +3,8 @@
 namespace IparapheurV5Client\Tests\Api;
 
 use IparapheurV5Client\Api\Authenticate;
-use IparapheurV5Client\Model\TokenQuery;
 use IparapheurV5Client\Tests\ClientMock;
+use IparapheurV5Client\TokenQuery;
 use PHPUnit\Framework\TestCase;
 
 class AuthenticateTest extends TestCase

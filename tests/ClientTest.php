@@ -6,7 +6,7 @@ use GuzzleHttp\Psr7\Response;
 use Http\Client\Exception;
 use IparapheurV5Client\Client;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
-use IparapheurV5Client\Model\TokenQuery;
+use IparapheurV5Client\TokenQuery;
 use PHPUnit\Framework\MockObject\Generator;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;

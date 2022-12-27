@@ -1,6 +1,6 @@
 <?php
 
-namespace IparapheurV5Client\Model;
+namespace IparapheurV5Client;
 
 class TenantListQuery
 {

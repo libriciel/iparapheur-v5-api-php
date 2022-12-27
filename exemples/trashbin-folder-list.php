@@ -20,4 +20,4 @@ $tokenQuery->password = $_ENV['PASSWORD'];
 
 $client->authenticate($_ENV['URL'], $tokenQuery);
 
-print_r($client->tenant()->getList());
+print_r($client->trashbinFolder()->getList($_ENV['TENANT_ID']));

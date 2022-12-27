@@ -4,7 +4,7 @@ namespace IparapheurV5Client\Tests\Api;
 
 use Http\Client\Exception;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
-use IparapheurV5Client\Model\TenantListQuery;
+use IparapheurV5Client\TenantListQuery;
 use IparapheurV5Client\Tests\ClientMock;
 use PHPUnit\Framework\TestCase;
 

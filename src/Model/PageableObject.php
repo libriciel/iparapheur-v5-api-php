@@ -2,12 +2,12 @@
 
 namespace IparapheurV5Client\Model;
 
-class Pageable
+class PageableObject
 {
     public int $offset;
-    public Sort $sort;
-    public bool $unpaged;
-    public int $pageSize;
-    public bool $paged;
+    public SortObject $sort;
     public int $pageNumber;
+    public int $pageSize;
+    public bool $unpaged;
+    public bool $paged;
 }

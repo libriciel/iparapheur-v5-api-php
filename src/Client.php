@@ -10,14 +10,13 @@ use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Exception;
 use IparapheurV5Client\Api\Authenticate;
 use IparapheurV5Client\Api\Tenant;
+use IparapheurV5Client\Api\TrashBinFolders;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
+use IparapheurV5Client\HttpClient\Builder;
 use IparapheurV5Client\HttpClient\Plugin\Authentication;
 use IparapheurV5Client\HttpClient\Plugin\ExceptionThrower;
-use IparapheurV5Client\Model\TokenQuery;
-use IparapheurV5Client\Model\TokenResult;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
-use IparapheurV5Client\HttpClient\Builder;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 
 final class Client
@@ -103,5 +102,10 @@ final class Client
     public function tenant(): Tenant
     {
         return new Tenant($this);
+    }
+
+    public function trashbinFolder(): TrashBinFolders
+    {
+        return new TrashBinFolders($this);
     }
 }
