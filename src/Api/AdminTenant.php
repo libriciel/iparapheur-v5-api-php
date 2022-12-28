@@ -15,7 +15,7 @@ class AdminTenant extends GenericObjectApi
             "/api/v1/admin/tenant/%s",
             $tenantId
         );
-        throw new IparapheurV5Exception('Method deleteTenant not implemented');
+         $this->delete($path);
     }
     public function createTenant(): void
     {

@@ -42,6 +42,15 @@ class GenericObjectApi
     /**
      * @throws Exception
      */
+    public function delete(string $path): void
+    {
+        $this->client->delete($path);
+    }
+
+
+    /**
+     * @throws Exception
+     */
     public function getRaw(string $path): ResponseInterface
     {
         return $this->client->get($path);

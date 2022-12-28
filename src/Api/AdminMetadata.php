@@ -18,7 +18,7 @@ class AdminMetadata extends GenericObjectApi
             $tenantId,
             $metadataId
         );
-        throw new IparapheurV5Exception('Method deleteMetadata not implemented');
+         $this->delete($path);
     }
     public function createMetadata(
         string $tenantId

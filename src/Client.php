@@ -79,6 +79,14 @@ final class Client
     }
 
     /**
+     * @throws Exception
+     */
+    public function delete(string $uri, array $headers = [], string $body = ""): ResponseInterface
+    {
+        return $this->getHttpClient()->delete($uri, $headers, $body);
+    }
+
+    /**
      * @throws ExceptionInterface
      * @throws IparapheurV5Exception
      * @throws Exception

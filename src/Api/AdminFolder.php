@@ -17,6 +17,6 @@ class AdminFolder extends GenericObjectApi
             $tenantId,
             $folderId
         );
-        throw new IparapheurV5Exception('Method deleteFolderAsAdmin not implemented');
+         $this->delete($path);
     }
 }

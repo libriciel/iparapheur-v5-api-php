@@ -49,6 +49,6 @@ class AdminWorkflowDefinition extends GenericObjectApi
             $tenantId,
             $workflowDefinitionKey
         );
-        throw new IparapheurV5Exception('Method deleteWorkflowDefinition not implemented');
+         $this->delete($path);
     }
 }

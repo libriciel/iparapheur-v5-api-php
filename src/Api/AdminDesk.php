@@ -30,6 +30,6 @@ class AdminDesk extends GenericObjectApi
             $deskId,
             $delegationId
         );
-        throw new IparapheurV5Exception('Method deleteDelegationAsAdmin not implemented');
+         $this->delete($path);
     }
 }

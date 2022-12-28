@@ -40,6 +40,6 @@ class AdminTrashBin extends GenericObjectApi
             $tenantId,
             $folderId
         );
-        throw new IparapheurV5Exception('Method deleteTrashBinFolder not implemented');
+         $this->delete($path);
     }
 }

@@ -17,7 +17,7 @@ class AdminLayer extends GenericObjectApi
             $tenantId,
             $layerId
         );
-        throw new IparapheurV5Exception('Method deleteLayer not implemented');
+         $this->delete($path);
     }
     public function createLayer(
         string $tenantId
@@ -59,6 +59,6 @@ class AdminLayer extends GenericObjectApi
             $layerId,
             $stampId
         );
-        throw new IparapheurV5Exception('Method deleteFileStamp not implemented');
+         $this->delete($path);
     }
 }

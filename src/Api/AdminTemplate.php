@@ -18,7 +18,7 @@ class AdminTemplate extends GenericObjectApi
             $tenantId,
             $templateType->value
         );
-        throw new IparapheurV5Exception('Method deleteCustomTemplate not implemented');
+         $this->delete($path);
     }
     public function testMailTemplate(
         string $tenantId

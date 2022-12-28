@@ -19,7 +19,7 @@ class AdminTypology extends GenericObjectApi
             $tenantId,
             $typeId
         );
-        throw new IparapheurV5Exception('Method deleteType not implemented');
+         $this->delete($path);
     }
     public function deleteSubtype(
         string $tenantId,
@@ -32,7 +32,7 @@ class AdminTypology extends GenericObjectApi
             $typeId,
             $subtypeId
         );
-        throw new IparapheurV5Exception('Method deleteSubtype not implemented');
+         $this->delete($path);
     }
     public function createType(
         string $tenantId

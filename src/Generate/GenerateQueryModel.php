@@ -207,6 +207,10 @@ class GenerateQueryModel
                         $content .= ", $objectQueryName";
                     }
                     $content .= ");\n";
+                } elseif (
+                    $queryProperties->method === 'delete'
+                ) {
+                    $content .= "         \$this->delete(\$path);\n";
                 } else {
                     $content .=
                         "        throw new IparapheurV5Exception('Method " .

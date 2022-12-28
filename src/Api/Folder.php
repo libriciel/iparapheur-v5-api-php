@@ -18,7 +18,7 @@ class Folder extends GenericObjectApi
             $tenantId,
             $folderId
         );
-        throw new IparapheurV5Exception('Method deleteFolder not implemented');
+         $this->delete($path);
     }
     public function sendFolder(
         string $tenantId,

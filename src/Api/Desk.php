@@ -30,6 +30,6 @@ class Desk extends GenericObjectApi
             $deskId,
             $delegationId
         );
-        throw new IparapheurV5Exception('Method deleteDelegation not implemented');
+         $this->delete($path);
     }
 }
