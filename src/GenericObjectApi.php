@@ -20,7 +20,7 @@ class GenericObjectApi
      * @throws Exception
      * @throws IparapheurV5Exception
      */
-    public function get(string $path, string $returnClassName, object $queryObject = null)
+    protected function get(string $path, string $returnClassName, object $queryObject = null)
     {
         if ($queryObject) {
             $encoders = [new UrlEncoder()];
@@ -31,6 +31,11 @@ class GenericObjectApi
         }
 
         $result = $this->client->get($path);
+        return $this->deserialize($result, $returnClassName);
+    }
+
+    private function deserialize(ResponseInterface $result, string $returnClassName): mixed
+    {
         $deserializedResult = (new ResponseDeserializer())
             ->deserialize($result, $returnClassName);
         if (! $deserializedResult instanceof $returnClassName) {
@@ -42,7 +47,23 @@ class GenericObjectApi
     /**
      * @throws Exception
      */
-    public function delete(string $path): void
+    public function post(string $path, string $returnClassName = "", object $requestObject = null)
+    {
+        if ($requestObject) {
+            $body = (new ResponseDeserializer())->serialize($requestObject);
+        } else {
+            $body = "";
+        }
+        $result = $this->client->post($path, [], $body);
+        if ($returnClassName) {
+            return $this->deserialize($result, $returnClassName);
+        }
+    }
+
+    /**
+     * @throws Exception
+     */
+    protected function delete(string $path): void
     {
         $this->client->delete($path);
     }
@@ -51,7 +72,7 @@ class GenericObjectApi
     /**
      * @throws Exception
      */
-    public function getRaw(string $path): ResponseInterface
+    protected function getRaw(string $path): ResponseInterface
     {
         return $this->client->get($path);
     }

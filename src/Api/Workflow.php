@@ -6,6 +6,11 @@ use IparapheurV5Client\GenericObjectApi;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use Psr\Http\Message\ResponseInterface;
 use IparapheurV5Client\Model\StartWorkflowResponse;
+use IparapheurV5Client\Model\SimpleTaskParams;
+use IparapheurV5Client\Model\TransferTaskParams;
+use IparapheurV5Client\Model\SignatureTaskParams;
+use IparapheurV5Client\Model\MailParams;
+use IparapheurV5Client\Model\DraftFolderParams;
 
 class Workflow extends GenericObjectApi
 {
@@ -13,7 +18,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        SimpleTaskParams $simpleTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/visa",
@@ -28,7 +34,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        SimpleTaskParams $simpleTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/undo",
@@ -43,7 +50,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        TransferTaskParams $transferTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/transfer",
@@ -58,7 +66,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        SignatureTaskParams $signatureTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/sign",
@@ -73,7 +82,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        MailParams $mailParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/secure_mail",
@@ -88,7 +98,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        SimpleTaskParams $simpleTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/second_opinion",
@@ -103,7 +114,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        SimpleTaskParams $simpleTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/seal",
@@ -118,7 +130,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        SimpleTaskParams $simpleTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/reject",
@@ -133,7 +146,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        SimpleTaskParams $simpleTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/recycle",
@@ -148,7 +162,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        SimpleTaskParams $simpleTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/paper_signature",
@@ -195,7 +210,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        DraftFolderParams $draftFolderParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/chain",
@@ -210,7 +226,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        SimpleTaskParams $simpleTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/bypass",
@@ -225,7 +242,8 @@ class Workflow extends GenericObjectApi
         string $tenantId,
         string $deskId,
         string $folderId,
-        string $taskId
+        string $taskId,
+        TransferTaskParams $transferTaskParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/folder/%s/task/%s/ask_second_opinion",
@@ -239,7 +257,8 @@ class Workflow extends GenericObjectApi
     public function startWorkflow(
         string $tenantId,
         string $deskId,
-        string $folderId
+        string $folderId,
+        SimpleTaskParams $simpleTaskParams
     ): StartWorkflowResponse {
         $path = sprintf(
             "/api/v1/tenant/%s/desk/%s/draft/%s",

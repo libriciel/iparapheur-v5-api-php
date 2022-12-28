@@ -5,6 +5,7 @@ namespace IparapheurV5Client\Api;
 use IparapheurV5Client\GenericObjectApi;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use Psr\Http\Message\ResponseInterface;
+use IparapheurV5Client\Model\MailParams;
 use IparapheurV5Client\Model\PrintFolderQuery;
 
 class Folder extends GenericObjectApi
@@ -22,14 +23,18 @@ class Folder extends GenericObjectApi
     }
     public function sendFolder(
         string $tenantId,
-        string $folderId
+        string $folderId,
+        MailParams $mailParams
     ): void {
         $path = sprintf(
             "/api/v1/tenant/%s/folder/%s/mail",
             $tenantId,
             $folderId
         );
-        throw new IparapheurV5Exception('Method sendFolder not implemented');
+          $this->post(
+              path: $path,
+              requestObject: $mailParams
+          );
     }
     public function downloadFolderZip(
         string $tenantId,

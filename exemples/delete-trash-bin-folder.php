@@ -10,6 +10,4 @@ $folderId = 'ede9ac79-8508-11ed-9d51-0242c0a89013';
 
 /** @var Client $client */
 $adminTrashBin = new AdminTrashBin($client);
-
-$adminTrashBin->delete($folderId);
-
+$adminTrashBin->deleteTrashBinFolder($_ENV['TENANT_ID'], $folderId);

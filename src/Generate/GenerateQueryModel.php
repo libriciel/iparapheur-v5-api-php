@@ -137,6 +137,9 @@ class GenerateQueryModel
                         $addToModel[$queryInputProperties->type] = '';
                     }
                 }
+                if ($queryProperties->requestBodyType) {
+                    $content .=  $addToModel[$queryProperties->requestBodyType] = '';
+                }
             }
             foreach (array_keys($addToModel) as $returnType) {
                 $content .= 'use IparapheurV5Client\Model\\' . $returnType . ";\n";
@@ -174,11 +177,18 @@ class GenerateQueryModel
                 } else {
                     $objectQueryName = null;
                 }
-                if ($queryProperties->pathInput || $queryProperties->queryInput) {
+                if ($queryProperties->requestBodyType) {
+                    if ($queryProperties->pathInput) {
+                        $content .= ",";
+                    }
+                    $name = lcfirst($queryProperties->requestBodyType);
+                    $content .= "\n        {$queryProperties->requestBodyType} \$$name";
+                }
+                if ($queryProperties->pathInput || $queryProperties->queryInput || $queryProperties->requestBodyType) {
                     $content .= "\n    ";
                 }
                 $content .= "): {$queryProperties->returnType}";
-                if ($queryProperties->pathInput || $queryProperties->queryInput) {
+                if ($queryProperties->pathInput || $queryProperties->queryInput || $queryProperties->requestBodyType) {
                     $content .= " {\n";
                 } else {
                     $content .= "\n    {\n";
@@ -211,6 +221,27 @@ class GenerateQueryModel
                     $queryProperties->method === 'delete'
                 ) {
                     $content .= "         \$this->delete(\$path);\n";
+                } elseif (
+                    $queryProperties->method === 'post'
+                ) {
+                    $content .= "          ";
+                    if (
+                        $queryProperties->returnType &&
+                        $queryProperties->returnType !== 'void'
+                    ) {
+                        $content .= "return ";
+                    }
+                    $content .= "\$this->post(\n              path: \$path" ;
+                    if ($queryProperties->requestBodyType) {
+                        $content .= ",\n              requestObject: $" . lcfirst($queryProperties->requestBodyType);
+                    }
+                    if (
+                        $queryProperties->returnType &&
+                        ! in_array($queryProperties->returnType, ['void', 'ResponseInterface'])
+                    ) {
+                        $content .= ",\n              returnClassName: " . $queryProperties->returnType  . "::class";
+                    }
+                    $content .= "\n          );\n";
                 } else {
                     $content .=
                         "        throw new IparapheurV5Exception('Method " .

@@ -20,6 +20,9 @@ class ExternalSignatureController extends GenericObjectApi
             $deskId,
             $configId
         );
-        throw new IparapheurV5Exception('Method getProcedureData not implemented');
+          return $this->post(
+              path: $path,
+              returnClassName: ExternalSignatureProcedure::class
+          );
     }
 }

@@ -26,6 +26,8 @@ class AdminSealCertificate extends GenericObjectApi
             "/api/v1/admin/tenant/%s/sealCertificate",
             $tenantId
         );
-        throw new IparapheurV5Exception('Method createSealCertificate not implemented');
+          $this->post(
+              path: $path
+          );
     }
 }

@@ -11,7 +11,8 @@ class AdminWorkflowDefinition extends GenericObjectApi
 {
     public function updateWorkflowDefinition(
         string $tenantId,
-        string $workflowDefinitionId
+        string $workflowDefinitionId,
+        WorkflowDefinitionDto $workflowDefinitionDto
     ): WorkflowDefinitionDto {
         $path = sprintf(
             "/api/v1/admin/tenant/%s/workflowDefinition/%s",
@@ -21,13 +22,18 @@ class AdminWorkflowDefinition extends GenericObjectApi
         throw new IparapheurV5Exception('Method updateWorkflowDefinition not implemented');
     }
     public function createWorkflowDefinition(
-        string $tenantId
+        string $tenantId,
+        WorkflowDefinitionDto $workflowDefinitionDto
     ): WorkflowDefinitionDto {
         $path = sprintf(
             "/api/v1/admin/tenant/%s/workflowDefinition",
             $tenantId
         );
-        throw new IparapheurV5Exception('Method createWorkflowDefinition not implemented');
+          return $this->post(
+              path: $path,
+              requestObject: $workflowDefinitionDto,
+              returnClassName: WorkflowDefinitionDto::class
+          );
     }
     public function getWorkflowDefinitionByKey(
         string $tenantId,

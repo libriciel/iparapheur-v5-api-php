@@ -6,6 +6,7 @@ use IparapheurV5Client\GenericObjectApi;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use Psr\Http\Message\ResponseInterface;
 use IparapheurV5Client\Model\TemplateType;
+use IparapheurV5Client\Model\TemplateTestRequest;
 
 class AdminTemplate extends GenericObjectApi
 {
@@ -21,22 +22,30 @@ class AdminTemplate extends GenericObjectApi
          $this->delete($path);
     }
     public function testMailTemplate(
-        string $tenantId
+        string $tenantId,
+        TemplateTestRequest $templateTestRequest
     ): void {
         $path = sprintf(
             "/api/v1/admin/tenant/%s/testMailTemplate",
             $tenantId
         );
-        throw new IparapheurV5Exception('Method testMailTemplate not implemented');
+          $this->post(
+              path: $path,
+              requestObject: $templateTestRequest
+          );
     }
     public function testPdfTemplate(
-        string $tenantId
+        string $tenantId,
+        TemplateTestRequest $templateTestRequest
     ): ResponseInterface {
         $path = sprintf(
             "/api/v1/admin/tenant/%s/testDocketPdfTemplate",
             $tenantId
         );
-        throw new IparapheurV5Exception('Method testPdfTemplate not implemented');
+          return $this->post(
+              path: $path,
+              requestObject: $templateTestRequest
+          );
     }
     public function getDefaultTemplate(
         TemplateType $templateType

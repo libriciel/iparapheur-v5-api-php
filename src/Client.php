@@ -6,6 +6,7 @@ namespace IparapheurV5Client;
 
 use Http\Client\Common\HttpMethodsClientInterface;
 use Http\Client\Common\Plugin\AddHostPlugin;
+use Http\Client\Common\Plugin\ContentTypePlugin;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Exception;
 use IparapheurV5Client\Api\Authenticate;
@@ -32,6 +33,9 @@ final class Client
         );
         $this->httpClientBuilder->addPlugin(
             new ExceptionThrower()
+        );
+        $this->httpClientBuilder->addPlugin(
+            new ContentTypePlugin()
         );
         if ($url) {
             $this->setUrl($url);

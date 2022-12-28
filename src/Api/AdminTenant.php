@@ -5,6 +5,7 @@ namespace IparapheurV5Client\Api;
 use IparapheurV5Client\GenericObjectApi;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use Psr\Http\Message\ResponseInterface;
+use IparapheurV5Client\Model\TenantDto;
 
 class AdminTenant extends GenericObjectApi
 {
@@ -17,11 +18,15 @@ class AdminTenant extends GenericObjectApi
         );
          $this->delete($path);
     }
-    public function createTenant(): void
-    {
+    public function createTenant(
+        TenantDto $tenantDto
+    ): void {
         $path = sprintf(
             "/api/v1/admin/tenant"
         );
-        throw new IparapheurV5Exception('Method createTenant not implemented');
+          $this->post(
+              path: $path,
+              requestObject: $tenantDto
+          );
     }
 }
