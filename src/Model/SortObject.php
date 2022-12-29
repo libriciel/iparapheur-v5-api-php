@@ -2,9 +2,9 @@
 
 namespace IparapheurV5Client\Model;
 
-class Sort
+class SortObject
 {
     public bool $empty;
-    public bool $unsorted;
     public bool $sorted;
+    public bool $unsorted;
 }

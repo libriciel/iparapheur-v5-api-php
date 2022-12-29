@@ -8,3 +8,7 @@ parameters:
     paths:
         - src
         - tests
+    ignoreErrors:
+        -
+            message: '#GenericObjectApi::get.* has no return type specified.#'
+            path: src/GenericObjectApi.php

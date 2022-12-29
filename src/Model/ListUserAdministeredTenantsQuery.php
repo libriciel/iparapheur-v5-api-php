@@ -2,10 +2,10 @@
 
 namespace IparapheurV5Client\Model;
 
-class TenantListQuery
+class ListUserAdministeredTenantsQuery
 {
     public int $page;
     public int $size;
-    public string $sort;
-    public bool $withAdminRights;
+    /** @var string[] */
+    public array $sort;
 }

@@ -4,7 +4,7 @@ namespace IparapheurV5Client\HttpClient\Plugin;
 
 use Http\Client\Common\Plugin;
 use Http\Promise\Promise;
-use IparapheurV5Client\Model\TokenResult;
+use IparapheurV5Client\TokenResult;
 use Psr\Http\Message\RequestInterface;
 
 final class Authentication implements Plugin

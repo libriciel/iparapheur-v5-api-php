@@ -14,5 +14,5 @@ Voir le Makefile
 
 # Biographie
 
-- Swagger du iparapheur v5 :https://iparapheur-5-0.partenaire.libriciel.fr/api/swagger-ui/index.html#/
+- Swagger du iparapheur v5 : https://iparapheur-5-0.partenaire.libriciel.fr/api/swagger-ui/index.html#/
 - Utilisation de PSR-7, 17 et 18 : https://github.com/KnpLabs/php-github-api/tree/master/lib/Github/Api

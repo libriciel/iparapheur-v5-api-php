@@ -4,9 +4,10 @@ namespace IparapheurV5Client\Tests;
 
 use GuzzleHttp\Psr7\Response;
 use Http\Client\Exception;
+use IparapheurV5Client\Api\Tenant;
 use IparapheurV5Client\Client;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
-use IparapheurV5Client\Model\TokenQuery;
+use IparapheurV5Client\TokenQuery;
 use PHPUnit\Framework\MockObject\Generator;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
@@ -39,9 +40,10 @@ class ClientTest extends TestCase
         $tokenQuery->password = 'bar';
         $client->authenticate('https://foo', $tokenQuery);
 
+        $tenant = new Tenant($client);
         self::assertEquals(
             'Pastell',
-            $client->tenant()->getList()->content[0]->name
+            $tenant->listTenantsForUser()->content[0]->name
         );
     }
 
