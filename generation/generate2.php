@@ -1,13 +1,11 @@
 <?php
 
-use cebe\openapi\Reader;
-use IparapheurV5Client\Generate\OpenApiSerializer;
+use IparapheurV5Client\Generate\GenerateClass;
 
 require_once __DIR__ . "/../vendor/autoload.php";
-$openapi = Reader::readFromJsonFile(dirname(__DIR__) . "/openapi/iparapheur-5.0.4.json");
 
-$generateClass = new \IparapheurV5Client\Generate\GenerateClass();
-
-$all_file = $generateClass->generate($openapi);
-
-print_r($all_file);
+$generateClass = new GenerateClass();
+$all_file = $generateClass->generate();
+foreach ($all_file as $filename => $filecontent) {
+    file_put_contents($filename, $filecontent);
+}

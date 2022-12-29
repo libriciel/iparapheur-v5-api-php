@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum ExternalState: string
+enum ExternalState : string
 {
     case FORM = 'FORM';
     case ACTIVE = 'ACTIVE';

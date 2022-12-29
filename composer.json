@@ -26,6 +26,7 @@
   },
   "require-dev": {
     "guzzlehttp/guzzle": "^7.4",
+    "nikic/php-parser": "^4.15",
     "phpstan/phpstan": "^1.8",
     "phpstan/phpstan-deprecation-rules": "^1.0",
     "phpstan/phpstan-phpunit": "^1.1",

@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum State: string
+enum State : string
 {
     case DRAFT = 'DRAFT';
     case LATE = 'LATE';

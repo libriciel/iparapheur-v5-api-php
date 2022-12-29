@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum SignatureFormat: string
+enum SignatureFormat : string
 {
     case PKCS7 = 'PKCS7';
     case PADES = 'PADES';

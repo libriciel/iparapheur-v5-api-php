@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum FolderSortBy: string
+enum FolderSortBy : string
 {
     case CREATION_NAME = 'CREATION_NAME';
     case START_DATE = 'START_DATE';

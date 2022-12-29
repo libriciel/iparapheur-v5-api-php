@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum InternalMetadata: string
+enum InternalMetadata : string
 {
     case FOLDER_NAME = 'FOLDER_NAME';
     case FOLDER_TYPE = 'FOLDER_TYPE';

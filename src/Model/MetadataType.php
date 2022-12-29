@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum MetadataType: string
+enum MetadataType : string
 {
     case TEXT = 'TEXT';
     case DATE = 'DATE';

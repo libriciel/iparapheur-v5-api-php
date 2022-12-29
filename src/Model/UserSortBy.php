@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum UserSortBy: string
+enum UserSortBy : string
 {
     case USERNAME = 'USERNAME';
     case ID = 'ID';

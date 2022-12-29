@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum LayerSortBy: string
+enum LayerSortBy : string
 {
     case NAME = 'NAME';
     case ID = 'ID';

@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum MetadataSortBy: string
+enum MetadataSortBy : string
 {
     case NAME = 'NAME';
     case ID = 'ID';
