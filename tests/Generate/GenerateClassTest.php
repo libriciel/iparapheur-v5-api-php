@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class GenerateClassTest extends TestCase
 {
-    public function testGenerate()
+    public function testGenerate(): void
     {
         foreach ((new GenerateClass())->generate() as $structureId => $fileContent) {
             self::assertStringEqualsFile($structureId, $fileContent);

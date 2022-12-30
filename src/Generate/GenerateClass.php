@@ -2,8 +2,11 @@
 
 namespace IparapheurV5Client\Generate;
 
+use cebe\openapi\json\JsonPointer;
 use cebe\openapi\Reader;
+use cebe\openapi\spec\Reference;
 use cebe\openapi\spec\Schema;
+use IparapheurV5Client\Exception\IparapheurV5Exception;
 use PhpParser\Builder\Class_;
 use PhpParser\Builder\Enum_;
 use PhpParser\Builder\Property;
@@ -37,8 +40,13 @@ class GenerateClass
         $openApi = Reader::readFromJsonFile($this->openApiFilepath);
 
         $nodeList = [];
-        foreach ($openApi->components->schemas as $schemaName => $schema) {
-            $nodeList[$schemaName] = $this->getClassFromSchema($schemaName, $schema);
+        if ($openApi->components !== null) {
+            foreach ($openApi->components->schemas as $schemaName => $schema) {
+                if ($schema instanceof Reference) {
+                    throw new IparapheurV5Exception("Unable to process Reference in schema $schemaName");
+                }
+                $nodeList[$schemaName] = $this->getClassFromSchema($schemaName, $schema);
+            }
         }
         $prettyPrinter = new Standard();
         $result = [];
@@ -71,7 +79,8 @@ class GenerateClass
         $namespace->addStmt(
             match ($schema->type) {
                 'string' => $this->getEnum($schemaName, $schema),
-                'object' => $this->getClass($schemaName, $schema)
+                'object' => $this->getClass($schemaName, $schema),
+                default => throw new IparapheurV5Exception("Unknow type {$schema->type}")
             }
         );
         return $namespace->getNode();
@@ -96,6 +105,9 @@ class GenerateClass
     {
         $class = $this->builderFactory->class($schemaName);
         foreach ($schema->properties as $attributeName => $attributeProperties) {
+            if ($attributeProperties instanceof Reference) {
+                throw new IparapheurV5Exception("Unable to process Reference in properties $attributeName");
+            }
             $properties = $this->getType($schemaName, $attributeName, $attributeProperties);
             $class->addStmt(
                 $properties
@@ -112,11 +124,13 @@ class GenerateClass
         $properties = $this->builderFactory
             ->property($attributeName);
 
-        $refType = $this->extractDataTypeFromRef($attributeProperties->getDocumentPosition());
+        $documentPosition = $attributeProperties->getDocumentPosition();
+        $refType = $this->extractDataTypeFromRef($documentPosition);
 
         if ($refType !== $attributeName) {
             return $properties->setType($refType);
         }
+
 
         $type = $attributeProperties->type;
         if (in_array($type, ['string', 'float', 'integer', 'boolean', 'number'])) {
@@ -136,7 +150,7 @@ class GenerateClass
             }
             return $properties->setType(($nullable ? '?' : '') . $transtype[$type]);
         }
-        if ($attributeProperties->type === 'array') {
+        if ($attributeProperties->type === 'array' && $attributeProperties->items instanceof Schema) {
             $subtype = $attributeProperties->items->type;
             if ($attributeProperties->items->type === 'object') {
                 $subtype = $this->extractDataTypeFromRef(
@@ -146,7 +160,7 @@ class GenerateClass
             $properties->setDocComment("/** @var {$subtype}[]" . ($nullable ? '|null' : '') . " */");
             $properties->setType(($nullable ? '?' : '') . 'array');
         }
-        if ($attributeProperties->type === 'object') {
+        if ($attributeProperties->type === 'object' && $attributeProperties->additionalProperties instanceof Schema) {
             $subtype = $attributeProperties->additionalProperties->type;
             if ($attributeProperties->additionalProperties->type === 'object') {
                 $subtype = $this->extractDataTypeFromRef(
@@ -159,8 +173,11 @@ class GenerateClass
         return $properties;
     }
 
-    private function extractDataTypeFromRef(string $ref): string
+    private function extractDataTypeFromRef(string|JsonPointer|null $ref): string
     {
+        if ($ref === null) {
+            return "";
+        }
         $tokens = explode('/', $ref);
         return trim(end($tokens));
     }
