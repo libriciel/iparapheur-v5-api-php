@@ -6,6 +6,7 @@ use IparapheurV5Client\GenericObjectApi;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use Psr\Http\Message\ResponseInterface;
 use IparapheurV5Client\Model\array;
+use IparapheurV5Client\Model\MetadataDto;
 
 class AdminMetadata extends GenericObjectApi
 {
@@ -18,16 +19,20 @@ class AdminMetadata extends GenericObjectApi
             $tenantId,
             $metadataId
         );
-        throw new IparapheurV5Exception('Method deleteMetadata not implemented');
+         $this->delete($path);
     }
     public function createMetadata(
-        string $tenantId
+        string $tenantId,
+        MetadataDto $metadataDto
     ): void {
         $path = sprintf(
             "/api/v1/admin/tenant/%s/metadata",
             $tenantId
         );
-        throw new IparapheurV5Exception('Method createMetadata not implemented');
+          $this->post(
+              path: $path,
+              requestObject: $metadataDto
+          );
     }
     public function listInternalMetadataAsAdmin(): array
     {

@@ -17,17 +17,8 @@ use Symfony\Component\Serializer\Serializer;
 
 class ResponseDeserializer
 {
-    /**
-     * @throws IparapheurV5Exception
-     */
-    public function deserialize(ResponseInterface $response, string $className): mixed
+    private function getSerializer(): Serializer
     {
-        if (
-            ! $response->hasHeader('Content-Type') ||
-            $response->getHeaderLine('Content-Type') !== 'application/json'
-        ) {
-            throw new IparapheurV5Exception("Response is not in json");
-        }
         $extractor = new PropertyInfoExtractor([], [
             new PhpDocExtractor(),
             new ReflectionExtractor()
@@ -43,8 +34,26 @@ class ResponseDeserializer
                 $extractor
             ),
         ];
+        return (new Serializer($normalizers, [new JsonEncoder()]));
+    }
 
-        return (new Serializer($normalizers, [new JsonEncoder()]))
+    /**
+     * @throws IparapheurV5Exception
+     */
+    public function deserialize(ResponseInterface $response, string $className): mixed
+    {
+        if (
+            ! $response->hasHeader('Content-Type') ||
+            $response->getHeaderLine('Content-Type') !== 'application/json'
+        ) {
+            throw new IparapheurV5Exception("Response is not in json");
+        }
+        return $this->getSerializer()
             ->deserialize($response->getBody(), $className, 'json');
+    }
+
+    public function serialize(object $object): string
+    {
+        return $this->getSerializer()->serialize($object, "json");
     }
 }

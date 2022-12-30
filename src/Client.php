@@ -6,6 +6,7 @@ namespace IparapheurV5Client;
 
 use Http\Client\Common\HttpMethodsClientInterface;
 use Http\Client\Common\Plugin\AddHostPlugin;
+use Http\Client\Common\Plugin\ContentTypePlugin;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Exception;
 use IparapheurV5Client\Api\Authenticate;
@@ -32,6 +33,9 @@ final class Client
         );
         $this->httpClientBuilder->addPlugin(
             new ExceptionThrower()
+        );
+        $this->httpClientBuilder->addPlugin(
+            new ContentTypePlugin()
         );
         if ($url) {
             $this->setUrl($url);
@@ -76,6 +80,14 @@ final class Client
     public function post(string $uri, array $headers = [], string $body = ""): ResponseInterface
     {
         return $this->getHttpClient()->post($uri, $headers, $body);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function delete(string $uri, array $headers = [], string $body = ""): ResponseInterface
+    {
+        return $this->getHttpClient()->delete($uri, $headers, $body);
     }
 
     /**

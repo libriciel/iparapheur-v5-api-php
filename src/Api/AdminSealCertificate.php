@@ -17,7 +17,7 @@ class AdminSealCertificate extends GenericObjectApi
             $tenantId,
             $sealCertificateId
         );
-        throw new IparapheurV5Exception('Method deleteSealCertificate not implemented');
+         $this->delete($path);
     }
     public function createSealCertificate(
         string $tenantId
@@ -26,6 +26,8 @@ class AdminSealCertificate extends GenericObjectApi
             "/api/v1/admin/tenant/%s/sealCertificate",
             $tenantId
         );
-        throw new IparapheurV5Exception('Method createSealCertificate not implemented');
+          $this->post(
+              path: $path
+          );
     }
 }

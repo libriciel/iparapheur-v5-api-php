@@ -12,3 +12,6 @@ parameters:
         -
             message: '#GenericObjectApi::get.* has no return type specified.#'
             path: src/GenericObjectApi.php
+        -
+            message: '#GenericObjectApi::post.* has no return type specified.#'
+            path: src/GenericObjectApi.php

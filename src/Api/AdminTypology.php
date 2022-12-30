@@ -6,6 +6,8 @@ use IparapheurV5Client\GenericObjectApi;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use Psr\Http\Message\ResponseInterface;
 use IparapheurV5Client\Model\PageTypologyRepresentation;
+use IparapheurV5Client\Model\TypeDto;
+use IparapheurV5Client\Model\SubtypeDto;
 use IparapheurV5Client\Model\GetTypologyHierarchyQuery;
 
 class AdminTypology extends GenericObjectApi
@@ -19,7 +21,7 @@ class AdminTypology extends GenericObjectApi
             $tenantId,
             $typeId
         );
-        throw new IparapheurV5Exception('Method deleteType not implemented');
+         $this->delete($path);
     }
     public function deleteSubtype(
         string $tenantId,
@@ -32,27 +34,35 @@ class AdminTypology extends GenericObjectApi
             $typeId,
             $subtypeId
         );
-        throw new IparapheurV5Exception('Method deleteSubtype not implemented');
+         $this->delete($path);
     }
     public function createType(
-        string $tenantId
+        string $tenantId,
+        TypeDto $typeDto
     ): void {
         $path = sprintf(
             "/api/v1/admin/tenant/%s/typology/type",
             $tenantId
         );
-        throw new IparapheurV5Exception('Method createType not implemented');
+          $this->post(
+              path: $path,
+              requestObject: $typeDto
+          );
     }
     public function createSubtype(
         string $tenantId,
-        string $typeId
+        string $typeId,
+        SubtypeDto $subtypeDto
     ): void {
         $path = sprintf(
             "/api/v1/admin/tenant/%s/typology/type/%s/subtype",
             $tenantId,
             $typeId
         );
-        throw new IparapheurV5Exception('Method createSubtype not implemented');
+          $this->post(
+              path: $path,
+              requestObject: $subtypeDto
+          );
     }
     public function getTypologyHierarchy(
         string $tenantId,
