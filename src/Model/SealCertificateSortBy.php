@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum SealCertificateSortBy: string
+enum SealCertificateSortBy : string
 {
     case NAME = 'NAME';
     case ID = 'ID';

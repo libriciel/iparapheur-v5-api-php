@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum StampType: string
+enum StampType : string
 {
     case SIGNATURE = 'SIGNATURE';
     case TEXT = 'TEXT';

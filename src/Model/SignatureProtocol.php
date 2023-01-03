@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum SignatureProtocol: string
+enum SignatureProtocol : string
 {
     case HELIOS = 'HELIOS';
     case ACTES = 'ACTES';

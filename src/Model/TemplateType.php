@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum TemplateType: string
+enum TemplateType : string
 {
     case MAIL_NOTIFICATION_SINGLE = 'MAIL_NOTIFICATION_SINGLE';
     case MAIL_NOTIFICATION_DIGEST = 'MAIL_NOTIFICATION_DIGEST';

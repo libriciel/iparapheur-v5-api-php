@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-enum Action: string
+enum Action : string
 {
     case VISA = 'VISA';
     case SEAL = 'SEAL';

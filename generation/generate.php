@@ -1,9 +1,15 @@
 <?php
 
-use IparapheurV5Client\Generate\GenerateObjectModel;
 use IparapheurV5Client\Generate\GenerateQueryModel;
+use IparapheurV5Client\Generate\GenerateClass;
 
 require_once __DIR__ . "/../vendor/autoload.php";
+
+$generateClass = new GenerateClass();
+$all_file = $generateClass->generate();
+foreach ($all_file as $filename => $filecontent) {
+    file_put_contents($filename, $filecontent);
+}
 
 $json = json_decode(
     file_get_contents(__DIR__ . "/../openapi/iparapheur-5.0.4.json"),
@@ -14,20 +20,6 @@ $json = json_decode(
 
 $model_dir = __DIR__ . "/../src/Model";
 $api_dir = __DIR__ . "/../src/Api";
-
-
-if (!is_dir($model_dir)) {
-    if (!mkdir($model_dir, 0775, true) && !is_dir($model_dir)) {
-        throw new \RuntimeException(sprintf('Directory "%s" was not created', $model_dir));
-    }
-}
-
-$generate = new GenerateObjectModel();
-$all_file = $generate->generate($json);
-
-foreach ($all_file as $dtoId => $dtoContent) {
-    file_put_contents($model_dir . "/" . $dtoId . ".php", $dtoContent);
-}
 
 $generate = new GenerateQueryModel();
 $all_file = $generate->generate($json);
