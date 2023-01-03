@@ -1,4 +1,4 @@
-# [0.0.1]
+# [0.1.0] - 2023-01-03
 
 ## Ajout
-- Liste des tenants de l'utilisateur connecté
+- Génération des fonctions GET, POST et DELETE
