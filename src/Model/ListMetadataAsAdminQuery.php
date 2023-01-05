@@ -2,8 +2,9 @@
 
 namespace IparapheurV5Client\Model;
 
-class ListUserAdministeredTenantsQuery
+class ListMetadataAsAdminQuery
 {
+    public bool $addInternalMetadata;
     public int $page;
     public int $size;
     /** @var string[] */

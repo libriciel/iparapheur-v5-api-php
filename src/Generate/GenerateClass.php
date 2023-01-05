@@ -4,9 +4,11 @@ namespace IparapheurV5Client\Generate;
 
 use cebe\openapi\json\JsonPointer;
 use cebe\openapi\Reader;
+use cebe\openapi\spec\Parameter;
 use cebe\openapi\spec\Reference;
 use cebe\openapi\spec\Schema;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
+use IparapheurV5Client\GenericObjectApi;
 use PhpParser\Builder\Class_;
 use PhpParser\Builder\Enum_;
 use PhpParser\Builder\Property;
@@ -45,16 +47,54 @@ class GenerateClass
                 if ($schema instanceof Reference) {
                     throw new IparapheurV5Exception("Unable to process Reference in schema $schemaName");
                 }
-                $nodeList[$schemaName] = $this->getClassFromSchema($schemaName, $schema);
+                $nodeList[ __DIR__ . "/../Model/$schemaName.php"] = $this->getClassFromSchema($schemaName, $schema);
             }
         }
+
+        foreach ($openApi->paths as $path => $pathProperties) {
+            foreach ($pathProperties->getOperations() as $method => $methodProperties) {
+            }
+        }
+
+
+        $classProperties = [];
+        $modelClass = [];
+        foreach ($openApi->paths as $path => $pathProperties) {
+            foreach ($pathProperties->getOperations() as $method => $methodProperties) {
+                if (count($methodProperties->tags) !== 1) {
+                    throw new IparapheurV5Exception("$path $method tag is not unique");
+                }
+                $tagName = $this->getTagInCamelCase($methodProperties->tags[0]);
+                $classProperties[$tagName][$methodProperties->operationId] = [$path, $method,$methodProperties];
+                foreach ($methodProperties->parameters as $parameter) {
+                    if ($parameter instanceof Parameter && $parameter->in === 'query') {
+                        $modelClass[$this->getTagInCamelCase($methodProperties->operationId) . "Query"][] = $parameter;
+                    }
+                }
+            }
+        }
+        foreach ($modelClass as $operationId => $parameterList) {
+            $nodeList[ __DIR__ . "/../Model/{$operationId}.php"] =
+                $this->getQueryClass($operationId, $parameterList);
+        }
+
+        foreach ($classProperties as $tagName => $operations) {
+            //$nodeList[ __DIR__ . "/../Api/$tagName.php"] = $this->getClassFromOperations($tagName, $operations);
+        }
+
         $prettyPrinter = new Standard();
         $result = [];
-        foreach ($nodeList as $schemaName => $node) {
-            $result[ __DIR__ . "/../Model/$schemaName.php"] = $prettyPrinter->prettyPrintFile(array($node));
+        foreach ($nodeList as $filePath => $node) {
+            $result[$filePath] = $prettyPrinter->prettyPrintFile(array($node));
         }
         return $result;
     }
+
+    private function getTagInCamelCase(string $input): string
+    {
+        return ucfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $input))));
+    }
+
     private function isNullable(string $class, string $properties): bool
     {
         $allNullable = [
@@ -127,20 +167,12 @@ class GenerateClass
         $documentPosition = $attributeProperties->getDocumentPosition();
         $refType = $this->extractDataTypeFromRef($documentPosition);
 
-        if ($refType !== $attributeName) {
+        if ($refType !== $attributeName && $refType !== 'schema') {
             return $properties->setType($refType);
         }
 
-
         $type = $attributeProperties->type;
         if (in_array($type, ['string', 'float', 'integer', 'boolean', 'number'])) {
-            $transtype = [
-                'string' => 'string',
-                'float' => 'float',
-                'integer' => 'int',
-                'boolean' => 'bool',
-                'number' => 'float'
-            ];
             if (
                 $type === 'string' &&
                 isset($attributeProperties->format) &&
@@ -148,7 +180,7 @@ class GenerateClass
             ) {
                 return $properties->setType(($nullable ? '?' : '') . '\Datetime');
             }
-            return $properties->setType(($nullable ? '?' : '') . $transtype[$type]);
+            return $properties->setType(($nullable ? '?' : '') . $this->getTransType($type));
         }
         if ($attributeProperties->type === 'array' && $attributeProperties->items instanceof Schema) {
             $subtype = $attributeProperties->items->type;
@@ -180,5 +212,64 @@ class GenerateClass
         }
         $tokens = explode('/', $ref);
         return trim(end($tokens));
+    }
+
+    /*private function getClassFromOperations(string $tagName, mixed $operations): Node
+    {
+        $class = $this->builderFactory->class($tagName);
+        $class->extend('GenericObjectApi');
+
+        $namespace = $this->builderFactory->namespace('IparapheurV5Client\Api');
+        $namespace->addStmt($this->builderFactory->use(GenericObjectApi::class));
+        $namespace->addStmt(
+            $class
+        );
+        return $namespace->getNode();
+
+
+        foreach ($operations->properties as $attributeName => $attributeProperties) {
+            if ($attributeProperties instanceof Reference) {
+                throw new IparapheurV5Exception("Unable to process Reference in properties $attributeName");
+            }
+            $properties = $this->getType($schemaName, $attributeName, $attributeProperties);
+            $class->addStmt(
+                $properties
+            );
+        }
+    }*/
+
+    /**
+     * @param string $operationId
+     * @param Parameter[] $parameterList
+     */
+    private function getQueryClass(string $operationId, array $parameterList): Node
+    {
+        $class = $this->builderFactory->class($operationId);
+        foreach ($parameterList as $parameter) {
+            if ($parameter->in !== 'query' || ! $parameter->schema instanceof Schema) {
+                continue;
+            }
+            $property = $this->getType($operationId, $parameter->name, $parameter->schema);
+
+            $class->addStmt($property);
+        }
+
+        $namespace = $this->builderFactory->namespace('IparapheurV5Client\Model');
+        $namespace->addStmt(
+            $class
+        );
+        return $namespace->getNode();
+    }
+
+    private function getTransType(string $type): string
+    {
+        $transtype = [
+            'string' => 'string',
+            'float' => 'float',
+            'integer' => 'int',
+            'boolean' => 'bool',
+            'number' => 'float'
+        ];
+        return $transtype[$type];
     }
 }

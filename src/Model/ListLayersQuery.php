@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-class ListUserAdministeredTenantsQuery
+class ListLayersQuery
 {
     public int $page;
     public int $size;

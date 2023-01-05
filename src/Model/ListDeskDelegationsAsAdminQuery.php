@@ -2,7 +2,7 @@
 
 namespace IparapheurV5Client\Model;
 
-class ListUserAdministeredTenantsQuery
+class ListDeskDelegationsAsAdminQuery
 {
     public int $page;
     public int $size;

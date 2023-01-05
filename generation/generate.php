@@ -27,8 +27,3 @@ $all_file = $generate->generate($json);
 foreach ($all_file as $dtoId => $dtoContent) {
     file_put_contents($api_dir . "/" . $dtoId . ".php", $dtoContent);
 }
-
-$all_file = $generate->generateQueryModel($json);
-foreach ($all_file as $dtoId => $dtoContent) {
-    file_put_contents($model_dir . "/" . $dtoId . ".php", $dtoContent);
-}

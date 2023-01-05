@@ -13,13 +13,6 @@ class GenerateQueryModel
         );
     }
 
-    public function generateQueryModel(array $openApiDefinition): array
-    {
-        return $this->getQueryModelFile(
-            $this->normalize($openApiDefinition)
-        );
-    }
-
     public function getTransType(string $inputType): string
     {
         $transtype = [
@@ -260,31 +253,5 @@ class GenerateQueryModel
     {
         $tokens = explode('/', $ref);
         return trim(end($tokens));
-    }
-
-    private function getQueryModelFile(array $input): array
-    {
-        $result = [];
-        foreach ($input as $tagProperties) {
-            foreach ($tagProperties as $queryProperties) {
-                if ($queryProperties->queryInput) {
-                    $type = ucfirst($queryProperties->operationId) . "Query";
-                    $content = "<?php\n\n" . 'namespace IparapheurV5Client\Model;' . "\n\n";
-                    $content .= "class $type\n{\n";
-                    /**
-                     * @var  Properties $propertiesContent
-                     */
-                    foreach ($queryProperties->queryInput as $propertiesContent) {
-                        if ($propertiesContent->subType !== null) {
-                            $content .= "    /** @var {$propertiesContent->subType}[] */\n";
-                        }
-                        $content .= "    public {$propertiesContent->type} \${$propertiesContent->name};\n";
-                    }
-                    $content .= "}\n";
-                    $result[$type] = $content;
-                }
-            }
-        }
-        return $result;
     }
 }
