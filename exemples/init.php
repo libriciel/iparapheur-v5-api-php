@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use IparapheurV5Client\Client;
 use IparapheurV5Client\TokenQuery;
 use Symfony\Component\Dotenv\Dotenv;

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace IparapheurV5Client\Generate;
 
 use cebe\openapi\exceptions\IOException;
