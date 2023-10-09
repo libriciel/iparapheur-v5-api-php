@@ -2,8 +2,10 @@
 
 namespace IparapheurV5Client\Model;
 
-class ListUserAdministeredTenantsQuery
+class ListFoldersQuery
 {
+    public string $typeId;
+    public string $subtypeId;
     public int $page;
     public int $size;
     /** @var string[] */

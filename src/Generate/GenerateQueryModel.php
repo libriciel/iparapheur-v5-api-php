@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace IparapheurV5Client\Generate;
 
 use Exception;
@@ -54,6 +56,7 @@ class GenerateQueryModel
                     );
                 } elseif (
                     isset($methodProperties['responses']['200']['content']['application/pdf']) ||
+                    isset($methodProperties['responses']['200']['content']['application/xml']) ||
                     isset($methodProperties['responses']['200']['content']['application/octet-stream']) ||
                     isset($methodProperties['responses']['200']['content']['text/plain'])
                 ) {

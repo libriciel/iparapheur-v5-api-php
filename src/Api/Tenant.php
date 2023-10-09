@@ -6,26 +6,16 @@ use IparapheurV5Client\GenericObjectApi;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use Psr\Http\Message\ResponseInterface;
 use IparapheurV5Client\Model\PageTenantRepresentation;
-use IparapheurV5Client\Model\TenantDto;
-use IparapheurV5Client\Model\ListTenantsForUserQuery;
+use IparapheurV5Client\Model\ListTenantsQuery;
 
 class Tenant extends GenericObjectApi
 {
-    public function listTenantsForUser(
-        ListTenantsForUserQuery $listTenantsForUserQuery = null
+    public function listTenants(
+        ListTenantsQuery $listTenantsQuery = null
     ): PageTenantRepresentation {
         $path = sprintf(
-            "/api/v1/tenant"
+            "/api/standard/v1/tenant"
         );
-        return $this->get($path, PageTenantRepresentation::class, $listTenantsForUserQuery);
-    }
-    public function getTenant(
-        string $tenantId
-    ): TenantDto {
-        $path = sprintf(
-            "/api/v1/tenant/%s",
-            $tenantId
-        );
-        return $this->get($path, TenantDto::class);
+        return $this->get($path, PageTenantRepresentation::class, $listTenantsQuery);
     }
 }

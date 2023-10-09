@@ -9,7 +9,6 @@ use Http\Client\Common\Plugin\AddHostPlugin;
 use Http\Client\Common\Plugin\ContentTypePlugin;
 use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Exception;
-use IparapheurV5Client\Api\Authenticate;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use IparapheurV5Client\HttpClient\Builder;
 use IparapheurV5Client\HttpClient\Plugin\Authentication;

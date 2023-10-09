@@ -4,8 +4,8 @@ namespace IparapheurV5Client\Model;
 
 enum FolderSortBy : string
 {
-    case CREATION_NAME = 'CREATION_NAME';
-    case START_DATE = 'START_DATE';
+    case VALIDATION_START_DATE = 'VALIDATION_START_DATE';
+    case CREATION_DATE = 'CREATION_DATE';
     case STILL_SINCE_DATE = 'STILL_SINCE_DATE';
     case LATE_DATE = 'LATE_DATE';
     case END_DATE = 'END_DATE';

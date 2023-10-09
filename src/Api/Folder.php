@@ -5,58 +5,63 @@ namespace IparapheurV5Client\Api;
 use IparapheurV5Client\GenericObjectApi;
 use IparapheurV5Client\Exception\IparapheurV5Exception;
 use Psr\Http\Message\ResponseInterface;
-use IparapheurV5Client\Model\MailParams;
-use IparapheurV5Client\Model\PrintFolderQuery;
+use IparapheurV5Client\Model\PageFolderRepresentation;
+use IparapheurV5Client\Model\State;
+use IparapheurV5Client\Model\ListFoldersQuery;
 
 class Folder extends GenericObjectApi
 {
-    public function deleteFolder(
+    public function listFolders(
         string $tenantId,
-        string $folderId
-    ): void {
+        string $deskId,
+        State $state,
+        ListFoldersQuery $listFoldersQuery = null
+    ): PageFolderRepresentation {
         $path = sprintf(
-            "/api/v1/tenant/%s/folder/%s",
+            "/api/standard/v1/tenant/%s/desk/%s/%s",
             $tenantId,
-            $folderId
+            $deskId,
+            $state->value
         );
-         $this->delete($path);
-    }
-    public function sendFolder(
-        string $tenantId,
-        string $folderId,
-        MailParams $mailParams
-    ): void {
-        $path = sprintf(
-            "/api/v1/tenant/%s/folder/%s/mail",
-            $tenantId,
-            $folderId
-        );
-          $this->post(
-              path: $path,
-              requestObject: $mailParams
-          );
+        return $this->get($path, PageFolderRepresentation::class, $listFoldersQuery);
     }
     public function downloadFolderZip(
         string $tenantId,
+        string $deskId,
         string $folderId
     ): ResponseInterface {
         $path = sprintf(
-            "/api/v1/tenant/%s/folder/%s/zip",
+            "/api/standard/v1/tenant/%s/desk/%s/folder/%s/zip",
             $tenantId,
+            $deskId,
             $folderId
         );
         return $this->getRaw($path);
     }
-    public function printFolder(
+    public function downloadFolderPremis(
         string $tenantId,
-        string $folderId,
-        PrintFolderQuery $printFolderQuery = null
+        string $deskId,
+        string $folderId
     ): ResponseInterface {
         $path = sprintf(
-            "/api/v1/tenant/%s/folder/%s/print",
+            "/api/standard/v1/tenant/%s/desk/%s/folder/%s/premis",
             $tenantId,
+            $deskId,
             $folderId
         );
         return $this->getRaw($path);
+    }
+    public function deleteFolder(
+        string $tenantId,
+        string $deskId,
+        string $folderId
+    ): void {
+        $path = sprintf(
+            "/api/standard/v1/tenant/%s/desk/%s/folder/%s",
+            $tenantId,
+            $deskId,
+            $folderId
+        );
+         $this->delete($path);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace IparapheurV5Client\Tests;
 
 use GuzzleHttp\Psr7\Response;
@@ -16,6 +18,11 @@ use Symfony\Component\Serializer\Exception\ExceptionInterface;
 
 class ClientTest extends TestCase
 {
+    /**
+     * @throws Exception
+     * @throws ExceptionInterface
+     * @throws IparapheurV5Exception
+     */
     public function testAuthenticate(): void
     {
         $clientInterface = (new Generator())->getMock(ClientInterface::class);
@@ -23,14 +30,14 @@ class ClientTest extends TestCase
             ->method('sendRequest')
             ->willReturnCallback(function (RequestInterface $request) {
                 if ($request->getUri() == 'https://foo/auth/realms/api/protocol/openid-connect/token') {
-                    $file = __DIR__ . "/Api/fixtures/authenticate_ok.json";
+                    $file = __DIR__ . '/Api/fixtures/authenticate_ok.json';
                 } else {
-                    $file = __DIR__ . "/Api/fixtures/tenant_list.json";
+                    $file = __DIR__ . '/Api/fixtures/tenant_list.json';
                 }
                 return new Response(
                     200,
                     ['Content-type' => 'application/json'],
-                    file_get_contents($file) ?: ""
+                    file_get_contents($file) ?: ''
                 );
             });
         /** @var ClientInterface $clientInterface */
@@ -41,9 +48,9 @@ class ClientTest extends TestCase
         $client->authenticate('https://foo', $tokenQuery);
 
         $tenant = new Tenant($client);
-        self::assertEquals(
+        self::assertSame(
             'Pastell',
-            $tenant->listTenantsForUser()->content[0]->name
+            $tenant->listTenants()->content[0]->name
         );
     }
 
@@ -59,7 +66,7 @@ class ClientTest extends TestCase
             ->willReturn(new Response(
                 404,
                 [],
-                "Not found"
+                'Not found'
             ));
         /** @var ClientInterface $clientInterface */
         $client = Client::createWithHttpClient($clientInterface);
@@ -75,6 +82,7 @@ class ClientTest extends TestCase
     /**
      * @throws ExceptionInterface
      * @throws Exception
+     * @throws \JsonException
      */
     public function testExceptionWhenMessageInJson(): void
     {
@@ -84,7 +92,7 @@ class ClientTest extends TestCase
             ->willReturn(new Response(
                 404,
                 ['Content-type' => 'application/json'],
-                json_encode(['foo' => 'bar'], JSON_THROW_ON_ERROR) ?: ""
+                json_encode(['foo' => 'bar'], JSON_THROW_ON_ERROR) ?: ''
             ));
         /** @var ClientInterface $clientInterface */
         $client = Client::createWithHttpClient($clientInterface);
@@ -100,6 +108,7 @@ class ClientTest extends TestCase
     /**
      * @throws ExceptionInterface
      * @throws Exception
+     * @throws \JsonException
      */
     public function testExceptionWhenNotJsonInJsonMessage(): void
     {
@@ -109,7 +118,7 @@ class ClientTest extends TestCase
             ->willReturn(new Response(
                 200,
                 [],
-                json_encode(['foo' => 'bar'], JSON_THROW_ON_ERROR) ?: ""
+                json_encode(['foo' => 'bar'], JSON_THROW_ON_ERROR) ?: ''
             ));
         /** @var ClientInterface $clientInterface */
         $client = Client::createWithHttpClient($clientInterface);

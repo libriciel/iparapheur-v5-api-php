@@ -17,4 +17,5 @@ enum State : string
     case TRANSFERRED = 'TRANSFERRED';
     case SECONDED = 'SECONDED';
     case BYPASSED = 'BYPASSED';
+    case DOWNSTREAM = 'DOWNSTREAM';
 }

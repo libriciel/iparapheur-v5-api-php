@@ -2,6 +2,10 @@
 
 namespace IparapheurV5Client\Generate;
 
+use cebe\openapi\exceptions\IOException;
+use cebe\openapi\exceptions\TypeErrorException;
+use cebe\openapi\exceptions\UnresolvableReferenceException;
+use cebe\openapi\json\InvalidJsonPointerSyntaxException;
 use cebe\openapi\json\JsonPointer;
 use cebe\openapi\Reader;
 use cebe\openapi\spec\Reference;
@@ -16,7 +20,7 @@ use PhpParser\PrettyPrinter\Standard;
 
 class GenerateClass
 {
-    private const DEFAULT_API_FILE_PATH = __DIR__ . "/../../openapi/iparapheur-5.0.4.json";
+    private const DEFAULT_API_FILE_PATH = __DIR__ . '/../../openapi/iparapheur-5.0.18.json';
     private BuilderFactory $builderFactory;
 
     private string $openApiFilepath;
@@ -34,6 +38,11 @@ class GenerateClass
 
     /**
      * @return string[]
+     * @throws IparapheurV5Exception
+     * @throws IOException
+     * @throws TypeErrorException
+     * @throws UnresolvableReferenceException
+     * @throws InvalidJsonPointerSyntaxException
      */
     public function generate(): array
     {
@@ -51,28 +60,14 @@ class GenerateClass
         $prettyPrinter = new Standard();
         $result = [];
         foreach ($nodeList as $schemaName => $node) {
-            $result[ __DIR__ . "/../Model/$schemaName.php"] = $prettyPrinter->prettyPrintFile(array($node));
+            $result[__DIR__ . "/../Model/$schemaName.php"] = $prettyPrinter->prettyPrintFile([$node]);
         }
         return $result;
     }
-    private function isNullable(string $class, string $properties): bool
-    {
-        $allNullable = [
-            'FolderRepresentation' => ['dueDate'],
-            'SubtypeDto' => [
-                'creationWorkflowId',
-                'workflowSelectionScript',
-                'secureMailServerId',
-                'sealCertificateId',
-                'externalSignatureConfigId',
-                'creationPermittedDeskIds',
-                'filterableByDeskIds'
-            ],
-            'TypeDto' => ['signatureLocation', 'signatureZipCode'],
-            'ExternalSignatureConfig' => ['login', 'password'],
-        ];
-        return isset($allNullable[$class]) && in_array($properties, $allNullable[$class]);
-    }
+
+    /**
+     * @throws IparapheurV5Exception
+     */
     private function getClassFromSchema(string $schemaName, Schema $schema): Node
     {
         $namespace = $this->builderFactory->namespace('IparapheurV5Client\Model');
@@ -101,6 +96,9 @@ class GenerateClass
         return $enum;
     }
 
+    /**
+     * @throws IparapheurV5Exception
+     */
     private function getClass(string $schemaName, Schema $schema): Class_
     {
         $class = $this->builderFactory->class($schemaName);
@@ -108,18 +106,15 @@ class GenerateClass
             if ($attributeProperties instanceof Reference) {
                 throw new IparapheurV5Exception("Unable to process Reference in properties $attributeName");
             }
-            $properties = $this->getType($schemaName, $attributeName, $attributeProperties);
-            $class->addStmt(
-                $properties
-            );
+            $properties = $this->getType($attributeName, $attributeProperties);
+            $class->addStmt($properties);
         }
         return $class;
     }
 
-    private function getType(string $schemaName, string $attributeName, Schema $attributeProperties): Property
+    private function getType(string $attributeName, Schema $attributeProperties): Property
     {
-        // TODO a remplacer une fois que le parapheur aura des annotations "nullable"
-        $nullable = $this->isNullable($schemaName, $attributeName);
+        $nullable = $attributeProperties->nullable;
 
         $properties = $this->builderFactory
             ->property($attributeName);
@@ -133,13 +128,13 @@ class GenerateClass
 
 
         $type = $attributeProperties->type;
-        if (in_array($type, ['string', 'float', 'integer', 'boolean', 'number'])) {
+        if (\in_array($type, ['string', 'float', 'integer', 'boolean', 'number'], true)) {
             $transtype = [
                 'string' => 'string',
                 'float' => 'float',
                 'integer' => 'int',
                 'boolean' => 'bool',
-                'number' => 'float'
+                'number' => 'float',
             ];
             if (
                 $type === 'string' &&
@@ -176,7 +171,7 @@ class GenerateClass
     private function extractDataTypeFromRef(string|JsonPointer|null $ref): string
     {
         if ($ref === null) {
-            return "";
+            return '';
         }
         $tokens = explode('/', $ref);
         return trim(end($tokens));

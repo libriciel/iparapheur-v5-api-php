@@ -15,7 +15,7 @@ class AdminTrashBin extends GenericObjectApi
         ListTrashBinFoldersQuery $listTrashBinFoldersQuery = null
     ): PageFolderRepresentation {
         $path = sprintf(
-            "/api/v1/tenant/%s/archive",
+            "/api/standard/v1/admin/tenant/%s/trash-bin",
             $tenantId
         );
         return $this->get($path, PageFolderRepresentation::class, $listTrashBinFoldersQuery);
@@ -25,21 +25,10 @@ class AdminTrashBin extends GenericObjectApi
         string $folderId
     ): ResponseInterface {
         $path = sprintf(
-            "/api/v1/tenant/%s/archive/%s/zip",
+            "/api/standard/v1/admin/tenant/%s/trash-bin/%s/zip",
             $tenantId,
             $folderId
         );
         return $this->getRaw($path);
-    }
-    public function deleteTrashBinFolder(
-        string $tenantId,
-        string $folderId
-    ): void {
-        $path = sprintf(
-            "/api/v1/tenant/%s/archive/%s",
-            $tenantId,
-            $folderId
-        );
-         $this->delete($path);
     }
 }
