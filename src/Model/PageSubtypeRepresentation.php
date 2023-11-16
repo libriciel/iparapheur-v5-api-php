@@ -2,14 +2,14 @@
 
 namespace IparapheurV5Client\Model;
 
-class PageFolderRepresentation
+class PageSubtypeRepresentation
 {
     public int $totalPages;
     public int $totalElements;
     public PageableObject $pageable;
     public int $numberOfElements;
     public int $size;
-    /** @var FolderRepresentation[] */
+    /** @var SubtypeRepresentation[] */
     public array $content;
     public int $number;
     public SortObject $sort;
