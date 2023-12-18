@@ -1,6 +1,6 @@
-# [0.2.0] - 2023-10-06
+# [0.2.0] - 2023-12-18
 
-- Utilisation de l'API iparapheur en version 5.0.18
+- Utilisation de l'API iparapheur en version 5.0.20
 
 # [0.1.0] - 2023-01-03
 

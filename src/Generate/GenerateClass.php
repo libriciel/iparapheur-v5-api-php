@@ -20,7 +20,7 @@ use PhpParser\PrettyPrinter\Standard;
 
 class GenerateClass
 {
-    private const DEFAULT_API_FILE_PATH = __DIR__ . '/../../openapi/iparapheur-5.0.18.json';
+    private const DEFAULT_API_FILE_PATH = __DIR__ . '/../../openapi/iparapheur-5.0.20.json';
     private BuilderFactory $builderFactory;
 
     private string $openApiFilepath;
