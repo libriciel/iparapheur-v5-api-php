@@ -7,7 +7,7 @@ use IparapheurV5Client\Generate\GenerateClass;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$openApiFileLocation = __DIR__ . '/../openapi/iparapheur-5.0.18.json';
+$openApiFileLocation = __DIR__ . '/../openapi/iparapheur-5.0.20.json';
 
 $generateClass = new GenerateClass();
 $generateClass->setOpenApiFile($openApiFileLocation);

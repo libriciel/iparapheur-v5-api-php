@@ -7,10 +7,25 @@ use IparapheurV5Client\Exception\IparapheurV5Exception;
 use Psr\Http\Message\ResponseInterface;
 use IparapheurV5Client\Model\PageFolderRepresentation;
 use IparapheurV5Client\Model\State;
+use IparapheurV5Client\Model\CreateFolderQuery;
 use IparapheurV5Client\Model\ListFoldersQuery;
 
 class Folder extends GenericObjectApi
 {
+    public function createFolder(
+        string $tenantId,
+        string $deskId,
+        CreateFolderQuery $createFolderQuery = null
+    ): void {
+        $path = sprintf(
+            "/api/standard/v1/tenant/%s/desk/%s/folder",
+            $tenantId,
+            $deskId
+        );
+          $this->post(
+              path: $path
+          );
+    }
     public function listFolders(
         string $tenantId,
         string $deskId,

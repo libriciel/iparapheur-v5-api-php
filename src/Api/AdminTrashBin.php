@@ -31,4 +31,15 @@ class AdminTrashBin extends GenericObjectApi
         );
         return $this->getRaw($path);
     }
+    public function deleteTrashBinFolder(
+        string $tenantId,
+        string $folderId
+    ): void {
+        $path = sprintf(
+            "/api/standard/v1/admin/tenant/%s/trash-bin/%s",
+            $tenantId,
+            $folderId
+        );
+         $this->delete($path);
+    }
 }

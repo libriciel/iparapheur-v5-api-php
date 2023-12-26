@@ -17,7 +17,7 @@ class GenerateQueryModelTest extends TestCase
     public function testGenerate(): void
     {
         $jsonContent = json_decode(
-            file_get_contents(__DIR__ . '/../../openapi/iparapheur-5.0.18.json') ?: '',
+            file_get_contents(__DIR__ . '/../../openapi/iparapheur-5.0.20.json') ?: '',
             true,
             512,
             JSON_THROW_ON_ERROR
