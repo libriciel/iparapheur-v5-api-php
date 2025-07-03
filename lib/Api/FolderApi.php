@@ -556,7 +556,7 @@ class FolderApi
         $operationHost = $this->config->getHost();
 
         $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
-
+        $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
         return $this->createRequest('POST', $uri, $headers, $httpBody);
     }
 

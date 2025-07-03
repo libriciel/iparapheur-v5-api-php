@@ -2,9 +2,9 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="IparapheurV5Client\" />
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="IparapheurV5Client\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/lib" isTestSource="false" packagePrefix="OpenAPI\Client\" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" packagePrefix="OpenAPI\Client\Test\" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -381,7 +381,7 @@ class FolderRepresentation implements ModelInterface, ArrayAccess, \JsonSerializ
         if ((mb_strlen($name) < 2)) {
             throw new \InvalidArgumentException('invalid length for $name when calling FolderRepresentation., must be bigger than or equal to 2.');
         }
-        if ((!preg_match("/^[^\\r\\n ]*$/", ObjectSerializer::toString($name)))) {
+        if (!preg_match("/^[^\r\n]*$/", $name)) {
             throw new \InvalidArgumentException("invalid value for \$name when calling FolderRepresentation., must conform to the pattern /^[^\\r\\n ]*$/.");
         }
 
