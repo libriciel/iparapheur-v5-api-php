@@ -187,7 +187,7 @@ class DeskApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageDeskRepresentation|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function listUserDesks($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -207,7 +207,7 @@ class DeskApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageDeskRepresentation|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listUserDesksWithHttpInfo($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -241,13 +241,19 @@ class DeskApi
 
 
             switch($statusCode) {
-                case 404:
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation',
+                        $request,
+                        $response,
+                    );
+                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
-                case 400:
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -259,13 +265,7 @@ class DeskApi
                         $request,
                         $response,
                     );
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageDeskRepresentation',
-                        $request,
-                        $response,
-                    );
-                case 403:
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -289,13 +289,21 @@ class DeskApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageDeskRepresentation',
+                '\OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -303,7 +311,7 @@ class DeskApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -319,15 +327,7 @@ class DeskApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageDeskRepresentation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -380,7 +380,7 @@ class DeskApi
      */
     public function listUserDesksAsyncWithHttpInfo($tenant_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\PageDeskRepresentation';
+        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation';
         $request = $this->listUserDesksRequest($tenant_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)

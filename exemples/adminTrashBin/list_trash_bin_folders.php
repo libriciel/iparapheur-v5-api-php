@@ -20,6 +20,6 @@ $size = $cli->get('size') ?? 10;
 $api = new AdminTrashBinApi($httpClient, $config);
 
 ApiExecutor::run(
-    static fn() => $api->listTrashBinFolders($tenantId, $page, $size),
+    static fn () => $api->listTrashBinFolders($tenantId, $page, $size),
     'Liste des dossiers dans la corbeille :'
 );

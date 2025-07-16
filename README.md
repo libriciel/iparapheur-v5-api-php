@@ -100,33 +100,41 @@ Class | Method | HTTP request | Description
 *FolderApi* | [**downloadFolderPremis**](docs/Api/FolderApi.md#downloadfolderpremis) | **GET** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/premis | Get a PREMIS-formatted file, containing the folder summary
 *FolderApi* | [**downloadFolderZip**](docs/Api/FolderApi.md#downloadfolderzip) | **GET** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/zip | Get every file as ZIP, with a PREMIS-formatted summary
 *FolderApi* | [**listFolders**](docs/Api/FolderApi.md#listfolders) | **GET** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/{state} | List folders in the given state
+*SecureMailApi* | [**requestSecureMail**](docs/Api/SecureMailApi.md#requestsecuremail) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/secure_mail | Secure mail
 *TenantApi* | [**listTenants**](docs/Api/TenantApi.md#listtenants) | **GET** /api/standard/v1/tenant | List tenants attached with the current user
 *TypologyApi* | [**listCreationAllowedSubtypes**](docs/Api/TypologyApi.md#listcreationallowedsubtypes) | **GET** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/types/{typeId}/subtypes/creation-allowed | List creation-allowed subtypes from a given type, for the given desk
 *TypologyApi* | [**listCreationAllowedTypes**](docs/Api/TypologyApi.md#listcreationallowedtypes) | **GET** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/types/creation-allowed | List types parent to a creation-allowed subtype on the given desk
 *TypologyApi* | [**listSubtypes**](docs/Api/TypologyApi.md#listsubtypes) | **GET** /api/standard/v1/tenant/{tenantId}/types/{typeId}/subtypes | List all subtypes of a specific type on the current tenant
 *TypologyApi* | [**listTypes**](docs/Api/TypologyApi.md#listtypes) | **GET** /api/standard/v1/tenant/{tenantId}/types | List all types on the current tenant
 *WorkflowApi* | [**bypass**](docs/Api/WorkflowApi.md#bypass) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/bypass | Bypass
-*WorkflowApi* | [**requestSecureMail**](docs/Api/WorkflowApi.md#requestsecuremail) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/secure_mail | Secure mail
+*WorkflowApi* | [**seal**](docs/Api/WorkflowApi.md#seal) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/seal | Seal
+*WorkflowApi* | [**secondOpinion**](docs/Api/WorkflowApi.md#secondopinion) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/second_opinion | Second opinion
 *WorkflowApi* | [**sendToTrashBin**](docs/Api/WorkflowApi.md#sendtotrashbin) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/send_to_trash_bin | Send to trash-bin
 *WorkflowApi* | [**start**](docs/Api/WorkflowApi.md#start) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/start | Start
 *WorkflowApi* | [**undo**](docs/Api/WorkflowApi.md#undo) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/undo | Undo
+*WorkflowApi* | [**visa**](docs/Api/WorkflowApi.md#visa) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/visa | Visa
 
 ## Models
 
+- [Action](docs/Model/Action.md)
 - [DeskRepresentation](docs/Model/DeskRepresentation.md)
 - [DeskSortBy](docs/Model/DeskSortBy.md)
 - [ErrorResponse](docs/Model/ErrorResponse.md)
 - [FolderRepresentation](docs/Model/FolderRepresentation.md)
 - [FolderSortBy](docs/Model/FolderSortBy.md)
 - [MailParams](docs/Model/MailParams.md)
-- [PageDeskRepresentation](docs/Model/PageDeskRepresentation.md)
 - [PageFolderRepresentation](docs/Model/PageFolderRepresentation.md)
-- [PageSubtypeRepresentation](docs/Model/PageSubtypeRepresentation.md)
-- [PageTenantRepresentation](docs/Model/PageTenantRepresentation.md)
-- [PageTypeRepresentation](docs/Model/PageTypeRepresentation.md)
 - [PageableObject](docs/Model/PageableObject.md)
+- [SealTaskParams](docs/Model/SealTaskParams.md)
 - [SimpleTaskParams](docs/Model/SimpleTaskParams.md)
 - [SortObject](docs/Model/SortObject.md)
+- [StandardApiPageImplDeskRepresentation](docs/Model/StandardApiPageImplDeskRepresentation.md)
+- [StandardApiPageImplFolderRepresentation](docs/Model/StandardApiPageImplFolderRepresentation.md)
+- [StandardApiPageImplSubtypeRepresentation](docs/Model/StandardApiPageImplSubtypeRepresentation.md)
+- [StandardApiPageImplTenantRepresentation](docs/Model/StandardApiPageImplTenantRepresentation.md)
+- [StandardApiPageImplTypeRepresentation](docs/Model/StandardApiPageImplTypeRepresentation.md)
+- [StandardApiPageable](docs/Model/StandardApiPageable.md)
+- [StandardApiSort](docs/Model/StandardApiSort.md)
 - [State](docs/Model/State.md)
 - [SubtypeRepresentation](docs/Model/SubtypeRepresentation.md)
 - [SubtypeSortBy](docs/Model/SubtypeSortBy.md)

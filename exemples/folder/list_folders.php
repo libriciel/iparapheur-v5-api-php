@@ -3,10 +3,10 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\ApiClientFactory;
+use App\ApiExecutor;
 use App\CliOptions;
 use OpenAPI\Client\Api\FolderApi;
 use OpenAPI\Client\Model\State;
-use App\ApiExecutor;
 
 $cli = new CliOptions(
     ['tenant:', 'desk:', 'state:', 'type_id::', 'subtype_id::', 'page::', 'size::', 'sort::'],
@@ -33,6 +33,6 @@ if (!in_array($state, $allowedStates, true)) {
 $api = new FolderApi($httpClient, $config);
 
 ApiExecutor::run(
-    static fn() => $api->listFolders($tenantId, $deskId, $state, $typeId, $subtypeId, $page, $size, $sort),
+    static fn () => $api->listFolders($tenantId, $deskId, $state, $typeId, $subtypeId, $page, $size, $sort),
     'Liste des dossiers :'
 );

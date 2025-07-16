@@ -43,31 +43,49 @@ class FolderSortBy
     /**
      * Possible values of this enum
      */
-    public const VALIDATION_START_DATE = 'VALIDATION_START_DATE';
+    public const ACTION_TYPE = 'ACTION_TYPE';
 
     public const CREATION_DATE = 'CREATION_DATE';
 
-    public const STILL_SINCE_DATE = 'STILL_SINCE_DATE';
+    public const CURRENT_DESK_ID = 'CURRENT_DESK_ID';
 
-    public const LATE_DATE = 'LATE_DATE';
+    public const CURRENT_DESK_NAME = 'CURRENT_DESK_NAME';
+
+    public const EMITTER_DESK_ID = 'EMITTER_DESK_ID';
+
+    public const EMITTER_DESK_NAME = 'EMITTER_DESK_NAME';
+
+    public const EMITTER_USER_ID = 'EMITTER_USER_ID';
+
+    public const EMITTER_USER_NAME = 'EMITTER_USER_NAME';
 
     public const END_DATE = 'END_DATE';
 
-    public const TASK_ID = 'TASK_ID';
-
     public const FOLDER_ID = 'FOLDER_ID';
+
+    public const LEGACY_ID = 'LEGACY_ID';
 
     public const FOLDER_NAME = 'FOLDER_NAME';
 
-    public const TYPE_ID = 'TYPE_ID';
+    public const IS_READ = 'IS_READ';
 
-    public const TYPE_NAME = 'TYPE_NAME';
+    public const LATE_DATE = 'LATE_DATE';
+
+    public const START_DATE = 'START_DATE';
+
+    public const STILL_SINCE_DATE = 'STILL_SINCE_DATE';
 
     public const SUBTYPE_ID = 'SUBTYPE_ID';
 
     public const SUBTYPE_NAME = 'SUBTYPE_NAME';
 
-    public const ACTION_TYPE = 'ACTION_TYPE';
+    public const TASK_ID = 'TASK_ID';
+
+    public const TYPE_ID = 'TYPE_ID';
+
+    public const TYPE_NAME = 'TYPE_NAME';
+
+    public const VALIDATION_START_DATE = 'VALIDATION_START_DATE';
 
     /**
      * Gets allowable values of the enum
@@ -76,19 +94,28 @@ class FolderSortBy
     public static function getAllowableEnumValues()
     {
         return [
-            self::VALIDATION_START_DATE,
+            self::ACTION_TYPE,
             self::CREATION_DATE,
-            self::STILL_SINCE_DATE,
-            self::LATE_DATE,
+            self::CURRENT_DESK_ID,
+            self::CURRENT_DESK_NAME,
+            self::EMITTER_DESK_ID,
+            self::EMITTER_DESK_NAME,
+            self::EMITTER_USER_ID,
+            self::EMITTER_USER_NAME,
             self::END_DATE,
-            self::TASK_ID,
             self::FOLDER_ID,
+            self::LEGACY_ID,
             self::FOLDER_NAME,
-            self::TYPE_ID,
-            self::TYPE_NAME,
+            self::IS_READ,
+            self::LATE_DATE,
+            self::START_DATE,
+            self::STILL_SINCE_DATE,
             self::SUBTYPE_ID,
             self::SUBTYPE_NAME,
-            self::ACTION_TYPE
+            self::TASK_ID,
+            self::TYPE_ID,
+            self::TYPE_NAME,
+            self::VALIDATION_START_DATE
         ];
     }
 }

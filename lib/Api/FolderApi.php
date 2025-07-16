@@ -188,7 +188,7 @@ class FolderApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\FolderRepresentation|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\FolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function createFolder($tenant_id, $desk_id, $folder, $documents, $auto_start = true)
     {
@@ -209,7 +209,7 @@ class FolderApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\FolderRepresentation|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFolderWithHttpInfo($tenant_id, $desk_id, $folder, $documents, $auto_start = true)
     {
@@ -243,13 +243,13 @@ class FolderApi
 
 
             switch($statusCode) {
-                case 404:
+                case 201:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\OpenAPI\Client\Model\FolderRepresentation',
                         $request,
                         $response,
                     );
-                case 401:
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -261,13 +261,13 @@ class FolderApi
                         $request,
                         $response,
                     );
-                case 201:
+                case 401:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderRepresentation',
+                        '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
-                case 403:
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -297,15 +297,15 @@ class FolderApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\OpenAPI\Client\Model\FolderRepresentation',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -321,15 +321,15 @@ class FolderApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 201:
+                case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderRepresentation',
+                        '\OpenAPI\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -556,7 +556,7 @@ class FolderApi
         $operationHost = $this->config->getHost();
 
         $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
-        $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
+
         return $this->createRequest('POST', $uri, $headers, $httpBody);
     }
 
@@ -625,15 +625,7 @@ class FolderApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -649,7 +641,15 @@ class FolderApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -910,7 +910,7 @@ class FolderApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -926,7 +926,7 @@ class FolderApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1069,7 +1069,7 @@ class FolderApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', 'application/xml'],
+            ['application/xml', 'application/json'],
             '',
             $multipart
         );
@@ -1187,7 +1187,7 @@ class FolderApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1203,7 +1203,7 @@ class FolderApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1346,7 +1346,7 @@ class FolderApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', 'application/octet-stream'],
+            ['application/octet-stream', 'application/json'],
             '',
             $multipart
         );
@@ -1415,7 +1415,7 @@ class FolderApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function listFolders($tenant_id, $desk_id, $state, $type_id = null, $subtype_id = null, $page = 0, $size = 10, $sort = null)
     {
@@ -1439,7 +1439,7 @@ class FolderApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listFoldersWithHttpInfo($tenant_id, $desk_id, $state, $type_id = null, $subtype_id = null, $page = 0, $size = 10, $sort = null)
     {
@@ -1473,7 +1473,13 @@ class FolderApi
 
 
             switch($statusCode) {
-                case 404:
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation',
+                        $request,
+                        $response,
+                    );
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -1485,13 +1491,7 @@ class FolderApi
                         $request,
                         $response,
                     );
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageFolderRepresentation',
-                        $request,
-                        $response,
-                    );
-                case 403:
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -1515,13 +1515,21 @@ class FolderApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageFolderRepresentation',
+                '\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1537,15 +1545,7 @@ class FolderApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageFolderRepresentation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1606,7 +1606,7 @@ class FolderApi
      */
     public function listFoldersAsyncWithHttpInfo($tenant_id, $desk_id, $state, $type_id = null, $subtype_id = null, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\PageFolderRepresentation';
+        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation';
         $request = $this->listFoldersRequest($tenant_id, $desk_id, $state, $type_id, $subtype_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)

@@ -238,7 +238,7 @@ class AdminTrashBinApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -254,7 +254,7 @@ class AdminTrashBinApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -496,7 +496,7 @@ class AdminTrashBinApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -512,7 +512,7 @@ class AdminTrashBinApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -638,7 +638,7 @@ class AdminTrashBinApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', 'application/octet-stream'],
+            ['application/octet-stream', 'application/json'],
             '',
             $multipart
         );
@@ -703,7 +703,7 @@ class AdminTrashBinApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\PageFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function listTrashBinFolders($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -723,7 +723,7 @@ class AdminTrashBinApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PageFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTrashBinFoldersWithHttpInfo($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -757,7 +757,13 @@ class AdminTrashBinApi
 
 
             switch($statusCode) {
-                case 404:
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\PageFolderRepresentation',
+                        $request,
+                        $response,
+                    );
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -769,13 +775,7 @@ class AdminTrashBinApi
                         $request,
                         $response,
                     );
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageFolderRepresentation',
-                        $request,
-                        $response,
-                    );
-                case 403:
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -805,7 +805,15 @@ class AdminTrashBinApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\PageFolderRepresentation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -821,15 +829,7 @@ class AdminTrashBinApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageFolderRepresentation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',

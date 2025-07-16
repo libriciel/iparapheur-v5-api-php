@@ -242,7 +242,7 @@ class WorkflowApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -250,7 +250,7 @@ class WorkflowApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -266,7 +266,7 @@ class WorkflowApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -480,43 +480,43 @@ class WorkflowApi
     }
 
     /**
-     * Operation requestSecureMail
+     * Operation seal
      *
-     * Secure mail
+     * Seal
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params mail_params (required)
+     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params seal_task_params (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function requestSecureMail($tenant_id, $desk_id, $folder_id, $task_id, $mail_params)
+    public function seal($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params)
     {
-        $this->requestSecureMailWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $mail_params);
+        $this->sealWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params);
     }
 
     /**
-     * Operation requestSecureMailWithHttpInfo
+     * Operation sealWithHttpInfo
      *
-     * Secure mail
+     * Seal
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params (required)
+     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params (required)
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function requestSecureMailWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $mail_params)
+    public function sealWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params)
     {
-        $request = $this->requestSecureMailRequest($tenant_id, $desk_id, $folder_id, $task_id, $mail_params);
+        $request = $this->sealRequest($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params);
 
         try {
             try {
@@ -548,23 +548,7 @@ class WorkflowApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -580,6 +564,22 @@ class WorkflowApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -588,22 +588,22 @@ class WorkflowApi
     }
 
     /**
-     * Operation requestSecureMailAsync
+     * Operation sealAsync
      *
-     * Secure mail
+     * Seal
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params (required)
+     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
      */
-    public function requestSecureMailAsync($tenant_id, $desk_id, $folder_id, $task_id, $mail_params)
+    public function sealAsync($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params)
     {
-        return $this->requestSecureMailAsyncWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $mail_params)
+        return $this->sealAsyncWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -612,23 +612,23 @@ class WorkflowApi
     }
 
     /**
-     * Operation requestSecureMailAsyncWithHttpInfo
+     * Operation sealAsyncWithHttpInfo
      *
-     * Secure mail
+     * Seal
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params (required)
+     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
      */
-    public function requestSecureMailAsyncWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $mail_params)
+    public function sealAsyncWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params)
     {
         $returnType = '';
-        $request = $this->requestSecureMailRequest($tenant_id, $desk_id, $folder_id, $task_id, $mail_params);
+        $request = $this->sealRequest($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)
             ->then(
@@ -653,51 +653,51 @@ class WorkflowApi
     }
 
     /**
-     * Create request for operation 'requestSecureMail'
+     * Create request for operation 'seal'
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params (required)
+     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return RequestInterface
      */
-    public function requestSecureMailRequest($tenant_id, $desk_id, $folder_id, $task_id, $mail_params)
+    public function sealRequest($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params)
     {
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $tenant_id when calling requestSecureMail'
+                'Missing the required parameter $tenant_id when calling seal'
             );
         }
         // verify the required parameter 'desk_id' is set
         if ($desk_id === null || (is_array($desk_id) && count($desk_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $desk_id when calling requestSecureMail'
+                'Missing the required parameter $desk_id when calling seal'
             );
         }
         // verify the required parameter 'folder_id' is set
         if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_id when calling requestSecureMail'
+                'Missing the required parameter $folder_id when calling seal'
             );
         }
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $task_id when calling requestSecureMail'
+                'Missing the required parameter $task_id when calling seal'
             );
         }
-        // verify the required parameter 'mail_params' is set
-        if ($mail_params === null || (is_array($mail_params) && count($mail_params) === 0)) {
+        // verify the required parameter 'seal_task_params' is set
+        if ($seal_task_params === null || (is_array($seal_task_params) && count($seal_task_params) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $mail_params when calling requestSecureMail'
+                'Missing the required parameter $seal_task_params when calling seal'
             );
         }
 
-        $resourcePath = '/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/secure_mail';
+        $resourcePath = '/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/seal';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -747,11 +747,332 @@ class WorkflowApi
         );
 
         // for model (json/xml)
-        if (isset($mail_params)) {
+        if (isset($seal_task_params)) {
             if ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($mail_params));
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($seal_task_params));
             } else {
-                $httpBody = $mail_params;
+                $httpBody = $seal_task_params;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+
+        $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
+
+        return $this->createRequest('PUT', $uri, $headers, $httpBody);
+    }
+
+    /**
+     * Operation secondOpinion
+     *
+     * Second opinion
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params simple_task_params (required)
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function secondOpinion($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        $this->secondOpinionWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
+    }
+
+    /**
+     * Operation secondOpinionWithHttpInfo
+     *
+     * Second opinion
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function secondOpinionWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        $request = $this->secondOpinionRequest($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
+
+        try {
+            try {
+                $response = $this->httpClient->sendRequest($request);
+            } catch (HttpException $e) {
+                $response = $e->getResponse();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $response->getStatusCode(),
+                        (string) $request->getUri()
+                    ),
+                    $request,
+                    $response,
+                    $e
+                );
+            } catch (ClientExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $request,
+                    null,
+                    $e
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation secondOpinionAsync
+     *
+     * Second opinion
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function secondOpinionAsync($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        return $this->secondOpinionAsyncWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation secondOpinionAsyncWithHttpInfo
+     *
+     * Second opinion
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function secondOpinionAsyncWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        $returnType = '';
+        $request = $this->secondOpinionRequest($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
+
+        return $this->httpAsyncClient->sendAsyncRequest($request)
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function (HttpException $exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $exception->getRequest(),
+                        $exception->getResponse(),
+                        $exception
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'secondOpinion'
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function secondOpinionRequest($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling secondOpinion'
+            );
+        }
+        // verify the required parameter 'desk_id' is set
+        if ($desk_id === null || (is_array($desk_id) && count($desk_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $desk_id when calling secondOpinion'
+            );
+        }
+        // verify the required parameter 'folder_id' is set
+        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $folder_id when calling secondOpinion'
+            );
+        }
+        // verify the required parameter 'task_id' is set
+        if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $task_id when calling secondOpinion'
+            );
+        }
+        // verify the required parameter 'simple_task_params' is set
+        if ($simple_task_params === null || (is_array($simple_task_params) && count($simple_task_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $simple_task_params when calling secondOpinion'
+            );
+        }
+
+        $resourcePath = '/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/second_opinion';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = null;
+        $multipart = false;
+
+
+
+        // path params
+        if ($tenant_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tenantId' . '}',
+                ObjectSerializer::toPathValue($tenant_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($desk_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'deskId' . '}',
+                ObjectSerializer::toPathValue($desk_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($folder_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'folderId' . '}',
+                ObjectSerializer::toPathValue($folder_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($task_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'taskId' . '}',
+                ObjectSerializer::toPathValue($task_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            'application/json',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($simple_task_params)) {
+            if ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($simple_task_params));
+            } else {
+                $httpBody = $simple_task_params;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -867,15 +1188,7 @@ class WorkflowApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
+                case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -891,7 +1204,15 @@ class WorkflowApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 409:
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1173,7 +1494,7 @@ class WorkflowApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1189,7 +1510,7 @@ class WorkflowApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 407:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1197,7 +1518,7 @@ class WorkflowApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 407:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1492,7 +1813,7 @@ class WorkflowApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1500,7 +1821,7 @@ class WorkflowApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1516,7 +1837,7 @@ class WorkflowApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1683,6 +2004,327 @@ class WorkflowApi
 
         // for model (json/xml)
         if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+
+        $uri = $this->createUri($operationHost, $resourcePath, $queryParams);
+
+        return $this->createRequest('PUT', $uri, $headers, $httpBody);
+    }
+
+    /**
+     * Operation visa
+     *
+     * Visa
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params simple_task_params (required)
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function visa($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        $this->visaWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
+    }
+
+    /**
+     * Operation visaWithHttpInfo
+     *
+     * Visa
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function visaWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        $request = $this->visaRequest($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
+
+        try {
+            try {
+                $response = $this->httpClient->sendRequest($request);
+            } catch (HttpException $e) {
+                $response = $e->getResponse();
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $response->getStatusCode(),
+                        (string) $request->getUri()
+                    ),
+                    $request,
+                    $response,
+                    $e
+                );
+            } catch (ClientExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $request,
+                    null,
+                    $e
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation visaAsync
+     *
+     * Visa
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function visaAsync($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        return $this->visaAsyncWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation visaAsyncWithHttpInfo
+     *
+     * Visa
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return Promise
+     */
+    public function visaAsyncWithHttpInfo($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        $returnType = '';
+        $request = $this->visaRequest($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
+
+        return $this->httpAsyncClient->sendAsyncRequest($request)
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function (HttpException $exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $exception->getRequest(),
+                        $exception->getResponse(),
+                        $exception
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'visa'
+     *
+     * @param  string $tenant_id Tenant id (required)
+     * @param  string $desk_id Desk id (required)
+     * @param  string $folder_id Folder id (required)
+     * @param  string $task_id Task id (required)
+     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return RequestInterface
+     */
+    public function visaRequest($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+    {
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling visa'
+            );
+        }
+        // verify the required parameter 'desk_id' is set
+        if ($desk_id === null || (is_array($desk_id) && count($desk_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $desk_id when calling visa'
+            );
+        }
+        // verify the required parameter 'folder_id' is set
+        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $folder_id when calling visa'
+            );
+        }
+        // verify the required parameter 'task_id' is set
+        if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $task_id when calling visa'
+            );
+        }
+        // verify the required parameter 'simple_task_params' is set
+        if ($simple_task_params === null || (is_array($simple_task_params) && count($simple_task_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $simple_task_params when calling visa'
+            );
+        }
+
+        $resourcePath = '/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/visa';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = null;
+        $multipart = false;
+
+
+
+        // path params
+        if ($tenant_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tenantId' . '}',
+                ObjectSerializer::toPathValue($tenant_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($desk_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'deskId' . '}',
+                ObjectSerializer::toPathValue($desk_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($folder_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'folderId' . '}',
+                ObjectSerializer::toPathValue($folder_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($task_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'taskId' . '}',
+                ObjectSerializer::toPathValue($task_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            'application/json',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($simple_task_params)) {
+            if ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($simple_task_params));
+            } else {
+                $httpBody = $simple_task_params;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

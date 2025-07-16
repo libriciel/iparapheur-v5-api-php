@@ -7,6 +7,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     ca-certificates \
     openssl \
     libzip-dev \
+    php-curl \
     php-mbstring \
     php-pcov \
     php-xdebug \

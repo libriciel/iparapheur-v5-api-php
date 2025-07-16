@@ -5,10 +5,12 @@ All URIs are relative to http://localhost:8080.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**bypass()**](WorkflowApi.md#bypass) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/bypass | Bypass
-[**requestSecureMail()**](WorkflowApi.md#requestSecureMail) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/secure_mail | Secure mail
+[**seal()**](WorkflowApi.md#seal) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/seal | Seal
+[**secondOpinion()**](WorkflowApi.md#secondOpinion) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/second_opinion | Second opinion
 [**sendToTrashBin()**](WorkflowApi.md#sendToTrashBin) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/send_to_trash_bin | Send to trash-bin
 [**start()**](WorkflowApi.md#start) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/start | Start
 [**undo()**](WorkflowApi.md#undo) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/undo | Undo
+[**visa()**](WorkflowApi.md#visa) | **PUT** /api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/visa | Visa
 
 
 ## `bypass()`
@@ -76,15 +78,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `requestSecureMail()`
+## `seal()`
 
 ```php
-requestSecureMail($tenant_id, $desk_id, $folder_id, $task_id, $mail_params)
+seal($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params)
 ```
 
-Secure mail
+Seal
 
-Send a secure mail
+Perform a Seal on a Task.
 
 ### Example
 
@@ -107,12 +109,12 @@ $tenant_id = 'tenant_id_example'; // string | Tenant id
 $desk_id = 'desk_id_example'; // string | Desk id
 $folder_id = 'folder_id_example'; // string | Folder id
 $task_id = 'task_id_example'; // string | Task id
-$mail_params = new \OpenAPI\Client\Model\MailParams(); // \OpenAPI\Client\Model\MailParams
+$seal_task_params = new \OpenAPI\Client\Model\SealTaskParams(); // \OpenAPI\Client\Model\SealTaskParams
 
 try {
-    $apiInstance->requestSecureMail($tenant_id, $desk_id, $folder_id, $task_id, $mail_params);
+    $apiInstance->seal($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params);
 } catch (Exception $e) {
-    echo 'Exception when calling WorkflowApi->requestSecureMail: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WorkflowApi->seal: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -124,7 +126,74 @@ Name | Type | Description  | Notes
  **desk_id** | **string**| Desk id |
  **folder_id** | **string**| Folder id |
  **task_id** | **string**| Task id |
- **mail_params** | [**\OpenAPI\Client\Model\MailParams**](../Model/MailParams.md)|  |
+ **seal_task_params** | [**\OpenAPI\Client\Model\SealTaskParams**](../Model/SealTaskParams.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[spring_oauth](../../README.md#spring_oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `secondOpinion()`
+
+```php
+secondOpinion($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+```
+
+Second opinion
+
+Perform a straightforward Second opinion on a Task
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: spring_oauth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\WorkflowApi(
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string | Tenant id
+$desk_id = 'desk_id_example'; // string | Desk id
+$folder_id = 'folder_id_example'; // string | Folder id
+$task_id = 'task_id_example'; // string | Task id
+$simple_task_params = new \OpenAPI\Client\Model\SimpleTaskParams(); // \OpenAPI\Client\Model\SimpleTaskParams
+
+try {
+    $apiInstance->secondOpinion($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowApi->secondOpinion: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **string**| Tenant id |
+ **desk_id** | **string**| Desk id |
+ **folder_id** | **string**| Folder id |
+ **task_id** | **string**| Task id |
+ **simple_task_params** | [**\OpenAPI\Client\Model\SimpleTaskParams**](../Model/SimpleTaskParams.md)|  |
 
 ### Return type
 
@@ -334,6 +403,73 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `visa()`
+
+```php
+visa($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params)
+```
+
+Visa
+
+Perform a straightforward Visa on a Task
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: spring_oauth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\WorkflowApi(
+    // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
+    // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string | Tenant id
+$desk_id = 'desk_id_example'; // string | Desk id
+$folder_id = 'folder_id_example'; // string | Folder id
+$task_id = 'task_id_example'; // string | Task id
+$simple_task_params = new \OpenAPI\Client\Model\SimpleTaskParams(); // \OpenAPI\Client\Model\SimpleTaskParams
+
+try {
+    $apiInstance->visa($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowApi->visa: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **string**| Tenant id |
+ **desk_id** | **string**| Desk id |
+ **folder_id** | **string**| Folder id |
+ **task_id** | **string**| Task id |
+ **simple_task_params** | [**\OpenAPI\Client\Model\SimpleTaskParams**](../Model/SimpleTaskParams.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[spring_oauth](../../README.md#spring_oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

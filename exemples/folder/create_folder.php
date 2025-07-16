@@ -26,6 +26,6 @@ $documents = $documentPath ? [new SplFileObject($documentPath)] : [];
 $autoStart = true;
 
 ApiExecutor::run(
-    static fn() => $api->createFolder($tenantId, $deskId, $folderFile, $documents, $autoStart),
+    static fn () => $api->createFolder($tenantId, $deskId, $folderFile, $documents, $autoStart),
     'Dossier créé avec succès :'
 );

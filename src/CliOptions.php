@@ -25,7 +25,7 @@ class CliOptions
 
     private function usage(array $longOpts, array $required): void
     {
-        $requiredStr = implode(', ', array_map(fn($r) => "--$r=...", $required));
+        $requiredStr = implode(', ', array_map(fn ($r) => "--$r=...", $required));
         fwrite(STDERR, "Usage: php script.php $requiredStr [autres options...]\n");
         fwrite(STDERR, "Options disponibles :\n");
         foreach ($longOpts as $opt) {

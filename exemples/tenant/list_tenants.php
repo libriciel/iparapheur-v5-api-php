@@ -3,8 +3,8 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\ApiClientFactory;
-use App\CliOptions;
 use App\ApiExecutor;
+use App\CliOptions;
 use OpenAPI\Client\Api\TenantApi;
 
 $cli = new CliOptions(
@@ -20,6 +20,6 @@ $sort = $cli->get('sort') ? explode(',', $cli->get('sort')) : null;
 $api = new TenantApi($httpClient, $config);
 
 ApiExecutor::run(
-    static fn() => $api->listTenants($page, $size, $sort),
+    static fn () => $api->listTenants($page, $size, $sort),
     'Liste des tenants :'
 );

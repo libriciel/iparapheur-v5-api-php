@@ -346,16 +346,16 @@ class MailParams implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['public_annotation']) && (mb_strlen($this->container['public_annotation']) > 255)) {
-            $invalidProperties[] = "invalid value for 'public_annotation', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['public_annotation']) && (mb_strlen($this->container['public_annotation']) > 512)) {
+            $invalidProperties[] = "invalid value for 'public_annotation', the character length must be smaller than or equal to 512.";
         }
 
         if (!is_null($this->container['public_annotation']) && (mb_strlen($this->container['public_annotation']) < 0)) {
             $invalidProperties[] = "invalid value for 'public_annotation', the character length must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['private_annotation']) && (mb_strlen($this->container['private_annotation']) > 255)) {
-            $invalidProperties[] = "invalid value for 'private_annotation', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['private_annotation']) && (mb_strlen($this->container['private_annotation']) > 512)) {
+            $invalidProperties[] = "invalid value for 'private_annotation', the character length must be smaller than or equal to 512.";
         }
 
         if (!is_null($this->container['private_annotation']) && (mb_strlen($this->container['private_annotation']) < 0)) {
@@ -405,8 +405,8 @@ class MailParams implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($public_annotation)) {
             throw new \InvalidArgumentException('non-nullable public_annotation cannot be null');
         }
-        if ((mb_strlen($public_annotation) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $public_annotation when calling MailParams., must be smaller than or equal to 255.');
+        if ((mb_strlen($public_annotation) > 512)) {
+            throw new \InvalidArgumentException('invalid length for $public_annotation when calling MailParams., must be smaller than or equal to 512.');
         }
         if ((mb_strlen($public_annotation) < 0)) {
             throw new \InvalidArgumentException('invalid length for $public_annotation when calling MailParams., must be bigger than or equal to 0.');
@@ -439,8 +439,8 @@ class MailParams implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($private_annotation)) {
             throw new \InvalidArgumentException('non-nullable private_annotation cannot be null');
         }
-        if ((mb_strlen($private_annotation) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $private_annotation when calling MailParams., must be smaller than or equal to 255.');
+        if ((mb_strlen($private_annotation) > 512)) {
+            throw new \InvalidArgumentException('invalid length for $private_annotation when calling MailParams., must be smaller than or equal to 512.');
         }
         if ((mb_strlen($private_annotation) < 0)) {
             throw new \InvalidArgumentException('invalid length for $private_annotation when calling MailParams., must be bigger than or equal to 0.');

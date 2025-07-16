@@ -3,8 +3,8 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\ApiClientFactory;
-use App\CliOptions;
 use App\ApiExecutor;
+use App\CliOptions;
 use OpenAPI\Client\Api\AdminTrashBinApi;
 
 $cli = new CliOptions(
@@ -19,7 +19,7 @@ $folderId = $cli->get('folder');
 $api = new AdminTrashBinApi($httpClient, $config);
 
 ApiExecutor::runBinary(
-    static fn() => $api->downloadTrashBinFolderZip($tenantId, $folderId),
+    static fn () => $api->downloadTrashBinFolderZip($tenantId, $folderId),
     "downloads/trashbin_folder_{$folderId}.zip",
     'ZIP téléchargé et sauvegardé avec succès.'
 );

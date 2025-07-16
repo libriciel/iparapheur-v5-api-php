@@ -189,7 +189,7 @@ class TypologyApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function listCreationAllowedSubtypes($tenant_id, $desk_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
@@ -211,7 +211,7 @@ class TypologyApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCreationAllowedSubtypesWithHttpInfo($tenant_id, $desk_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
@@ -245,13 +245,19 @@ class TypologyApi
 
 
             switch($statusCode) {
-                case 404:
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                        $request,
+                        $response,
+                    );
+                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
-                case 400:
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -263,13 +269,7 @@ class TypologyApi
                         $request,
                         $response,
                     );
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageSubtypeRepresentation',
-                        $request,
-                        $response,
-                    );
-                case 403:
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -293,13 +293,21 @@ class TypologyApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageSubtypeRepresentation',
+                '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -307,7 +315,7 @@ class TypologyApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -323,15 +331,7 @@ class TypologyApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageSubtypeRepresentation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -388,7 +388,7 @@ class TypologyApi
      */
     public function listCreationAllowedSubtypesAsyncWithHttpInfo($tenant_id, $desk_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\PageSubtypeRepresentation';
+        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation';
         $request = $this->listCreationAllowedSubtypesRequest($tenant_id, $desk_id, $type_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)
@@ -600,7 +600,7 @@ class TypologyApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function listCreationAllowedTypes($tenant_id, $desk_id, $page = 0, $size = 10, $sort = null)
     {
@@ -621,7 +621,7 @@ class TypologyApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCreationAllowedTypesWithHttpInfo($tenant_id, $desk_id, $page = 0, $size = 10, $sort = null)
     {
@@ -655,13 +655,19 @@ class TypologyApi
 
 
             switch($statusCode) {
-                case 404:
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                        $request,
+                        $response,
+                    );
+                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
-                case 400:
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -673,13 +679,7 @@ class TypologyApi
                         $request,
                         $response,
                     );
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageTypeRepresentation',
-                        $request,
-                        $response,
-                    );
-                case 403:
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -703,13 +703,21 @@ class TypologyApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageTypeRepresentation',
+                '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -717,7 +725,7 @@ class TypologyApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -733,15 +741,7 @@ class TypologyApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageTypeRepresentation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -796,7 +796,7 @@ class TypologyApi
      */
     public function listCreationAllowedTypesAsyncWithHttpInfo($tenant_id, $desk_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\PageTypeRepresentation';
+        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation';
         $request = $this->listCreationAllowedTypesRequest($tenant_id, $desk_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)
@@ -993,7 +993,7 @@ class TypologyApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function listSubtypes($tenant_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
@@ -1014,7 +1014,7 @@ class TypologyApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSubtypesWithHttpInfo($tenant_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
@@ -1048,13 +1048,19 @@ class TypologyApi
 
 
             switch($statusCode) {
-                case 404:
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                        $request,
+                        $response,
+                    );
+                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
-                case 400:
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -1066,13 +1072,7 @@ class TypologyApi
                         $request,
                         $response,
                     );
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageSubtypeRepresentation',
-                        $request,
-                        $response,
-                    );
-                case 403:
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -1096,13 +1096,21 @@ class TypologyApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageSubtypeRepresentation',
+                '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1110,7 +1118,7 @@ class TypologyApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1126,15 +1134,7 @@ class TypologyApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageSubtypeRepresentation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1189,7 +1189,7 @@ class TypologyApi
      */
     public function listSubtypesAsyncWithHttpInfo($tenant_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\PageSubtypeRepresentation';
+        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation';
         $request = $this->listSubtypesRequest($tenant_id, $type_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)
@@ -1385,7 +1385,7 @@ class TypologyApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function listTypes($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -1405,7 +1405,7 @@ class TypologyApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTypesWithHttpInfo($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -1439,13 +1439,19 @@ class TypologyApi
 
 
             switch($statusCode) {
-                case 404:
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                        $request,
+                        $response,
+                    );
+                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
-                case 400:
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -1457,13 +1463,7 @@ class TypologyApi
                         $request,
                         $response,
                     );
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageTypeRepresentation',
-                        $request,
-                        $response,
-                    );
-                case 403:
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -1487,13 +1487,21 @@ class TypologyApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageTypeRepresentation',
+                '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 404:
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1501,7 +1509,7 @@ class TypologyApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1517,15 +1525,7 @@ class TypologyApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageTypeRepresentation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -1578,7 +1578,7 @@ class TypologyApi
      */
     public function listTypesAsyncWithHttpInfo($tenant_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\PageTypeRepresentation';
+        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation';
         $request = $this->listTypesRequest($tenant_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)

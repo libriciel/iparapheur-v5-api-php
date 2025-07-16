@@ -9,6 +9,9 @@ $finder = PhpCsFixer\Finder::create()
     ->exclude('vendor')
     ->exclude('test')
     ->exclude('tests')
+    ->exclude('var')
+    ->exclude('lib')
+    ->exclude('exemples');
 ;
 
 $config = new PhpCsFixer\Config();

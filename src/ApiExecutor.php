@@ -24,7 +24,6 @@ class ApiExecutor
             }
 
             echo json_encode($result, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n";
-
         } catch (Exception $e) {
             fwrite(STDERR, "Erreur : " . $e->getMessage() . "\n");
 

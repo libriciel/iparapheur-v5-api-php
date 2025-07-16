@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `listUserDesks()`
 
 ```php
-listUserDesks($tenant_id, $page, $size, $sort): \OpenAPI\Client\Model\PageDeskRepresentation
+listUserDesks($tenant_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation
 ```
 
 List desks attached to the current user
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PageDeskRepresentation**](../Model/PageDeskRepresentation.md)
+[**\OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation**](../Model/StandardApiPageImplDeskRepresentation.md)
 
 ### Authorization
 

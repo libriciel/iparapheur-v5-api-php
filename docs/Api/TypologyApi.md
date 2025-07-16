@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ## `listCreationAllowedSubtypes()`
 
 ```php
-listCreationAllowedSubtypes($tenant_id, $desk_id, $type_id, $page, $size, $sort): \OpenAPI\Client\Model\PageSubtypeRepresentation
+listCreationAllowedSubtypes($tenant_id, $desk_id, $type_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation
 ```
 
 List creation-allowed subtypes from a given type, for the given desk
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PageSubtypeRepresentation**](../Model/PageSubtypeRepresentation.md)
+[**\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation**](../Model/StandardApiPageImplSubtypeRepresentation.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 ## `listCreationAllowedTypes()`
 
 ```php
-listCreationAllowedTypes($tenant_id, $desk_id, $page, $size, $sort): \OpenAPI\Client\Model\PageTypeRepresentation
+listCreationAllowedTypes($tenant_id, $desk_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation
 ```
 
 List types parent to a creation-allowed subtype on the given desk
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PageTypeRepresentation**](../Model/PageTypeRepresentation.md)
+[**\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation**](../Model/StandardApiPageImplTypeRepresentation.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 ## `listSubtypes()`
 
 ```php
-listSubtypes($tenant_id, $type_id, $page, $size, $sort): \OpenAPI\Client\Model\PageSubtypeRepresentation
+listSubtypes($tenant_id, $type_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation
 ```
 
 List all subtypes of a specific type on the current tenant
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PageSubtypeRepresentation**](../Model/PageSubtypeRepresentation.md)
+[**\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation**](../Model/StandardApiPageImplSubtypeRepresentation.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 ## `listTypes()`
 
 ```php
-listTypes($tenant_id, $page, $size, $sort): \OpenAPI\Client\Model\PageTypeRepresentation
+listTypes($tenant_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation
 ```
 
 List all types on the current tenant
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PageTypeRepresentation**](../Model/PageTypeRepresentation.md)
+[**\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation**](../Model/StandardApiPageImplTypeRepresentation.md)
 
 ### Authorization
 

@@ -78,7 +78,7 @@ downloadTrashBinFolderZip($tenant_id, $folder_id)
 
 Download a folder as ZIP
 
-Get every file, annexes and main document in a ZIP, with a PREMIS-formatted summary  The trash-bin is deleting automatically its data after a few days.   Using it is as a transit is not recommended, as **any delay in a folder process will result in a permanent loss of data**.  This endpoint requires an admin role.   Using it is as a transit is not recommended, as **sharing an admin login information to a third-party software is a security risk.**
+Get every file, annexes and main document in a ZIP, with a PREMIS-formatted summary  Note that the zipped PREMIS is definitely set when it enters the trash-bin, and could not be modified afterwards.   This is one of the many reasons to not use this entrypoint, and use the standard FINISHED entrypoint.  The trash-bin is deleting automatically its data after a few days.   Using it is as a transit is not recommended, as **any delay in a folder process will result in a permanent loss of data**.  This endpoint requires an admin role.   Using it is as a transit is not recommended, as **sharing an admin login information to a third-party software is a security risk.**
 
 ### Example
 
@@ -125,7 +125,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`, `application/octet-stream`
+- **Accept**: `application/octet-stream`, `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

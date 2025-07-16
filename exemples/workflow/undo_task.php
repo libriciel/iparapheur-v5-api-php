@@ -12,15 +12,15 @@ $cli = new CliOptions(
     ['tenant', 'desk', 'folder', 'task']
 );
 
-$tenantId  = $cli->get('tenant');
-$deskId    = $cli->get('desk');
-$folderId  = $cli->get('folder');
-$taskId    = $cli->get('task');
+$tenantId = $cli->get('tenant');
+$deskId = $cli->get('desk');
+$folderId = $cli->get('folder');
+$taskId = $cli->get('task');
 
 [$httpClient, $config] = (new ApiClientFactory())->create();
 $api = new WorkflowApi($httpClient, $config);
 
 ApiExecutor::run(
-    static fn() => $api->undo($tenantId, $deskId, $folderId, $taskId),
+    static fn () => $api->undo($tenantId, $deskId, $folderId, $taskId),
     "Annulation de la tâche effectuée avec succès."
 );

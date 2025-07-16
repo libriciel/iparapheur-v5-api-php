@@ -20,6 +20,6 @@ $folderId = $cli->get('folder');
 $api = new FolderApi($httpClient, $config);
 
 ApiExecutor::run(
-    static fn() => $api->deleteFolder($tenantId, $deskId, $folderId),
+    static fn () => $api->deleteFolder($tenantId, $deskId, $folderId),
     'Dossier supprimé avec succès.'
 );

@@ -3,8 +3,8 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\ApiClientFactory;
-use App\CliOptions;
 use App\ApiExecutor;
+use App\CliOptions;
 use OpenAPI\Client\Api\FolderApi;
 
 $cli = new CliOptions(
@@ -20,7 +20,7 @@ $folderId = $cli->get('folder');
 $api = new FolderApi($httpClient, $config);
 
 ApiExecutor::runBinary(
-    static fn() => $api->downloadFolderPremis($tenantId, $deskId, $folderId),
+    static fn () => $api->downloadFolderPremis($tenantId, $deskId, $folderId),
     "downloads/folder_{$folderId}_summary.xml",
     'Premis téléchargé et sauvegardé avec succès.'
 );

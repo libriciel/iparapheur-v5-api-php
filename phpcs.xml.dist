@@ -8,7 +8,7 @@
     <arg value="sp"/>
 
     <file>src</file>
-    <file>tests</file>
+    <file>test</file>
 
     <rule ref="PSR12" />
     <rule ref="PSR2.Files.EndFileNewline.NoneFound">

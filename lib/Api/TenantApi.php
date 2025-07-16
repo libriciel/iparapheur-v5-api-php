@@ -186,7 +186,7 @@ class TenantApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageTenantRepresentation|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function listTenants($page = 0, $size = 10, $sort = null)
     {
@@ -205,7 +205,7 @@ class TenantApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\PageTenantRepresentation|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTenantsWithHttpInfo($page = 0, $size = 10, $sort = null)
     {
@@ -239,25 +239,25 @@ class TenantApi
 
 
             switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation',
+                        $request,
+                        $response,
+                    );
                 case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
-                case 401:
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageTenantRepresentation',
-                        $request,
-                        $response,
-                    );
-                case 403:
+                case 401:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorResponse',
                         $request,
@@ -281,12 +281,20 @@ class TenantApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageTenantRepresentation',
+                '\OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -295,7 +303,7 @@ class TenantApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 401:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -303,15 +311,7 @@ class TenantApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageTenantRepresentation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
+                case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -362,7 +362,7 @@ class TenantApi
      */
     public function listTenantsAsyncWithHttpInfo($page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\PageTenantRepresentation';
+        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation';
         $request = $this->listTenantsRequest($page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)

@@ -21,6 +21,6 @@ $api = new AdminTrashBinApi($httpClient, $config);
 $api->deleteTrashBinFolder($tenantId, $folderId);
 
 ApiExecutor::run(
-    static fn() => $api->listTrashBinFolders($tenantId, $folderId),
+    static fn () => $api->listTrashBinFolders($tenantId, $folderId),
     'Dossier supprimé de la corbeille avec succès.'
 );

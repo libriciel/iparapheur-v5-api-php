@@ -22,6 +22,6 @@ $sort = $cli->get('sort') ? explode(',', $cli->get('sort')) : null;
 $api = new TypologyApi($httpClient, $config);
 
 ApiExecutor::run(
-    static fn() => $api->listSubtypes($tenantId, $typeId, $page, $size, $sort),
+    static fn () => $api->listSubtypes($tenantId, $typeId, $page, $size, $sort),
     'Liste des sous-types :'
 );

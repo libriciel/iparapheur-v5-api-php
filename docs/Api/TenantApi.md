@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `listTenants()`
 
 ```php
-listTenants($page, $size, $sort): \OpenAPI\Client\Model\PageTenantRepresentation
+listTenants($page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation
 ```
 
 List tenants attached with the current user
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PageTenantRepresentation**](../Model/PageTenantRepresentation.md)
+[**\OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation**](../Model/StandardApiPageImplTenantRepresentation.md)
 
 ### Authorization
 

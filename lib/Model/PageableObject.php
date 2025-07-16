@@ -58,12 +58,12 @@ class PageableObject implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'unpaged' => 'bool',
-        'page_number' => 'int',
+        'offset' => 'int',
+        'sort' => '\OpenAPI\Client\Model\SortObject',
         'page_size' => 'int',
         'paged' => 'bool',
-        'offset' => 'int',
-        'sort' => '\OpenAPI\Client\Model\SortObject'
+        'page_number' => 'int',
+        'unpaged' => 'bool'
     ];
 
     /**
@@ -74,12 +74,12 @@ class PageableObject implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'unpaged' => null,
-        'page_number' => 'int32',
+        'offset' => 'int64',
+        'sort' => null,
         'page_size' => 'int32',
         'paged' => null,
-        'offset' => 'int64',
-        'sort' => null
+        'page_number' => 'int32',
+        'unpaged' => null
     ];
 
     /**
@@ -88,12 +88,12 @@ class PageableObject implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'unpaged' => false,
-        'page_number' => false,
+        'offset' => false,
+        'sort' => false,
         'page_size' => false,
         'paged' => false,
-        'offset' => false,
-        'sort' => false
+        'page_number' => false,
+        'unpaged' => false
     ];
 
     /**
@@ -182,12 +182,12 @@ class PageableObject implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'unpaged' => 'unpaged',
-        'page_number' => 'pageNumber',
+        'offset' => 'offset',
+        'sort' => 'sort',
         'page_size' => 'pageSize',
         'paged' => 'paged',
-        'offset' => 'offset',
-        'sort' => 'sort'
+        'page_number' => 'pageNumber',
+        'unpaged' => 'unpaged'
     ];
 
     /**
@@ -196,12 +196,12 @@ class PageableObject implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'unpaged' => 'setUnpaged',
-        'page_number' => 'setPageNumber',
+        'offset' => 'setOffset',
+        'sort' => 'setSort',
         'page_size' => 'setPageSize',
         'paged' => 'setPaged',
-        'offset' => 'setOffset',
-        'sort' => 'setSort'
+        'page_number' => 'setPageNumber',
+        'unpaged' => 'setUnpaged'
     ];
 
     /**
@@ -210,12 +210,12 @@ class PageableObject implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'unpaged' => 'getUnpaged',
-        'page_number' => 'getPageNumber',
+        'offset' => 'getOffset',
+        'sort' => 'getSort',
         'page_size' => 'getPageSize',
         'paged' => 'getPaged',
-        'offset' => 'getOffset',
-        'sort' => 'getSort'
+        'page_number' => 'getPageNumber',
+        'unpaged' => 'getUnpaged'
     ];
 
     /**
@@ -275,12 +275,12 @@ class PageableObject implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('unpaged', $data ?? [], null);
-        $this->setIfExists('page_number', $data ?? [], null);
-        $this->setIfExists('page_size', $data ?? [], null);
-        $this->setIfExists('paged', $data ?? [], null);
         $this->setIfExists('offset', $data ?? [], null);
         $this->setIfExists('sort', $data ?? [], null);
+        $this->setIfExists('page_size', $data ?? [], null);
+        $this->setIfExists('paged', $data ?? [], null);
+        $this->setIfExists('page_number', $data ?? [], null);
+        $this->setIfExists('unpaged', $data ?? [], null);
     }
 
     /**
@@ -326,55 +326,55 @@ class PageableObject implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets unpaged
+     * Gets offset
      *
-     * @return bool|null
+     * @return int|null
      */
-    public function getUnpaged()
+    public function getOffset()
     {
-        return $this->container['unpaged'];
+        return $this->container['offset'];
     }
 
     /**
-     * Sets unpaged
+     * Sets offset
      *
-     * @param bool|null $unpaged unpaged
+     * @param int|null $offset offset
      *
      * @return self
      */
-    public function setUnpaged($unpaged)
+    public function setOffset($offset)
     {
-        if (is_null($unpaged)) {
-            throw new \InvalidArgumentException('non-nullable unpaged cannot be null');
+        if (is_null($offset)) {
+            throw new \InvalidArgumentException('non-nullable offset cannot be null');
         }
-        $this->container['unpaged'] = $unpaged;
+        $this->container['offset'] = $offset;
 
         return $this;
     }
 
     /**
-     * Gets page_number
+     * Gets sort
      *
-     * @return int|null
+     * @return \OpenAPI\Client\Model\SortObject|null
      */
-    public function getPageNumber()
+    public function getSort()
     {
-        return $this->container['page_number'];
+        return $this->container['sort'];
     }
 
     /**
-     * Sets page_number
+     * Sets sort
      *
-     * @param int|null $page_number page_number
+     * @param \OpenAPI\Client\Model\SortObject|null $sort sort
      *
      * @return self
      */
-    public function setPageNumber($page_number)
+    public function setSort($sort)
     {
-        if (is_null($page_number)) {
-            throw new \InvalidArgumentException('non-nullable page_number cannot be null');
+        if (is_null($sort)) {
+            throw new \InvalidArgumentException('non-nullable sort cannot be null');
         }
-        $this->container['page_number'] = $page_number;
+        $this->container['sort'] = $sort;
 
         return $this;
     }
@@ -434,55 +434,55 @@ class PageableObject implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets offset
+     * Gets page_number
      *
      * @return int|null
      */
-    public function getOffset()
+    public function getPageNumber()
     {
-        return $this->container['offset'];
+        return $this->container['page_number'];
     }
 
     /**
-     * Sets offset
+     * Sets page_number
      *
-     * @param int|null $offset offset
+     * @param int|null $page_number page_number
      *
      * @return self
      */
-    public function setOffset($offset)
+    public function setPageNumber($page_number)
     {
-        if (is_null($offset)) {
-            throw new \InvalidArgumentException('non-nullable offset cannot be null');
+        if (is_null($page_number)) {
+            throw new \InvalidArgumentException('non-nullable page_number cannot be null');
         }
-        $this->container['offset'] = $offset;
+        $this->container['page_number'] = $page_number;
 
         return $this;
     }
 
     /**
-     * Gets sort
+     * Gets unpaged
      *
-     * @return \OpenAPI\Client\Model\SortObject|null
+     * @return bool|null
      */
-    public function getSort()
+    public function getUnpaged()
     {
-        return $this->container['sort'];
+        return $this->container['unpaged'];
     }
 
     /**
-     * Sets sort
+     * Sets unpaged
      *
-     * @param \OpenAPI\Client\Model\SortObject|null $sort sort
+     * @param bool|null $unpaged unpaged
      *
      * @return self
      */
-    public function setSort($sort)
+    public function setUnpaged($unpaged)
     {
-        if (is_null($sort)) {
-            throw new \InvalidArgumentException('non-nullable sort cannot be null');
+        if (is_null($unpaged)) {
+            throw new \InvalidArgumentException('non-nullable unpaged cannot be null');
         }
-        $this->container['sort'] = $sort;
+        $this->container['unpaged'] = $unpaged;
 
         return $this;
     }

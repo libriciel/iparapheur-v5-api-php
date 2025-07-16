@@ -58,16 +58,16 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'total_pages' => 'int',
         'total_elements' => 'int',
-        'pageable' => '\OpenAPI\Client\Model\PageableObject',
-        'number_of_elements' => 'int',
+        'total_pages' => 'int',
         'size' => 'int',
         'content' => '\OpenAPI\Client\Model\FolderRepresentation[]',
         'number' => 'int',
         'sort' => '\OpenAPI\Client\Model\SortObject',
         'first' => 'bool',
         'last' => 'bool',
+        'number_of_elements' => 'int',
+        'pageable' => '\OpenAPI\Client\Model\PageableObject',
         'empty' => 'bool'
     ];
 
@@ -79,16 +79,16 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'total_pages' => 'int32',
         'total_elements' => 'int64',
-        'pageable' => null,
-        'number_of_elements' => 'int32',
+        'total_pages' => 'int32',
         'size' => 'int32',
         'content' => null,
         'number' => 'int32',
         'sort' => null,
         'first' => null,
         'last' => null,
+        'number_of_elements' => 'int32',
+        'pageable' => null,
         'empty' => null
     ];
 
@@ -98,16 +98,16 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_pages' => false,
         'total_elements' => false,
-        'pageable' => false,
-        'number_of_elements' => false,
+        'total_pages' => false,
         'size' => false,
         'content' => false,
         'number' => false,
         'sort' => false,
         'first' => false,
         'last' => false,
+        'number_of_elements' => false,
+        'pageable' => false,
         'empty' => false
     ];
 
@@ -197,16 +197,16 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'total_pages' => 'totalPages',
         'total_elements' => 'totalElements',
-        'pageable' => 'pageable',
-        'number_of_elements' => 'numberOfElements',
+        'total_pages' => 'totalPages',
         'size' => 'size',
         'content' => 'content',
         'number' => 'number',
         'sort' => 'sort',
         'first' => 'first',
         'last' => 'last',
+        'number_of_elements' => 'numberOfElements',
+        'pageable' => 'pageable',
         'empty' => 'empty'
     ];
 
@@ -216,16 +216,16 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'total_pages' => 'setTotalPages',
         'total_elements' => 'setTotalElements',
-        'pageable' => 'setPageable',
-        'number_of_elements' => 'setNumberOfElements',
+        'total_pages' => 'setTotalPages',
         'size' => 'setSize',
         'content' => 'setContent',
         'number' => 'setNumber',
         'sort' => 'setSort',
         'first' => 'setFirst',
         'last' => 'setLast',
+        'number_of_elements' => 'setNumberOfElements',
+        'pageable' => 'setPageable',
         'empty' => 'setEmpty'
     ];
 
@@ -235,16 +235,16 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'total_pages' => 'getTotalPages',
         'total_elements' => 'getTotalElements',
-        'pageable' => 'getPageable',
-        'number_of_elements' => 'getNumberOfElements',
+        'total_pages' => 'getTotalPages',
         'size' => 'getSize',
         'content' => 'getContent',
         'number' => 'getNumber',
         'sort' => 'getSort',
         'first' => 'getFirst',
         'last' => 'getLast',
+        'number_of_elements' => 'getNumberOfElements',
+        'pageable' => 'getPageable',
         'empty' => 'getEmpty'
     ];
 
@@ -305,16 +305,16 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('total_pages', $data ?? [], null);
         $this->setIfExists('total_elements', $data ?? [], null);
-        $this->setIfExists('pageable', $data ?? [], null);
-        $this->setIfExists('number_of_elements', $data ?? [], null);
+        $this->setIfExists('total_pages', $data ?? [], null);
         $this->setIfExists('size', $data ?? [], null);
         $this->setIfExists('content', $data ?? [], null);
         $this->setIfExists('number', $data ?? [], null);
         $this->setIfExists('sort', $data ?? [], null);
         $this->setIfExists('first', $data ?? [], null);
         $this->setIfExists('last', $data ?? [], null);
+        $this->setIfExists('number_of_elements', $data ?? [], null);
+        $this->setIfExists('pageable', $data ?? [], null);
         $this->setIfExists('empty', $data ?? [], null);
     }
 
@@ -361,33 +361,6 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets total_pages
-     *
-     * @return int|null
-     */
-    public function getTotalPages()
-    {
-        return $this->container['total_pages'];
-    }
-
-    /**
-     * Sets total_pages
-     *
-     * @param int|null $total_pages total_pages
-     *
-     * @return self
-     */
-    public function setTotalPages($total_pages)
-    {
-        if (is_null($total_pages)) {
-            throw new \InvalidArgumentException('non-nullable total_pages cannot be null');
-        }
-        $this->container['total_pages'] = $total_pages;
-
-        return $this;
-    }
-
-    /**
      * Gets total_elements
      *
      * @return int|null
@@ -415,55 +388,28 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets pageable
-     *
-     * @return \OpenAPI\Client\Model\PageableObject|null
-     */
-    public function getPageable()
-    {
-        return $this->container['pageable'];
-    }
-
-    /**
-     * Sets pageable
-     *
-     * @param \OpenAPI\Client\Model\PageableObject|null $pageable pageable
-     *
-     * @return self
-     */
-    public function setPageable($pageable)
-    {
-        if (is_null($pageable)) {
-            throw new \InvalidArgumentException('non-nullable pageable cannot be null');
-        }
-        $this->container['pageable'] = $pageable;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_of_elements
+     * Gets total_pages
      *
      * @return int|null
      */
-    public function getNumberOfElements()
+    public function getTotalPages()
     {
-        return $this->container['number_of_elements'];
+        return $this->container['total_pages'];
     }
 
     /**
-     * Sets number_of_elements
+     * Sets total_pages
      *
-     * @param int|null $number_of_elements number_of_elements
+     * @param int|null $total_pages total_pages
      *
      * @return self
      */
-    public function setNumberOfElements($number_of_elements)
+    public function setTotalPages($total_pages)
     {
-        if (is_null($number_of_elements)) {
-            throw new \InvalidArgumentException('non-nullable number_of_elements cannot be null');
+        if (is_null($total_pages)) {
+            throw new \InvalidArgumentException('non-nullable total_pages cannot be null');
         }
-        $this->container['number_of_elements'] = $number_of_elements;
+        $this->container['total_pages'] = $total_pages;
 
         return $this;
     }
@@ -626,6 +572,60 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable last cannot be null');
         }
         $this->container['last'] = $last;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_of_elements
+     *
+     * @return int|null
+     */
+    public function getNumberOfElements()
+    {
+        return $this->container['number_of_elements'];
+    }
+
+    /**
+     * Sets number_of_elements
+     *
+     * @param int|null $number_of_elements number_of_elements
+     *
+     * @return self
+     */
+    public function setNumberOfElements($number_of_elements)
+    {
+        if (is_null($number_of_elements)) {
+            throw new \InvalidArgumentException('non-nullable number_of_elements cannot be null');
+        }
+        $this->container['number_of_elements'] = $number_of_elements;
+
+        return $this;
+    }
+
+    /**
+     * Gets pageable
+     *
+     * @return \OpenAPI\Client\Model\PageableObject|null
+     */
+    public function getPageable()
+    {
+        return $this->container['pageable'];
+    }
+
+    /**
+     * Sets pageable
+     *
+     * @param \OpenAPI\Client\Model\PageableObject|null $pageable pageable
+     *
+     * @return self
+     */
+    public function setPageable($pageable)
+    {
+        if (is_null($pageable)) {
+            throw new \InvalidArgumentException('non-nullable pageable cannot be null');
+        }
+        $this->container['pageable'] = $pageable;
 
         return $this;
     }

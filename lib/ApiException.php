@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ApiException
  * PHP version 7.2
@@ -43,7 +44,6 @@ use Psr\Http\Message\ResponseInterface;
  */
 class ApiException extends RequestException
 {
-
     /**
      * The HTTP body of the server response either as Json or string.
      *

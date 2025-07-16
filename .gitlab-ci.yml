@@ -21,7 +21,7 @@ lint:
   image: "$CONTAINER_IMAGE"
   script:
     - cd /app
-    - vendor/bin/phpcs
+    - vendor/bin/php-cs-fixer fix --dry-run --diff --allow-risky=yes
 
 phpstan:
   stage: coding-standards
