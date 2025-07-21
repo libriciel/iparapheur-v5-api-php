@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<premis xmlns="http://www.loc.gov/premis/v3"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        version="3.0"
+        xsi:schemaLocation="http://www.loc.gov/premis/v3 http://www.loc.gov/standards/premis/v3/premis.xsd">
+
+    <object xsi:type="intellectualEntity">
+        <significantProperties>
+            <significantPropertiesType>i_Parapheur_reserved_type</significantPropertiesType>
+            <significantPropertiesValue>83cf8658-8bef-4e22-84b2-db119d04811d</significantPropertiesValue> <!-- Type : Cades -->
+        </significantProperties>
+        <significantProperties>
+            <significantPropertiesType>i_Parapheur_reserved_subtype</significantPropertiesType>
+            <significantPropertiesValue>02f027a1-4a73-4b1c-81e1-82677af0dcba</significantPropertiesValue> <!-- Sous-Type : Signature -->
+        </significantProperties>
+        <originalName>test-api-guzzle</originalName>
+    </object>
+
+    <object xsi:type="file">
+        <significantProperties>
+            <significantPropertiesType>i_Parapheur_reserved_mainDocument</significantPropertiesType>
+            <significantPropertiesValue>true</significantPropertiesValue>
+        </significantProperties>
+        <originalName>test.pdf</originalName>
+    </object>
+
+</premis>
+

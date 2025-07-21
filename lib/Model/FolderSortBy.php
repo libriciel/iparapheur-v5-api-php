@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FolderSortBy
  *
@@ -28,7 +29,7 @@
  */
 
 namespace OpenAPI\Client\Model;
-use \OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\ObjectSerializer;
 
 /**
  * FolderSortBy Class Doc Comment
@@ -119,5 +120,3 @@ class FolderSortBy
         ];
     }
 }
-
-

@@ -113,7 +113,7 @@ class FormDataProcessor
         $result = [];
 
         foreach ($source as $key => $val) {
-            $currentName .= $currentPrefix.$key;
+            $currentName .= $currentPrefix . $key;
 
             if (is_array($val) && !empty($val)) {
                 $currentName .= $currentSuffix;

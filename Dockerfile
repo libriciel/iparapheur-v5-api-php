@@ -14,6 +14,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     php-xml \
     unzip \
     zip \
+    jq \
+    gawk \
     && rm -rf /var/lib/apt/lists/*
 
 RUN phpenmod xdebug pcov

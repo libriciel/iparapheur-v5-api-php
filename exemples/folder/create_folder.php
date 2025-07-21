@@ -8,21 +8,26 @@ use App\CliOptions;
 use OpenAPI\Client\Api\FolderApi;
 
 $cli = new CliOptions(
-    ['tenant:', 'desk:', 'folder:', 'document::'],
-    ['tenant', 'desk', 'folder']
+    ['tenant:', 'desk:', 'folder:', 'documents::'],
+    ['tenant', 'desk', 'folder', 'documents']
 );
 
 $tenantId = $cli->get('tenant');
 $deskId = $cli->get('desk');
 $folderPath = $cli->get('folder');
-$documentPath = $cli->get('document');
+
+$documentPaths = $cli->get('documents');
+$documents = [];
+if ($documentPaths) {
+    foreach (explode(',', $documentPaths) as $path) {
+        $documents[] = new SplFileObject(trim($path));
+    }
+}
 
 [$httpClient, $config] = (new ApiClientFactory())->create();
 $api = new FolderApi($httpClient, $config);
 
 $folderFile = new SplFileObject($folderPath);
-$documents = $documentPath ? [new SplFileObject($documentPath)] : [];
-
 $autoStart = true;
 
 ApiExecutor::run(

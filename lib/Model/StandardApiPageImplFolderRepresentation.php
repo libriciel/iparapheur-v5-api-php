@@ -1,4 +1,5 @@
 <?php
+
 /**
  * StandardApiPageImplFolderRepresentation
  *
@@ -29,8 +30,8 @@
 
 namespace OpenAPI\Client\Model;
 
-use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use ArrayAccess;
+use OpenAPI\Client\ObjectSerializer;
 
 /**
  * StandardApiPageImplFolderRepresentation Class Doc Comment
@@ -720,7 +721,7 @@ class StandardApiPageImplFolderRepresentation implements ModelInterface, ArrayAc
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -746,5 +747,3 @@ class StandardApiPageImplFolderRepresentation implements ModelInterface, ArrayAc
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

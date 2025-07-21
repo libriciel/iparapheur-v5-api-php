@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Action
  *
@@ -28,7 +29,7 @@
  */
 
 namespace OpenAPI\Client\Model;
-use \OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\ObjectSerializer;
 
 /**
  * Action Class Doc Comment
@@ -122,5 +123,3 @@ class Action
         ];
     }
 }
-
-

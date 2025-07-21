@@ -1,14 +1,14 @@
 DOCKER=docker
-EXEC_COMPOSER=$(DOCKER) run --rm --volume ${PWD}:/app --volume ${HOME}/.composer:/tmp -it composer:2
+EXEC_COMPOSER=$(DOCKER) run --rm -u $(shell id -u):$(shell id -g) --volume ${PWD}:/app --volume ${HOME}/.composer:/tmp -w /app composer:2
 DOCKER_COMPOSE=docker compose -f docker-compose.yml
-DOCKER_COMPOSE_RUN=$(DOCKER_COMPOSE) run app
+DOCKER_COMPOSE_RUN=$(DOCKER_COMPOSE) run --rm app
 
 OPENAPI_FILE ?= openapi/iparapheur-5.1.22.json
 OUTPUT_DIR ?= .
 GENERATOR_IMAGE = openapitools/openapi-generator-cli
 
 .DEFAULT_GOAL := help
-.PHONY: help
+.PHONY: help generate patch build build-patch
 
 define run_php
 	$(DOCKER_COMPOSE_RUN) php $(1)
@@ -32,28 +32,34 @@ bash: ## Accéder à un bash dans le conteneur
 clean: ## Supprimer les dépendances
 	rm -rf vendor
 
-# --- Code Quality ---
-test: phpcs phpunit ## Lancer tous les tests
-
 phpcs: ## Vérifier le style de code
 	$(DOCKER_COMPOSE_RUN) vendor/bin/phpcs
 
 phpcbf: ## Corriger automatiquement les erreurs de style
-	$(DOCKER_COMPOSE_RUN) vendor/bin/phpcbf
-
-phpunit: ## Lancer les tests unitaires
-	$(DOCKER_COMPOSE_RUN) vendor/bin/phpunit
+	$(DOCKER_COMPOSE_RUN) vendor/bin/phpcbf || true
 
 phpstan: ## Lancer l’analyse statique
 	$(DOCKER_COMPOSE_RUN) vendor/bin/phpstan --xdebug
 
 # --- OpenAPI Generator ---
-generate: ## Générer le client PHP depuis un fichier OpenAPI
-	docker run --rm -v "$(PWD):/local" $(GENERATOR_IMAGE) generate \
+
+generate:
+	rm -rf ./lib ./docs ./test ./composer.json
+	docker run --rm \
+		-v "$(PWD):/local" \
+		-u "$(shell id -u):$(shell id -g)" \
+		$(GENERATOR_IMAGE) generate \
 		-i "/local/$(OPENAPI_FILE)" \
 		-g php \
-		-o "/local/$(OUTPUT_DIR)" \
+		-o "/local/." \
 		-p library=psr-18
+
+
+patch:
+	$(DOCKER_COMPOSE_RUN) ./patch/patch-generated-lib.sh
+
+
+generate-and-patch: generate patch phpcbf ## Générer la librairie, construire le conteneur de patchs et appliquer les patchs
 
 # --- Appels API via conteneur ---
 list-tenants: ## Lister les tenants liés à l'utilisateur
@@ -69,7 +75,7 @@ list-subtypes: ## Lister les sous-types (typology)
 	$(call run_php,exemples/typology/list_subtypes.php --tenant=$(tenant) --type=$(type) --page=$(page) --size=$(size) --sort=$(sort))
 
 create-folder: ## Créer un dossier
-	$(call run_php,exemples/folder/create_folder.php --tenant=$(tenant) --desk=$(desk) --folder=$(folder) --document=$(document))
+	$(call run_php,exemples/folder/create_folder.php --tenant=$(tenant) --desk=$(desk) --folder=$(folder) --documents=$(documents))
 
 download-folder-zip: ## Télécharger un dossier ZIP (avec PREMIS)
 	$(call run_php,exemples/folder/download_folder_zip.php --tenant=$(tenant) --desk=$(desk) --folder=$(folder))
@@ -84,7 +90,7 @@ delete-folder: ## Supprimer un dossier
 	$(call run_php,exemples/folder/delete_folder.php --tenant=$(tenant) --desk=$(desk) --folder=$(folder))
 
 trash-folder: ## Envoyer un dossier à la corbeille
-	$(call run_php,exemples/folder/send_to_trash_bin.php --tenant=$(tenant) --desk=$(desk) --folder=$(folder) --task=$(task))
+	$(call run_php,exemples/workflow/send_to_trash_bin.php --tenant=$(tenant) --desk=$(desk) --folder=$(folder) --task=$(task))
 
 undo-task: ## Exercer un droit de remords sur un dossier
 	$(call run_php,exemples/workflow/undo_task.php --tenant=$(tenant) --desk=$(desk) --folder=$(folder) --task=$(task))

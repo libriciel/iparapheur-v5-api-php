@@ -19,6 +19,10 @@ $folderId = $cli->get('folder');
 [$httpClient, $config] = (new ApiClientFactory())->create();
 $api = new FolderApi($httpClient, $config);
 
+if (!is_dir('downloads') && !mkdir('downloads', 0777, true) && !is_dir('downloads')) {
+    throw new \RuntimeException(sprintf('Directory "%s" was not created', 'downloads'));
+}
+
 ApiExecutor::runBinary(
     static fn () => $api->downloadFolderZip($tenantId, $deskId, $folderId),
     "downloads/folder_{$folderId}.zip",

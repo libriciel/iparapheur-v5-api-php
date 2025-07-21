@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Configuration
  * PHP version 7.2
@@ -46,7 +47,6 @@ use function is_resource;
  */
 class DebugPlugin implements Plugin
 {
-
     /**
      * @var resource
      */

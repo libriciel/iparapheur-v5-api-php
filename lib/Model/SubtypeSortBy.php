@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SubtypeSortBy
  *
@@ -28,7 +29,7 @@
  */
 
 namespace OpenAPI\Client\Model;
-use \OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\ObjectSerializer;
 
 /**
  * SubtypeSortBy Class Doc Comment
@@ -59,5 +60,3 @@ class SubtypeSortBy
         ];
     }
 }
-
-

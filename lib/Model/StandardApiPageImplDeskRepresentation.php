@@ -1,4 +1,5 @@
 <?php
+
 /**
  * StandardApiPageImplDeskRepresentation
  *
@@ -29,8 +30,8 @@
 
 namespace OpenAPI\Client\Model;
 
-use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use ArrayAccess;
+use OpenAPI\Client\ObjectSerializer;
 
 /**
  * StandardApiPageImplDeskRepresentation Class Doc Comment
@@ -720,7 +721,7 @@ class StandardApiPageImplDeskRepresentation implements ModelInterface, ArrayAcce
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -746,5 +747,3 @@ class StandardApiPageImplDeskRepresentation implements ModelInterface, ArrayAcce
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

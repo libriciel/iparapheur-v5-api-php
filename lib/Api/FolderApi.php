@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FolderApi
  * PHP version 7.2
@@ -242,7 +243,7 @@ class FolderApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\FolderRepresentation',
@@ -275,7 +276,7 @@ class FolderApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -338,7 +339,7 @@ class FolderApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -431,29 +432,30 @@ class FolderApi
      * @throws \InvalidArgumentException
      * @return RequestInterface
      */
+
     public function createFolderRequest($tenant_id, $desk_id, $folder, $documents, $auto_start = true)
     {
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $tenant_id when calling createFolder'
             );
         }
         // verify the required parameter 'desk_id' is set
         if ($desk_id === null || (is_array($desk_id) && count($desk_id) === 0)) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $desk_id when calling createFolder'
             );
         }
         // verify the required parameter 'folder' is set
         if ($folder === null || (is_array($folder) && count($folder) === 0)) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $folder when calling createFolder'
             );
         }
         // verify the required parameter 'documents' is set
         if ($documents === null || (is_array($documents) && count($documents) === 0)) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Missing the required parameter $documents when calling createFolder'
             );
         }
@@ -467,16 +469,14 @@ class FolderApi
 
         // query params
         if ($auto_start !== null) {
-            if('form' === 'form' && is_array($auto_start)) {
-                foreach($auto_start as $key => $value) {
+            if ('form' === 'form' && is_array($auto_start)) {
+                foreach ($auto_start as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['autoStart'] = $auto_start;
             }
         }
-
 
         // path params
         if ($tenant_id !== null) {
@@ -486,7 +486,6 @@ class FolderApi
                 $resourcePath
             );
         }
-        // path params
         if ($desk_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'deskId' . '}',
@@ -495,16 +494,29 @@ class FolderApi
             );
         }
 
-        // form params
-        $formDataProcessor = new FormDataProcessor();
+        $folderRealPath = $folder->getRealPath();
+        if ($folderRealPath === false) {
+            throw new \RuntimeException('Folder file path invalid.');
+        }
+        $formParams[] = [
+            'name'     => 'folder',
+            'contents' => fopen($folderRealPath, 'r'),
+            'filename' => basename($folderRealPath),
+        ];
 
-        $formData = $formDataProcessor->prepare([
-            'folder' => $folder,
-            'documents' => $documents,
-        ]);
+        foreach ($documents as $document) {
+            $documentRealPath = $document->getRealPath();
+            if ($documentRealPath === false) {
+                throw new \RuntimeException('Document file path invalid.');
+            }
+            $formParams[] = [
+                'name'     => 'documents',
+                'contents' => fopen($documentRealPath, 'r'),
+                'filename' => basename($documentRealPath),
+            ];
+        }
 
-        $formParams = $formDataProcessor->flatten($formData);
-        $multipart = $formDataProcessor->has_file;
+        $multipart = true;
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json'],
@@ -512,30 +524,8 @@ class FolderApi
             $multipart
         );
 
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
-                $httpBody = json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
+        $httpBody = new MultipartStream($formParams);
+        $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
@@ -571,7 +561,7 @@ class FolderApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function deleteFolder($tenant_id, $desk_id, $folder_id)
     {
@@ -658,7 +648,7 @@ class FolderApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -812,10 +802,8 @@ class FolderApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -856,11 +844,11 @@ class FolderApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function downloadFolderPremis($tenant_id, $desk_id, $folder_id)
     {
-        $this->downloadFolderPremisWithHttpInfo($tenant_id, $desk_id, $folder_id);
+        return $this->downloadFolderPremisWithHttpInfo($tenant_id, $desk_id, $folder_id)[0];
     }
 
     /**
@@ -905,9 +893,13 @@ class FolderApi
             }
 
             $statusCode = $response->getStatusCode();
+            $body = $response->getBody();
+            if ($body->isSeekable()) {
+                $body->rewind();
+            }
+            $content = $body->getContents();
 
-
-            return [null, $statusCode, $response->getHeaders()];
+            return [$content, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 403:
@@ -935,7 +927,7 @@ class FolderApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1089,10 +1081,8 @@ class FolderApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1133,11 +1123,11 @@ class FolderApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function downloadFolderZip($tenant_id, $desk_id, $folder_id)
     {
-        $this->downloadFolderZipWithHttpInfo($tenant_id, $desk_id, $folder_id);
+        return $this->downloadFolderZipWithHttpInfo($tenant_id, $desk_id, $folder_id)[0];
     }
 
     /**
@@ -1182,9 +1172,13 @@ class FolderApi
             }
 
             $statusCode = $response->getStatusCode();
+            $body = $response->getBody();
+            if ($body->isSeekable()) {
+                $body->rewind();
+            }
+            $content = $body->getContents();
 
-
-            return [null, $statusCode, $response->getHeaders()];
+            return [$content, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 403:
@@ -1212,7 +1206,7 @@ class FolderApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1366,10 +1360,8 @@ class FolderApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1472,7 +1464,7 @@ class FolderApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation',
@@ -1499,7 +1491,7 @@ class FolderApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -1554,7 +1546,7 @@ class FolderApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -1694,56 +1686,51 @@ class FolderApi
 
         // query params
         if ($type_id !== null) {
-            if('form' === 'form' && is_array($type_id)) {
-                foreach($type_id as $key => $value) {
+            if ('form' === 'form' && is_array($type_id)) {
+                foreach ($type_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['typeId'] = $type_id;
             }
         }
         // query params
         if ($subtype_id !== null) {
-            if('form' === 'form' && is_array($subtype_id)) {
-                foreach($subtype_id as $key => $value) {
+            if ('form' === 'form' && is_array($subtype_id)) {
+                foreach ($subtype_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['subtypeId'] = $subtype_id;
             }
         }
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
-                foreach($page as $key => $value) {
+            if ('form' === 'form' && is_array($page)) {
+                foreach ($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['page'] = $page;
             }
         }
         // query params
         if ($size !== null) {
-            if('form' === 'form' && is_array($size)) {
-                foreach($size as $key => $value) {
+            if ('form' === 'form' && is_array($size)) {
+                foreach ($size as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['size'] = $size;
             }
         }
         // query params
         if ($sort !== null) {
-            if('form' === 'form' && is_array($sort)) {
-                foreach($sort as $key => $value) {
+            if ('form' === 'form' && is_array($sort)) {
+                foreach ($sort as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['sort'] = $sort;
             }
         }
@@ -1796,10 +1783,8 @@ class FolderApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1932,8 +1917,8 @@ class FolderApi
         string $rangeCode,
         int $statusCode
     ): bool {
-        $left = (int) ($rangeCode[0].'00');
-        $right = (int) ($rangeCode[0].'99');
+        $left = (int) ($rangeCode[0] . '00');
+        $right = (int) ($rangeCode[0] . '99');
 
         return $statusCode >= $left && $statusCode <= $right;
     }

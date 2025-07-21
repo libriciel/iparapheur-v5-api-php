@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DeskRepresentation
  *
@@ -29,8 +30,8 @@
 
 namespace OpenAPI\Client\Model;
 
-use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use ArrayAccess;
+use OpenAPI\Client\ObjectSerializer;
 
 /**
  * DeskRepresentation Class Doc Comment
@@ -374,7 +375,7 @@ class DeskRepresentation implements ModelInterface, ArrayAccess, \JsonSerializab
         if ((mb_strlen($name) < 2)) {
             throw new \InvalidArgumentException('invalid length for $name when calling DeskRepresentation., must be bigger than or equal to 2.');
         }
-        if ((!preg_match("/^[^\\r\\n ]*$/", ObjectSerializer::toString($name)))) {
+        if (!preg_match("/^[^\r\n]*$/", $name)) {
             throw new \InvalidArgumentException("invalid value for \$name when calling DeskRepresentation., must conform to the pattern /^[^\\r\\n ]*$/.");
         }
 
@@ -473,7 +474,7 @@ class DeskRepresentation implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -499,5 +500,3 @@ class DeskRepresentation implements ModelInterface, ArrayAccess, \JsonSerializab
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

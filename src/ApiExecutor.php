@@ -28,6 +28,7 @@ class ApiExecutor
             fwrite(STDERR, "Erreur : " . $e->getMessage() . "\n");
 
             if (method_exists($e, 'getResponseBody') && $e->getResponseBody()) {
+                /** @phpstan-ignore-next-line */
                 fwrite(STDERR, "Corps de la réponse :\n" . $e->getResponseBody() . "\n");
             }
 
@@ -45,12 +46,12 @@ class ApiExecutor
             } else {
                 echo "Fichier écrit : $outputPath\n";
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo "Erreur : " . $e->getMessage() . "\n";
             if (method_exists($e, 'getResponseBody') && $e->getResponseBody()) {
+                /** @phpstan-ignore-next-line */
                 echo "Corps de la réponse :\n" . $e->getResponseBody() . "\n";
             }
         }
     }
-
 }

@@ -11,7 +11,7 @@ $finder = PhpCsFixer\Finder::create()
     ->exclude('tests')
     ->exclude('var')
     ->exclude('lib')
-    ->exclude('exemples');
+    ->exclude('exemples')
 ;
 
 $config = new PhpCsFixer\Config();

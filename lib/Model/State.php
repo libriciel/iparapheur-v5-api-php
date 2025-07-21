@@ -1,4 +1,5 @@
 <?php
+
 /**
  * State
  *
@@ -28,7 +29,7 @@
  */
 
 namespace OpenAPI\Client\Model;
-use \OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\ObjectSerializer;
 
 /**
  * State Class Doc Comment
@@ -95,5 +96,3 @@ class State
         ];
     }
 }
-
-

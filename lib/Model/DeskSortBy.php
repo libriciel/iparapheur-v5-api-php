@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DeskSortBy
  *
@@ -28,7 +29,7 @@
  */
 
 namespace OpenAPI\Client\Model;
-use \OpenAPI\Client\ObjectSerializer;
+use OpenAPI\Client\ObjectSerializer;
 
 /**
  * DeskSortBy Class Doc Comment
@@ -59,5 +60,3 @@ class DeskSortBy
         ];
     }
 }
-
-

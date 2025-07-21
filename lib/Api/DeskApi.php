@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DeskApi
  * PHP version 7.2
@@ -240,7 +241,7 @@ class DeskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation',
@@ -273,7 +274,7 @@ class DeskApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -336,7 +337,7 @@ class DeskApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -452,34 +453,31 @@ class DeskApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
-                foreach($page as $key => $value) {
+            if ('form' === 'form' && is_array($page)) {
+                foreach ($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['page'] = $page;
             }
         }
         // query params
         if ($size !== null) {
-            if('form' === 'form' && is_array($size)) {
-                foreach($size as $key => $value) {
+            if ('form' === 'form' && is_array($size)) {
+                foreach ($size as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['size'] = $size;
             }
         }
         // query params
         if ($sort !== null) {
-            if('form' === 'form' && is_array($sort)) {
-                foreach($sort as $key => $value) {
+            if ('form' === 'form' && is_array($sort)) {
+                foreach ($sort as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['sort'] = $sort;
             }
         }
@@ -516,10 +514,8 @@ class DeskApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -652,8 +648,8 @@ class DeskApi
         string $rangeCode,
         int $statusCode
     ): bool {
-        $left = (int) ($rangeCode[0].'00');
-        $right = (int) ($rangeCode[0].'99');
+        $left = (int) ($rangeCode[0] . '00');
+        $right = (int) ($rangeCode[0] . '99');
 
         return $statusCode >= $left && $statusCode <= $right;
     }

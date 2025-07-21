@@ -13,19 +13,19 @@ use JsonException;
  */
 class ApiClientFactory
 {
+    /** @var array<string, string> */
     private array $env;
-    private const HOST = 'https://iparapheur-5-0.partenaire.libriciel.fr';
 
     public function __construct()
     {
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
-        $this->env = $_ENV;
+
+        /** @phpstan-ignore-next-line */
+        $this->env = array_map('strval', $_ENV);
     }
 
     /**
-     * Récupère un token d'accès OAuth2 depuis Keycloak.
-     *
      * @throws JsonException|RuntimeException
      * @return string
      */
@@ -46,8 +46,8 @@ class ApiClientFactory
             ]
         ]);
 
-        $response = @file_get_contents($this->env['KEYCLOAK_URL'], false, $context);
 
+        $response = @file_get_contents($this->env['KEYCLOAK_URL'], false, $context);
         if ($response === false) {
             throw new RuntimeException("Erreur lors de la récupération du token OAuth2.");
         }
@@ -57,11 +57,10 @@ class ApiClientFactory
         return $json['access_token'] ?? throw new RuntimeException("Token non présent dans la réponse.");
     }
 
+
     /**
-     * Crée le client HTTP et la configuration OpenAPI prête à l'emploi.
-     *
-     * @throws JsonException|RuntimeException
-     * @return array [Psr18Client, Configuration]
+     * @throws JsonException
+     * @return array{0: Psr18Client, 1: Configuration}
      */
     public function create(): array
     {
@@ -69,7 +68,7 @@ class ApiClientFactory
 
         $config = Configuration::getDefaultConfiguration()
             ->setAccessToken($token)
-            ->setHost(self::HOST);
+            ->setHost($this->env['IPARAPHEUR_URL']);
 
         $httpClient = new Psr18Client();
 

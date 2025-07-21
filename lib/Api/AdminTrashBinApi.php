@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AdminTrashBinApi
  * PHP version 7.2
@@ -185,7 +186,7 @@ class AdminTrashBinApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function deleteTrashBinFolder($tenant_id, $folder_id)
     {
@@ -263,7 +264,7 @@ class AdminTrashBinApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -400,10 +401,8 @@ class AdminTrashBinApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -443,11 +442,11 @@ class AdminTrashBinApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function downloadTrashBinFolderZip($tenant_id, $folder_id)
     {
-        $this->downloadTrashBinFolderZipWithHttpInfo($tenant_id, $folder_id);
+        return $this->downloadTrashBinFolderZipWithHttpInfo($tenant_id, $folder_id)[0];
     }
 
     /**
@@ -491,9 +490,13 @@ class AdminTrashBinApi
             }
 
             $statusCode = $response->getStatusCode();
+            $body = $response->getBody();
+            if ($body->isSeekable()) {
+                $body->rewind();
+            }
+            $content = $body->getContents();
 
-
-            return [null, $statusCode, $response->getHeaders()];
+            return [$content, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 403:
@@ -521,7 +524,6 @@ class AdminTrashBinApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
 
             throw $e;
         }
@@ -658,10 +660,8 @@ class AdminTrashBinApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -756,7 +756,7 @@ class AdminTrashBinApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\PageFolderRepresentation',
@@ -783,7 +783,7 @@ class AdminTrashBinApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -838,7 +838,7 @@ class AdminTrashBinApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -954,34 +954,31 @@ class AdminTrashBinApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
-                foreach($page as $key => $value) {
+            if ('form' === 'form' && is_array($page)) {
+                foreach ($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['page'] = $page;
             }
         }
         // query params
         if ($size !== null) {
-            if('form' === 'form' && is_array($size)) {
-                foreach($size as $key => $value) {
+            if ('form' === 'form' && is_array($size)) {
+                foreach ($size as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['size'] = $size;
             }
         }
         // query params
         if ($sort !== null) {
-            if('form' === 'form' && is_array($sort)) {
-                foreach($sort as $key => $value) {
+            if ('form' === 'form' && is_array($sort)) {
+                foreach ($sort as $key => $value) {
                     $queryParams[$key] = $value;
                 }
-            }
-            else {
+            } else {
                 $queryParams['sort'] = $sort;
             }
         }
@@ -1018,10 +1015,8 @@ class AdminTrashBinApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($this->headerSelector->isJsonMime($headers['Content-Type'])) {
                 $httpBody = json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = ObjectSerializer::buildQuery($formParams);
@@ -1154,8 +1149,8 @@ class AdminTrashBinApi
         string $rangeCode,
         int $statusCode
     ): bool {
-        $left = (int) ($rangeCode[0].'00');
-        $right = (int) ($rangeCode[0].'99');
+        $left = (int) ($rangeCode[0] . '00');
+        $right = (int) ($rangeCode[0] . '99');
 
         return $statusCode >= $left && $statusCode <= $right;
     }
