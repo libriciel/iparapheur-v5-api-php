@@ -7,11 +7,15 @@
     <arg name="parallel" value="5"/>
     <arg value="sp"/>
 
+    <file>exemples</file>
+    <file>lib</file>
     <file>src</file>
-    <file>tests</file>
 
     <rule ref="PSR12" />
     <rule ref="PSR2.Files.EndFileNewline.NoneFound">
         <exclude-pattern>src/Model/.*\.php</exclude-pattern>
+    </rule>
+    <rule ref="Generic.Files.LineLength">
+        <severity>0</severity>
     </rule>
 </ruleset>

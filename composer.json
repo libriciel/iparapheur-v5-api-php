@@ -1,54 +1,63 @@
 {
-  "name": "libriciel/iparapheur-v5-api-php",
-  "description": "iparapheur v5 Client",
-  "type": "library",
-  "license": "MIT",
+  "description": "iparapheur v5.x main core application.  The main link between every sub-services, integrating business code logic.",
+  "keywords": [
+    "openapitools",
+    "openapi-generator",
+    "openapi",
+    "php",
+    "sdk",
+    "rest",
+    "api"
+  ],
+  "homepage": "https://openapi-generator.tech",
+  "license": "unlicense",
   "authors": [
     {
-      "name": "Libriciel",
-      "homepage": "https://libriciel.fr"
+      "name": "OpenAPI",
+      "homepage": "https://openapi-generator.tech"
     }
   ],
-  "require": {
-    "php": "^8.1",
-    "php-http/client-common": "^2.5",
-    "php-http/discovery": "^1.14",
-    "php-http/httplug": "^2.3",
-    "phpdocumentor/reflection-docblock": "^5.3",
-    "psr/http-client": "^1.0",
-    "psr/http-client-implementation": "^1.0",
-    "psr/http-factory": "^1.0",
-    "psr/http-factory-implementation": "^1.0",
-    "psr/http-message": "^1.0",
-    "symfony/property-access": "^6.2",
-    "symfony/serializer": "^6.2"
-  },
-  "require-dev": {
-    "cebe/php-openapi": "^1.7",
-    "guzzlehttp/guzzle": "^7.4",
-    "nikic/php-parser": "^4.15",
-    "phpstan/phpstan": "^1.8",
-    "phpstan/phpstan-deprecation-rules": "^1.0",
-    "phpstan/phpstan-phpunit": "^1.1",
-    "phpunit/phpunit": "^9.5",
-    "squizlabs/php_codesniffer": "^3.7",
-    "symfony/dotenv": "^6.2",
-    "symfony/http-client": "^6.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "IparapheurV5Client\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "IparapheurV5Client\\Tests\\": "tests/"
-    }
-  },
   "config": {
     "sort-packages": true,
     "allow-plugins": {
       "php-http/discovery": true
+    }
+  },
+  "require": {
+    "php": "^8.1",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "guzzlehttp/psr7": "^1.8 || ^2.0",
+    "php-http/async-client-implementation": "^1.0",
+    "php-http/client-common": "^2.4",
+    "php-http/discovery": "^1.14",
+    "php-http/httplug": "^2.2",
+    "psr/http-client-implementation": "^1.0",
+    "psr/http-factory": "^1.0",
+    "psr/http-factory-implementation": "^1.0",
+    "psr/http-message": "^1.0",
+    "vlucas/phpdotenv": "^5.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0 || ^9.0",
+    "friendsofphp/php-cs-fixer": "^3.5",
+    "guzzlehttp/guzzle": "^7.0",
+    "php-http/guzzle7-adapter": "^1.0",
+    "phpstan/phpstan": "^2.1",
+    "phpstan/phpstan-deprecation-rules": "^2.0",
+    "phpstan/phpstan-phpunit": "^2.0",
+    "squizlabs/php_codesniffer": "^3.13"
+  },
+  "autoload": {
+    "psr-4": {
+      "OpenAPI\\Client\\": "lib/",
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "OpenAPI\\Client\\Test\\": "test/"
     }
   }
 }

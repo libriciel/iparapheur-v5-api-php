@@ -1,0 +1,2982 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "iparapheur",
+    "description": "iparapheur v5.x main core application.\n\nThe main link between every sub-services, integrating business code logic.\n",
+    "contact": {
+      "name": "Libriciel SCOP",
+      "url": "https://libriciel.fr",
+      "email": "iparapheur@libriciel.coop"
+    },
+    "license": {
+      "name": "Affero GPL 3.0",
+      "url": "https://www.gnu.org/licenses/agpl-3.0.en.html"
+    },
+    "version": "DEVELOP"
+  },
+  "externalDocs": {
+    "url": "https://www.libriciel.fr/i-parapheur/"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "spring_oauth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "workflow",
+      "description": "Workflow access for a regular logged user"
+    },
+    {
+      "name": "admin-trash-bin",
+      "description": "Reserved operations on trash-bin"
+    },
+    {
+      "name": "secure-mail",
+      "description": "Secure-mail operations for a regular logged user"
+    },
+    {
+      "name": "tenant",
+      "description": "Tenant access for a regular logged user"
+    },
+    {
+      "name": "folder",
+      "description": "Folder access for a regular logged user"
+    },
+    {
+      "name": "typology",
+      "description": "Types and Subtypes access for a regular logged user"
+    },
+    {
+      "name": "desk",
+      "description": "Desk access for a regular logged user"
+    }
+  ],
+  "paths": {
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/visa": {
+      "put": {
+        "tags": [
+          "workflow"
+        ],
+        "summary": "Visa",
+        "description": "Perform a straightforward Visa on a Task",
+        "operationId": "visa",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "Task id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimpleTaskParams"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/undo": {
+      "put": {
+        "tags": [
+          "workflow"
+        ],
+        "summary": "Undo",
+        "description": "Rollback the action to the previous state.",
+        "operationId": "undo",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "Task id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/start": {
+      "put": {
+        "tags": [
+          "workflow"
+        ],
+        "summary": "Start",
+        "description": "Start the given Folder",
+        "operationId": "start",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimpleTaskParams"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "407": {
+            "description": "Proxy Authentication Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/send_to_trash_bin": {
+      "put": {
+        "tags": [
+          "workflow"
+        ],
+        "summary": "Send to trash-bin",
+        "description": "Only applicable to ended folders, this will remove the folder content into the trash-bin, where it will soon be auto-erased.",
+        "operationId": "sendToTrashBin",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/secure_mail": {
+      "put": {
+        "tags": [
+          "secure-mail"
+        ],
+        "summary": "Secure mail",
+        "description": "Send a secure mail",
+        "operationId": "requestSecureMail",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "Task id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MailParams"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/second_opinion": {
+      "put": {
+        "tags": [
+          "workflow"
+        ],
+        "summary": "Second opinion",
+        "description": "Perform a straightforward Second opinion on a Task",
+        "operationId": "secondOpinion",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "Task id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimpleTaskParams"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/seal": {
+      "put": {
+        "tags": [
+          "workflow"
+        ],
+        "summary": "Seal",
+        "description": "Perform a Seal on a Task.",
+        "operationId": "seal",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "Task id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SealTaskParams"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/task/{taskId}/bypass": {
+      "put": {
+        "tags": [
+          "workflow"
+        ],
+        "summary": "Bypass",
+        "description": "Force an external task stuck in a waiting state.",
+        "operationId": "bypass",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "taskId",
+            "in": "path",
+            "description": "Task id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder": {
+      "post": {
+        "tags": [
+          "folder"
+        ],
+        "summary": "Create a folder",
+        "description": "The PREMIS-formatted XML multipart-file is mandatory, and must contain every needed data.  \nEvery other file has to be sent as it is, with an appropriate MediaType.\n\nHere\u0027s an example of a PREMIS file. The same structure than the one downloaded in a ZIP:\n\n```xml\n\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e\n\u003cpremis xmlns\u003d\"http://www.loc.gov/premis/v3\" xmlns:xsi\u003d\"http://www.w3.org/2001/XMLSchema-instance\" version\u003d\"3.0\" xsi:schemaLocation\u003d\"http://www.loc.gov/premis/v3 http://www.loc.gov/standards/premis/v3/premis.xsd\"\u003e\n  \u003c!-- Folder --\u003e\n  \u003cobject xsi:type\u003d\"intellectualEntity\"\u003e\n    \u003csignificantProperties\u003e\n      \u003csignificantPropertiesType\u003ei_Parapheur_reserved_type\u003c/significantPropertiesType\u003e\n      \u003csignificantPropertiesValue\u003etype-id-or-name\u003c/significantPropertiesValue\u003e\n    \u003c/significantProperties\u003e\n    \u003csignificantProperties\u003e\n      \u003csignificantPropertiesType\u003ei_Parapheur_reserved_subtype\u003c/significantPropertiesType\u003e\n      \u003csignificantPropertiesValue\u003esubtype-id-or-name\u003c/significantPropertiesValue\u003e\n    \u003c/significantProperties\u003e\n    \u003csignificantProperties\u003e\n      \u003csignificantPropertiesType\u003ei_Parapheur_reserved_dueDate\u003c/significantPropertiesType\u003e\n      \u003csignificantPropertiesValue\u003eiso8601_date\u003c/significantPropertiesValue\u003e\n    \u003c/significantProperties\u003e\n    \u003coriginalName\u003eFolder name\u003c/originalName\u003e\n  \u003c/object\u003e\n  \u003c!-- Files --\u003e\n  \u003cobject xsi:type\u003d\"file\"\u003e\n    \u003csignificantProperties\u003e\n      \u003csignificantPropertiesType\u003ei_Parapheur_reserved_mainDocument\u003c/significantPropertiesType\u003e\n      \u003csignificantPropertiesValue\u003etrue\u003c/significantPropertiesValue\u003e\n    \u003c/significantProperties\u003e\n    \u003coriginalName\u003emy.pdf\u003c/originalName\u003e\n  \u003c/object\u003e\n\u003c/premis\u003e\n```\n",
+        "operationId": "createFolder",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "autoStart",
+            "in": "query",
+            "description": "If true, starts automatically the folder right after the draft creation",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "documents",
+                  "folder"
+                ],
+                "type": "object",
+                "properties": {
+                  "folder": {
+                    "type": "string",
+                    "description": "Folder",
+                    "format": "binary"
+                  },
+                  "documents": {
+                    "type": "array",
+                    "description": "Documents",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FolderRepresentation"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant": {
+      "get": {
+        "tags": [
+          "tenant"
+        ],
+        "summary": "List tenants attached with the current user",
+        "description": "Sorting properties are restricted to the TenantSortBy enum values",
+        "operationId": "listTenants",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "NAME,ASC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardApiPageImplTenantRepresentation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/types": {
+      "get": {
+        "tags": [
+          "typology"
+        ],
+        "summary": "List all types on the current tenant",
+        "description": "Sorting properties are restricted to the Type enum values",
+        "operationId": "listTypes",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "NAME,ASC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardApiPageImplTypeRepresentation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/types/{typeId}/subtypes": {
+      "get": {
+        "tags": [
+          "typology"
+        ],
+        "summary": "List all subtypes of a specific type on the current tenant",
+        "description": "Sorting properties are restricted to the Subtype enum values",
+        "operationId": "listSubtypes",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "typeId",
+            "in": "path",
+            "description": "Type id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "NAME,ASC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardApiPageImplSubtypeRepresentation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk": {
+      "get": {
+        "tags": [
+          "desk"
+        ],
+        "summary": "List desks attached to the current user",
+        "description": "Sorting properties are restricted to the DeskSortBy enum values",
+        "operationId": "listUserDesks",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "NAME,ASC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardApiPageImplDeskRepresentation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/{state}": {
+      "get": {
+        "tags": [
+          "folder"
+        ],
+        "summary": "List folders in the given state",
+        "description": "Returns every folders of the given state, on the the given desk.\n\n- DRAFT (yellow pill)     : Non-started folders\n- PENDING (blue pill)     : Every pending folders on current desk\n- LATE (red pill)         : Same as PENDING, but only late ones\n- DELEGATED (purple pill) : Every pending folders that can be acted upon by delegation\n- FINISHED (green pill)   : Every finished workflow, ready to export\n- REJECTED (black pill)   : Every rejected workflow, ready to delete\n- RETRIEVABLE             : Available UNDO to perform\n- DOWNSTREAM              : Every folders that had an action performed by the current desk\n",
+        "operationId": "listFolders",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/State"
+            }
+          },
+          {
+            "name": "typeId",
+            "in": "query",
+            "description": "Type id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subtypeId",
+            "in": "query",
+            "description": "Subtype id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "CREATION_DATE,ASC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardApiPageImplFolderRepresentation"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/types/{typeId}/subtypes/creation-allowed": {
+      "get": {
+        "tags": [
+          "typology"
+        ],
+        "summary": "List creation-allowed subtypes from a given type, for the given desk",
+        "description": "Sorting properties are restricted to the Subtype enum values",
+        "operationId": "listCreationAllowedSubtypes",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "typeId",
+            "in": "path",
+            "description": "Type id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "NAME,ASC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardApiPageImplSubtypeRepresentation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/types/creation-allowed": {
+      "get": {
+        "tags": [
+          "typology"
+        ],
+        "summary": "List types parent to a creation-allowed subtype on the given desk",
+        "description": "Sorting properties are restricted to the Type enum values",
+        "operationId": "listCreationAllowedTypes",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "NAME,ASC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardApiPageImplTypeRepresentation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/zip": {
+      "get": {
+        "tags": [
+          "folder"
+        ],
+        "summary": "Get every file as ZIP, with a PREMIS-formatted summary",
+        "operationId": "downloadFolderZip",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/octet-stream": {}
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}/premis": {
+      "get": {
+        "tags": [
+          "folder"
+        ],
+        "summary": "Get a PREMIS-formatted file, containing the folder summary",
+        "description": "The same PREMIS than the one in the ZIP file.\n\nPlease note that in the PREMIS 3.0 format, some nodes aren\u0027t mandatory, most can be empty.\u003cbr\u003e\nPlease refer to \u003ca href\u003d\"https://www.loc.gov/standards/premis/premis.xsd\"\u003ethe public XSD validator file\u003c/a\u003e.\n\nExisting nodes (`\u003cevent\u003e`, `\u003cagent\u003e`...) will always be returned the same way, but additional nodes can (and will) be added along the software lifespan.\u003cbr\u003e\nNew data can have different structure, or different content.\u003cbr\u003e\nEverything should be parsed with fail-safe default behavior.\n\nHere\u0027s an exemple of a single `\u003cevent\u003e`:\n```\n\u003cevent\u003e\n  \u003ceventIdentifier\u003e\n    \u003ceventIdentifierType\u003etaskId\u003c/eventIdentifierType\u003e\n    \u003ceventIdentifierValue\u003edc6559f8-dfbc-11ef-a1cd-0242ac120015\u003c/eventIdentifierValue\u003e\n  \u003c/eventIdentifier\u003e\n  \u003ceventType\u003eVISA\u003c/eventType\u003e\n  \u003ceventDateTime\u003e2025-01-31T11:19:32.725+0100\u003c/eventDateTime\u003e\n  \u003clinkingAgentIdentifier\u003e\n    \u003clinkingAgentIdentifierType\u003euserId\u003c/linkingAgentIdentifierType\u003e\n    \u003clinkingAgentIdentifierValue\u003e5f028e82-47aa-4957-abb4-761c1a62a321\u003c/linkingAgentIdentifierValue\u003e\n    \u003clinkingAgentRole\u003eBureau du maire\u003c/linkingAgentRole\u003e\n  \u003c/linkingAgentIdentifier\u003e\n\u003c/event\u003e\n```\n\nPlease note that:\n- Other `\u003ceventIdentifierType\u003e` than `taskId` may appear in the future, please parse the data with fail-safe behaviors.\n- The `\u003ceventType\u003e` will be set with an `Action` enum value. New enum values can appear in the future, it should be parsed it with a fail-safe default case.\n- Non-empty `\u003ceventDateTime\u003e` nodes will always be set with an ISO8601 formatted string.\n- The `\u003clinkingAgentIdentifier\u003e` and `\u003clinkingAgentRole\u003e` are not mandatory nodes.\n- The user ID set in `linkingAgentIdentifierValue` can be mapped to one of the `\u003cagent\u003e` nodes.\n- No `\u003cevent\u003e` at all can occur, on a short period of time between the draft folder creation, and before the workflow initialization.\n- Every mandatory node can be empty.\n\nTasks states can be determined as:\n- Performed (past) will have non-empty `eventIdentifierValue`, `linkingAgentIdentifierValue` and `eventDateTime`.\n- Pending (current) will have a non-empty `eventIdentifierValue` and an empty `linkingAgentIdentifierValue` and `eventDateTime`.\n- Upcoming (future) will have empty `eventIdentifierValue`, `linkingAgentIdentifierValue` and `eventDateTime`.\n\nHere\u0027s an exemple of an `\u003cagent\u003e` node:\n```\n\u003cagent\u003e\n  \u003cagentIdentifier\u003e\n    \u003cagentIdentifierType\u003euserId\u003c/agentIdentifierType\u003e\n    \u003cagentIdentifierValue\u003e5f028e82-47aa-4957-abb4-761c1a62a321\u003c/agentIdentifierValue\u003e\n  \u003c/agentIdentifier\u003e\n  \u003cagentName\u003eJean DUPONT\u003c/agentName\u003e\n\u003c/agent\u003e\n```\n\nPlease note that:\n- Other `\u003cagentIdentifierType\u003e` than `userId` ay appear in the future, please parse the data with fail-safe behaviors.\n- The `\u003cagentName\u003e` may be empty, if a user has been forcefully deleted from the iparapheur.\n- The `\u003cagentName\u003e` is not a mandatory node.\n- No `\u003cagent\u003e` node at all can occur, on a draft folder.\n- Every mandatory node can be empty.\n",
+        "operationId": "downloadFolderPremis",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/xml": {}
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/admin/tenant/{tenantId}/trash-bin": {
+      "get": {
+        "tags": [
+          "admin-trash-bin"
+        ],
+        "summary": "List folders in the trash-bin",
+        "description": "Sorting properties are restricted to the FolderSortBy enum values\n\nThe trash-bin is deleting automatically its data after a few days.  \nUsing it is as a transit is not recommended, as **any delay in a folder process will result in a permanent loss of data**.\n\nThis endpoint requires an admin role.  \nUsing it is as a transit is not recommended, as **sharing an admin login information to a third-party software is a security risk.**\n",
+        "operationId": "listTrashBinFolders",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "FOLDER_NAME,ASC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageFolderRepresentation"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/standard/v1/admin/tenant/{tenantId}/trash-bin/{folderId}/zip": {
+      "get": {
+        "tags": [
+          "admin-trash-bin"
+        ],
+        "summary": "Download a folder as ZIP",
+        "description": "Get every file, annexes and main document in a ZIP, with a PREMIS-formatted summary\n\nNote that the zipped PREMIS is definitely set when it enters the trash-bin, and could not be modified afterwards.  \nThis is one of the many reasons to not use this entrypoint, and use the standard FINISHED entrypoint.\n\nThe trash-bin is deleting automatically its data after a few days.  \nUsing it is as a transit is not recommended, as **any delay in a folder process will result in a permanent loss of data**.\n\nThis endpoint requires an admin role.  \nUsing it is as a transit is not recommended, as **sharing an admin login information to a third-party software is a security risk.**\n",
+        "operationId": "downloadTrashBinFolderZip",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/octet-stream": {}
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/standard/v1/tenant/{tenantId}/desk/{deskId}/folder/{folderId}": {
+      "delete": {
+        "tags": [
+          "folder"
+        ],
+        "summary": "Delete folder",
+        "description": "Deletes the given folder.\nNote that current pending folders cannot be deleted here. Only drafts/rejected/finished ones.\nTo delete a currently pending folder, you need to go through the admin\u0027s access point.\n",
+        "operationId": "deleteFolder",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deskId",
+            "in": "path",
+            "description": "Desk id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/standard/v1/admin/tenant/{tenantId}/trash-bin/{folderId}": {
+      "delete": {
+        "tags": [
+          "admin-trash-bin"
+        ],
+        "summary": "Permanently delete a folder",
+        "description": "The trash-bin is deleting automatically its data after a few days.  \nUsing it is as a transit is not recommended, as **any delay in a folder process will result in a permanent loss of data**.\n\nThis endpoint requires an admin role.  \nUsing it is as a transit is not recommended, as **sharing an admin login information to a third-party software is a security risk.**\n",
+        "operationId": "deleteTrashBinFolder",
+        "parameters": [
+          {
+            "name": "tenantId",
+            "in": "path",
+            "description": "Tenant id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folderId",
+            "in": "path",
+            "description": "Folder id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Action": {
+        "type": "string",
+        "enum": [
+          "VISA",
+          "SEAL",
+          "SIGNATURE",
+          "PAPER_SIGNATURE",
+          "REJECT",
+          "EXTERNAL_SIGNATURE",
+          "SECURE_MAIL",
+          "IPNG",
+          "IPNG_RETURN",
+          "UNDO",
+          "TRANSFER",
+          "SECOND_OPINION",
+          "ASK_SECOND_OPINION",
+          "CREATE",
+          "START",
+          "ARCHIVE",
+          "CHAIN",
+          "RECYCLE",
+          "DELETE",
+          "BYPASS",
+          "UPDATE",
+          "READ",
+          "UNKNOWN"
+        ]
+      },
+      "DeskRepresentation": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "maxLength": 255,
+            "minLength": 2,
+            "pattern": "^[^\\r\\n\b ]*$",
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "DeskSortBy": {
+        "type": "string",
+        "enum": [
+          "NAME",
+          "ID"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        }
+      },
+      "FolderRepresentation": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "maxLength": 255,
+            "minLength": 2,
+            "type": "string"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "FolderSortBy": {
+        "type": "string",
+        "enum": [
+          "ACTION_TYPE",
+          "CREATION_DATE",
+          "CURRENT_DESK_ID",
+          "CURRENT_DESK_NAME",
+          "EMITTER_DESK_ID",
+          "EMITTER_DESK_NAME",
+          "EMITTER_USER_ID",
+          "EMITTER_USER_NAME",
+          "END_DATE",
+          "FOLDER_ID",
+          "LEGACY_ID",
+          "FOLDER_NAME",
+          "IS_READ",
+          "LATE_DATE",
+          "START_DATE",
+          "STILL_SINCE_DATE",
+          "SUBTYPE_ID",
+          "SUBTYPE_NAME",
+          "TASK_ID",
+          "TYPE_ID",
+          "TYPE_NAME",
+          "VALIDATION_START_DATE"
+        ]
+      },
+      "MailParams": {
+        "required": [
+          "object",
+          "to"
+        ],
+        "type": "object",
+        "properties": {
+          "publicAnnotation": {
+            "maxLength": 512,
+            "minLength": 0,
+            "type": "string"
+          },
+          "privateAnnotation": {
+            "maxLength": 512,
+            "minLength": 0,
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "nullable": true
+            },
+            "nullable": true
+          },
+          "to": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cc": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "bcc": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "object": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "payload": {
+            "type": "string"
+          },
+          "includeDocket": {
+            "type": "boolean"
+          }
+        },
+        "description": "body"
+      },
+      "PageFolderRepresentation": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FolderRepresentation"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageableObject": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paged": {
+            "type": "boolean"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SealTaskParams": {
+        "type": "object",
+        "properties": {
+          "publicAnnotation": {
+            "maxLength": 512,
+            "minLength": 0,
+            "type": "string"
+          },
+          "privateAnnotation": {
+            "maxLength": 512,
+            "minLength": 0,
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "nullable": true
+            },
+            "nullable": true
+          },
+          "customSignatureField": {
+            "maxLength": 512,
+            "minLength": 0,
+            "type": "string"
+          }
+        },
+        "description": "The public annotation is visible to any users, and will be stored in task history.\nIt is mandatory for any reject, and should be longer than 3 characters.\n\nThe private annotation will only be sent to the workflow\u0027s next user.\nIt won\u0027t be archived anywhere.\n"
+      },
+      "SimpleTaskParams": {
+        "type": "object",
+        "properties": {
+          "publicAnnotation": {
+            "maxLength": 512,
+            "minLength": 0,
+            "type": "string"
+          },
+          "privateAnnotation": {
+            "maxLength": 512,
+            "minLength": 0,
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "nullable": true
+            },
+            "nullable": true
+          }
+        },
+        "description": "The public annotation is visible to any users, and will be stored in task history.\nIt is mandatory for any reject, and should be longer than 3 characters.\n\nThe private annotation will only be sent to the workflow\u0027s next user.\nIt won\u0027t be archived anywhere.\n"
+      },
+      "SortObject": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          },
+          "sorted": {
+            "type": "boolean"
+          },
+          "unsorted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "StandardApiPageImplDeskRepresentation": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeskRepresentation"
+            }
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/StandardApiSort"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/StandardApiPageable"
+          }
+        }
+      },
+      "StandardApiPageImplFolderRepresentation": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FolderRepresentation"
+            }
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/StandardApiSort"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/StandardApiPageable"
+          }
+        }
+      },
+      "StandardApiPageImplSubtypeRepresentation": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubtypeRepresentation"
+            }
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/StandardApiSort"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/StandardApiPageable"
+          }
+        }
+      },
+      "StandardApiPageImplTenantRepresentation": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TenantRepresentation"
+            }
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/StandardApiSort"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/StandardApiPageable"
+          }
+        }
+      },
+      "StandardApiPageImplTypeRepresentation": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TypeRepresentation"
+            }
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/StandardApiSort"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/StandardApiPageable"
+          }
+        }
+      },
+      "StandardApiPageable": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "paged": {
+            "type": "boolean"
+          },
+          "unpaged": {
+            "type": "boolean"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/StandardApiSort"
+          }
+        }
+      },
+      "StandardApiSort": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          },
+          "sorted": {
+            "type": "boolean"
+          },
+          "unsorted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "State": {
+        "type": "string",
+        "enum": [
+          "DRAFT",
+          "LATE",
+          "FINISHED",
+          "CURRENT",
+          "PENDING",
+          "DELEGATED",
+          "VALIDATED",
+          "RETRIEVABLE",
+          "UPCOMING",
+          "REJECTED",
+          "TRANSFERRED",
+          "SECONDED",
+          "BYPASSED",
+          "DOWNSTREAM"
+        ]
+      },
+      "SubtypeRepresentation": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "maxLength": 255,
+            "minLength": 2,
+            "pattern": "^[^\\r\\n\b ]*$",
+            "type": "string"
+          }
+        }
+      },
+      "SubtypeSortBy": {
+        "type": "string",
+        "enum": [
+          "NAME",
+          "ID"
+        ]
+      },
+      "TenantRepresentation": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "maxLength": 255,
+            "minLength": 2,
+            "pattern": "^[^\\r\\n\b ]*$",
+            "type": "string",
+            "example": "Example tenant"
+          }
+        }
+      },
+      "TenantSortBy": {
+        "type": "string",
+        "enum": [
+          "NAME",
+          "ID"
+        ]
+      },
+      "TypeRepresentation": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "maxLength": 255,
+            "minLength": 2,
+            "pattern": "^[^\\r\\n\b ]*$",
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 255,
+            "minLength": 3,
+            "type": "string"
+          }
+        }
+      },
+      "TypeSortBy": {
+        "type": "string",
+        "enum": [
+          "NAME",
+          "ID"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "spring_oauth": {
+        "type": "oauth2",
+        "description": "The following \"Authorize\" button will redirect you to the standard login page, fetch and store locally an authentication token. \\\nthat will be used for every Swagger method until its expiration.\n\nYou can manually get a token from command line, with the following command:\n\n$ curl --location \u0026#92;\\\n    --request POST \u0027http://localhost/auth/realms/api/protocol/openid-connect/token\u0027 \u0026#92;\\\n    --header \u0027Content-Type: application/x-www-form-urlencoded\u0027 \u0026#92;\\\n    --data-urlencode \u0027password\u003dpassword\u0027 \u0026#92;\\\n    --data-urlencode \u0027username\u003duser\u0027 \u0026#92;\\\n    --data-urlencode \u0027client_id\u003dipcore-web\u0027 \u0026#92;\\\n    --data-urlencode \u0027grant_type\u003dpassword\u0027\n\n... and parse the .access_token path. It can be easily parsed with a :  ... | jq -r \u0027.access_token\u0027\n",
+        "name": "OAuth2 flow",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "./auth/realms/api/protocol/openid-connect/auth",
+            "tokenUrl": "./auth/realms/api/protocol/openid-connect/token",
+            "refreshUrl": "./auth/realms/api/protocol/openid-connect/token",
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}

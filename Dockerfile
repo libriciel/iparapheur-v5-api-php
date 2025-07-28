@@ -7,12 +7,15 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     ca-certificates \
     openssl \
     libzip-dev \
+    php-curl \
     php-mbstring \
     php-pcov \
     php-xdebug \
     php-xml \
     unzip \
     zip \
+    jq \
+    gawk \
     && rm -rf /var/lib/apt/lists/*
 
 RUN phpenmod xdebug pcov
