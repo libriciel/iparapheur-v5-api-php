@@ -610,6 +610,8 @@ COMPOSER_FILE="composer.json"
 
 echo "➤ Patch du composer.json"
 
+jq '."name" = "libriciel/iparapheur-v5-api-php"' "$COMPOSER_FILE" > composer.tmp && mv composer.tmp "$COMPOSER_FILE"
+
 jq '.config += { "allow-plugins": { "php-http/discovery": true } }' "$COMPOSER_FILE" > composer.tmp && mv composer.tmp "$COMPOSER_FILE"
 
 jq '.require["vlucas/phpdotenv"] = "^5.6"' "$COMPOSER_FILE" > composer.tmp && mv composer.tmp "$COMPOSER_FILE"
