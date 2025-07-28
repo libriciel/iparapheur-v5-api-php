@@ -59,5 +59,6 @@
     "psr-4": {
       "OpenAPI\\Client\\Test\\": "test/"
     }
-  }
+  },
+  "name": "libriciel/iparapheur-v5-api-php"
 }
