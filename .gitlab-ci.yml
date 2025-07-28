@@ -41,8 +41,18 @@ test:
 
 quality:
   stage: quality
-  only:
-    - master
-  image: gitlab.libriciel.fr:4567/docker/sonar-scanner:latest
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+    GIT_DEPTH: "0"
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
   script:
-    - /sonar-scanner -Dsonar.login=$SONAR_LOGIN -Dsonar.host.url=$SONAR_HOST_URL
+    - sonar-scanner -Dsonar.login=$SONAR_LOGIN -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.qualitygate.wait=true
+  allow_failure: true
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "master"
