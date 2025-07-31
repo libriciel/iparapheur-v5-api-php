@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **offset** | **int** |  | [optional]
-**sort** | [**\OpenAPI\Client\Model\SortObject**](SortObject.md) |  | [optional]
+**sort** | [**\Libriciel\IparapheurV5\Client\Model\SortObject**](SortObject.md) |  | [optional]
 **page_size** | **int** |  | [optional]
 **paged** | **bool** |  | [optional]
 **page_number** | **int** |  | [optional]

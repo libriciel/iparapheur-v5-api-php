@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Libriciel\IparapheurV5\App;
 
 use Exception;
 

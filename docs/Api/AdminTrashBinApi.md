@@ -1,4 +1,4 @@
-# OpenAPI\Client\AdminTrashBinApi
+# Libriciel\IparapheurV5\Client\AdminTrashBinApi
 
 All URIs are relative to http://localhost:8080.
 
@@ -27,10 +27,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\AdminTrashBinApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\AdminTrashBinApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -88,10 +88,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\AdminTrashBinApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\AdminTrashBinApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -134,7 +134,7 @@ void (empty response body)
 ## `listTrashBinFolders()`
 
 ```php
-listTrashBinFolders($tenant_id, $page, $size, $sort): \OpenAPI\Client\Model\PageFolderRepresentation
+listTrashBinFolders($tenant_id, $page, $size, $sort): \Libriciel\IparapheurV5\Client\Model\PageFolderRepresentation
 ```
 
 List folders in the trash-bin
@@ -149,10 +149,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\AdminTrashBinApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\AdminTrashBinApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PageFolderRepresentation**](../Model/PageFolderRepresentation.md)
+[**\Libriciel\IparapheurV5\Client\Model\PageFolderRepresentation**](../Model/PageFolderRepresentation.md)
 
 ### Authorization
 

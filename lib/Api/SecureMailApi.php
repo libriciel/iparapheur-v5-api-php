@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace Libriciel\IparapheurV5\Client\Api;
 
 use GuzzleHttp\Psr7\MultipartStream;
 use Http\Client\Common\Plugin\ErrorPlugin;
@@ -41,12 +41,12 @@ use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Http\Message\RequestFactory;
 use Http\Promise\Promise;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\DebugPlugin;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\FormDataProcessor;
-use OpenAPI\Client\ObjectSerializer;
+use Libriciel\IparapheurV5\Client\ApiException;
+use Libriciel\IparapheurV5\Client\Configuration;
+use Libriciel\IparapheurV5\Client\DebugPlugin;
+use Libriciel\IparapheurV5\Client\HeaderSelector;
+use Libriciel\IparapheurV5\Client\FormDataProcessor;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -61,7 +61,7 @@ use function sprintf;
  * SecureMailApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -185,9 +185,9 @@ class SecureMailApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params mail_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\MailParams $mail_params mail_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -205,9 +205,9 @@ class SecureMailApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\MailParams $mail_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -248,7 +248,7 @@ class SecureMailApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -256,7 +256,7 @@ class SecureMailApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -264,7 +264,7 @@ class SecureMailApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -272,7 +272,7 @@ class SecureMailApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -293,7 +293,7 @@ class SecureMailApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\MailParams $mail_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -317,7 +317,7 @@ class SecureMailApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\MailParams $mail_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -356,7 +356,7 @@ class SecureMailApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\MailParams $mail_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\MailParams $mail_params (required)
      *
      * @throws \InvalidArgumentException
      * @return RequestInterface

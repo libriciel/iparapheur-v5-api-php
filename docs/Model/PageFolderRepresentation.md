@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **total_elements** | **int** |  | [optional]
 **total_pages** | **int** |  | [optional]
 **size** | **int** |  | [optional]
-**content** | [**\OpenAPI\Client\Model\FolderRepresentation[]**](FolderRepresentation.md) |  | [optional]
+**content** | [**\Libriciel\IparapheurV5\Client\Model\FolderRepresentation[]**](FolderRepresentation.md) |  | [optional]
 **number** | **int** |  | [optional]
-**sort** | [**\OpenAPI\Client\Model\SortObject**](SortObject.md) |  | [optional]
+**sort** | [**\Libriciel\IparapheurV5\Client\Model\SortObject**](SortObject.md) |  | [optional]
 **first** | **bool** |  | [optional]
 **last** | **bool** |  | [optional]
 **number_of_elements** | **int** |  | [optional]
-**pageable** | [**\OpenAPI\Client\Model\PageableObject**](PageableObject.md) |  | [optional]
+**pageable** | [**\Libriciel\IparapheurV5\Client\Model\PageableObject**](PageableObject.md) |  | [optional]
 **empty** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

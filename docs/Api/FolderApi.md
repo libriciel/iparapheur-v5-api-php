@@ -1,4 +1,4 @@
-# OpenAPI\Client\FolderApi
+# Libriciel\IparapheurV5\Client\FolderApi
 
 All URIs are relative to http://localhost:8080.
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 ## `createFolder()`
 
 ```php
-createFolder($tenant_id, $desk_id, $folder, $documents, $auto_start): \OpenAPI\Client\Model\FolderRepresentation
+createFolder($tenant_id, $desk_id, $folder, $documents, $auto_start): \Libriciel\IparapheurV5\Client\Model\FolderRepresentation
 ```
 
 Create a folder
@@ -29,10 +29,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\FolderApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\FolderApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\FolderRepresentation**](../Model/FolderRepresentation.md)
+[**\Libriciel\IparapheurV5\Client\Model\FolderRepresentation**](../Model/FolderRepresentation.md)
 
 ### Authorization
 
@@ -97,10 +97,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\FolderApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\FolderApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -160,10 +160,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\FolderApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\FolderApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -221,10 +221,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\FolderApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\FolderApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -269,7 +269,7 @@ void (empty response body)
 ## `listFolders()`
 
 ```php
-listFolders($tenant_id, $desk_id, $state, $type_id, $subtype_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation
+listFolders($tenant_id, $desk_id, $state, $type_id, $subtype_id, $page, $size, $sort): \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplFolderRepresentation
 ```
 
 List folders in the given state
@@ -284,10 +284,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\FolderApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\FolderApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -295,7 +295,7 @@ $apiInstance = new OpenAPI\Client\Api\FolderApi(
 );
 $tenant_id = 'tenant_id_example'; // string | Tenant id
 $desk_id = 'desk_id_example'; // string | Desk id
-$state = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\State(); // \OpenAPI\Client\Model\State
+$state = new \Libriciel\IparapheurV5\Client\Model\\Libriciel\IparapheurV5\Client\Model\State(); // \Libriciel\IparapheurV5\Client\Model\State
 $type_id = 'type_id_example'; // string | Type id
 $subtype_id = 'subtype_id_example'; // string | Subtype id
 $page = 0; // int | Zero-based page index (0..N)
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **string**| Tenant id |
  **desk_id** | **string**| Desk id |
- **state** | [**\OpenAPI\Client\Model\State**](../Model/.md)|  |
+ **state** | [**\Libriciel\IparapheurV5\Client\Model\State**](../Model/.md)|  |
  **type_id** | **string**| Type id | [optional]
  **subtype_id** | **string**| Subtype id | [optional]
  **page** | **int**| Zero-based page index (0..N) | [optional] [default to 0]
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation**](../Model/StandardApiPageImplFolderRepresentation.md)
+[**\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplFolderRepresentation**](../Model/StandardApiPageImplFolderRepresentation.md)
 
 ### Authorization
 

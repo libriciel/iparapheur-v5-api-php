@@ -52,7 +52,8 @@ generate:
 		-i "/local/$(OPENAPI_FILE)" \
 		-g php \
 		-o "/local/." \
-		-p library=psr-18
+		-p library=psr-18 \
+		-p invokerPackage=Libriciel\\IparapheurV5\\Client
 
 
 patch:

@@ -1,4 +1,4 @@
-# OpenAPI\Client\SecureMailApi
+# Libriciel\IparapheurV5\Client\SecureMailApi
 
 All URIs are relative to http://localhost:8080.
 
@@ -25,10 +25,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\SecureMailApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\SecureMailApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -38,7 +38,7 @@ $tenant_id = 'tenant_id_example'; // string | Tenant id
 $desk_id = 'desk_id_example'; // string | Desk id
 $folder_id = 'folder_id_example'; // string | Folder id
 $task_id = 'task_id_example'; // string | Task id
-$mail_params = new \OpenAPI\Client\Model\MailParams(); // \OpenAPI\Client\Model\MailParams
+$mail_params = new \Libriciel\IparapheurV5\Client\Model\MailParams(); // \Libriciel\IparapheurV5\Client\Model\MailParams
 
 try {
     $apiInstance->requestSecureMail($tenant_id, $desk_id, $folder_id, $task_id, $mail_params);
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
  **desk_id** | **string**| Desk id |
  **folder_id** | **string**| Folder id |
  **task_id** | **string**| Task id |
- **mail_params** | [**\OpenAPI\Client\Model\MailParams**](../Model/MailParams.md)|  |
+ **mail_params** | [**\Libriciel\IparapheurV5\Client\Model\MailParams**](../Model/MailParams.md)|  |
 
 ### Return type
 

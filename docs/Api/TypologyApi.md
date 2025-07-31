@@ -1,4 +1,4 @@
-# OpenAPI\Client\TypologyApi
+# Libriciel\IparapheurV5\Client\TypologyApi
 
 All URIs are relative to http://localhost:8080.
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ## `listCreationAllowedSubtypes()`
 
 ```php
-listCreationAllowedSubtypes($tenant_id, $desk_id, $type_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation
+listCreationAllowedSubtypes($tenant_id, $desk_id, $type_id, $page, $size, $sort): \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation
 ```
 
 List creation-allowed subtypes from a given type, for the given desk
@@ -28,10 +28,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\TypologyApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\TypologyApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation**](../Model/StandardApiPageImplSubtypeRepresentation.md)
+[**\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation**](../Model/StandardApiPageImplSubtypeRepresentation.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 ## `listCreationAllowedTypes()`
 
 ```php
-listCreationAllowedTypes($tenant_id, $desk_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation
+listCreationAllowedTypes($tenant_id, $desk_id, $page, $size, $sort): \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation
 ```
 
 List types parent to a creation-allowed subtype on the given desk
@@ -98,10 +98,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\TypologyApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\TypologyApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation**](../Model/StandardApiPageImplTypeRepresentation.md)
+[**\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation**](../Model/StandardApiPageImplTypeRepresentation.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 ## `listSubtypes()`
 
 ```php
-listSubtypes($tenant_id, $type_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation
+listSubtypes($tenant_id, $type_id, $page, $size, $sort): \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation
 ```
 
 List all subtypes of a specific type on the current tenant
@@ -166,10 +166,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\TypologyApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\TypologyApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation**](../Model/StandardApiPageImplSubtypeRepresentation.md)
+[**\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation**](../Model/StandardApiPageImplSubtypeRepresentation.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 ## `listTypes()`
 
 ```php
-listTypes($tenant_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation
+listTypes($tenant_id, $page, $size, $sort): \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation
 ```
 
 List all types on the current tenant
@@ -234,10 +234,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\TypologyApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\TypologyApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation**](../Model/StandardApiPageImplTypeRepresentation.md)
+[**\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation**](../Model/StandardApiPageImplTypeRepresentation.md)
 
 ### Authorization
 

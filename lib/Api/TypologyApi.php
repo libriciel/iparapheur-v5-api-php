@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace Libriciel\IparapheurV5\Client\Api;
 
 use GuzzleHttp\Psr7\MultipartStream;
 use Http\Client\Common\Plugin\ErrorPlugin;
@@ -41,12 +41,12 @@ use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Http\Message\RequestFactory;
 use Http\Promise\Promise;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\DebugPlugin;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\FormDataProcessor;
-use OpenAPI\Client\ObjectSerializer;
+use Libriciel\IparapheurV5\Client\ApiException;
+use Libriciel\IparapheurV5\Client\Configuration;
+use Libriciel\IparapheurV5\Client\DebugPlugin;
+use Libriciel\IparapheurV5\Client\HeaderSelector;
+use Libriciel\IparapheurV5\Client\FormDataProcessor;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -61,7 +61,7 @@ use function sprintf;
  * TypologyApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -188,9 +188,9 @@ class TypologyApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
+     * @return \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse
      */
     public function listCreationAllowedSubtypes($tenant_id, $desk_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
@@ -210,9 +210,9 @@ class TypologyApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCreationAllowedSubtypesWithHttpInfo($tenant_id, $desk_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
@@ -248,31 +248,31 @@ class TypologyApi
             switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -294,7 +294,7 @@ class TypologyApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation',
                 $request,
                 $response,
             );
@@ -303,7 +303,7 @@ class TypologyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -311,7 +311,7 @@ class TypologyApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -319,7 +319,7 @@ class TypologyApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -327,7 +327,7 @@ class TypologyApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -335,7 +335,7 @@ class TypologyApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -389,7 +389,7 @@ class TypologyApi
      */
     public function listCreationAllowedSubtypesAsyncWithHttpInfo($tenant_id, $desk_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation';
+        $returnType = '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation';
         $request = $this->listCreationAllowedSubtypesRequest($tenant_id, $desk_id, $type_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)
@@ -594,9 +594,9 @@ class TypologyApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
+     * @return \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse
      */
     public function listCreationAllowedTypes($tenant_id, $desk_id, $page = 0, $size = 10, $sort = null)
     {
@@ -615,9 +615,9 @@ class TypologyApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCreationAllowedTypesWithHttpInfo($tenant_id, $desk_id, $page = 0, $size = 10, $sort = null)
     {
@@ -653,31 +653,31 @@ class TypologyApi
             switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -699,7 +699,7 @@ class TypologyApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation',
                 $request,
                 $response,
             );
@@ -708,7 +708,7 @@ class TypologyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -716,7 +716,7 @@ class TypologyApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -724,7 +724,7 @@ class TypologyApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -732,7 +732,7 @@ class TypologyApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -740,7 +740,7 @@ class TypologyApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -792,7 +792,7 @@ class TypologyApi
      */
     public function listCreationAllowedTypesAsyncWithHttpInfo($tenant_id, $desk_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation';
+        $returnType = '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation';
         $request = $this->listCreationAllowedTypesRequest($tenant_id, $desk_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)
@@ -982,9 +982,9 @@ class TypologyApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
+     * @return \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse
      */
     public function listSubtypes($tenant_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
@@ -1003,9 +1003,9 @@ class TypologyApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSubtypesWithHttpInfo($tenant_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
@@ -1041,31 +1041,31 @@ class TypologyApi
             switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1087,7 +1087,7 @@ class TypologyApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation',
                 $request,
                 $response,
             );
@@ -1096,7 +1096,7 @@ class TypologyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1104,7 +1104,7 @@ class TypologyApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1112,7 +1112,7 @@ class TypologyApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1120,7 +1120,7 @@ class TypologyApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1128,7 +1128,7 @@ class TypologyApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1180,7 +1180,7 @@ class TypologyApi
      */
     public function listSubtypesAsyncWithHttpInfo($tenant_id, $type_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplSubtypeRepresentation';
+        $returnType = '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplSubtypeRepresentation';
         $request = $this->listSubtypesRequest($tenant_id, $type_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)
@@ -1369,9 +1369,9 @@ class TypologyApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
+     * @return \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse
      */
     public function listTypes($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -1389,9 +1389,9 @@ class TypologyApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTypesWithHttpInfo($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -1427,31 +1427,31 @@ class TypologyApi
             switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1473,7 +1473,7 @@ class TypologyApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation',
                 $request,
                 $response,
             );
@@ -1482,7 +1482,7 @@ class TypologyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1490,7 +1490,7 @@ class TypologyApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1498,7 +1498,7 @@ class TypologyApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1506,7 +1506,7 @@ class TypologyApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1514,7 +1514,7 @@ class TypologyApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1564,7 +1564,7 @@ class TypologyApi
      */
     public function listTypesAsyncWithHttpInfo($tenant_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplTypeRepresentation';
+        $returnType = '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTypeRepresentation';
         $request = $this->listTypesRequest($tenant_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)

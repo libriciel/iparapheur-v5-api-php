@@ -1,4 +1,4 @@
-# OpenAPI\Client\WorkflowApi
+# Libriciel\IparapheurV5\Client\WorkflowApi
 
 All URIs are relative to http://localhost:8080.
 
@@ -31,10 +31,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\WorkflowApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\WorkflowApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -96,10 +96,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\WorkflowApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\WorkflowApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -109,7 +109,7 @@ $tenant_id = 'tenant_id_example'; // string | Tenant id
 $desk_id = 'desk_id_example'; // string | Desk id
 $folder_id = 'folder_id_example'; // string | Folder id
 $task_id = 'task_id_example'; // string | Task id
-$seal_task_params = new \OpenAPI\Client\Model\SealTaskParams(); // \OpenAPI\Client\Model\SealTaskParams
+$seal_task_params = new \Libriciel\IparapheurV5\Client\Model\SealTaskParams(); // \Libriciel\IparapheurV5\Client\Model\SealTaskParams
 
 try {
     $apiInstance->seal($tenant_id, $desk_id, $folder_id, $task_id, $seal_task_params);
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
  **desk_id** | **string**| Desk id |
  **folder_id** | **string**| Folder id |
  **task_id** | **string**| Task id |
- **seal_task_params** | [**\OpenAPI\Client\Model\SealTaskParams**](../Model/SealTaskParams.md)|  |
+ **seal_task_params** | [**\Libriciel\IparapheurV5\Client\Model\SealTaskParams**](../Model/SealTaskParams.md)|  |
 
 ### Return type
 
@@ -163,10 +163,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\WorkflowApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\WorkflowApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -176,7 +176,7 @@ $tenant_id = 'tenant_id_example'; // string | Tenant id
 $desk_id = 'desk_id_example'; // string | Desk id
 $folder_id = 'folder_id_example'; // string | Folder id
 $task_id = 'task_id_example'; // string | Task id
-$simple_task_params = new \OpenAPI\Client\Model\SimpleTaskParams(); // \OpenAPI\Client\Model\SimpleTaskParams
+$simple_task_params = new \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams(); // \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams
 
 try {
     $apiInstance->secondOpinion($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
  **desk_id** | **string**| Desk id |
  **folder_id** | **string**| Folder id |
  **task_id** | **string**| Task id |
- **simple_task_params** | [**\OpenAPI\Client\Model\SimpleTaskParams**](../Model/SimpleTaskParams.md)|  |
+ **simple_task_params** | [**\Libriciel\IparapheurV5\Client\Model\SimpleTaskParams**](../Model/SimpleTaskParams.md)|  |
 
 ### Return type
 
@@ -230,10 +230,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\WorkflowApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\WorkflowApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -295,10 +295,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\WorkflowApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\WorkflowApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -308,7 +308,7 @@ $tenant_id = 'tenant_id_example'; // string | Tenant id
 $desk_id = 'desk_id_example'; // string | Desk id
 $folder_id = 'folder_id_example'; // string | Folder id
 $task_id = 'task_id_example'; // string
-$simple_task_params = new \OpenAPI\Client\Model\SimpleTaskParams(); // \OpenAPI\Client\Model\SimpleTaskParams
+$simple_task_params = new \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams(); // \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams
 
 try {
     $apiInstance->start($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
  **desk_id** | **string**| Desk id |
  **folder_id** | **string**| Folder id |
  **task_id** | **string**|  |
- **simple_task_params** | [**\OpenAPI\Client\Model\SimpleTaskParams**](../Model/SimpleTaskParams.md)|  |
+ **simple_task_params** | [**\Libriciel\IparapheurV5\Client\Model\SimpleTaskParams**](../Model/SimpleTaskParams.md)|  |
 
 ### Return type
 
@@ -362,10 +362,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\WorkflowApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\WorkflowApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -427,10 +427,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\WorkflowApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\WorkflowApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -440,7 +440,7 @@ $tenant_id = 'tenant_id_example'; // string | Tenant id
 $desk_id = 'desk_id_example'; // string | Desk id
 $folder_id = 'folder_id_example'; // string | Folder id
 $task_id = 'task_id_example'; // string | Task id
-$simple_task_params = new \OpenAPI\Client\Model\SimpleTaskParams(); // \OpenAPI\Client\Model\SimpleTaskParams
+$simple_task_params = new \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams(); // \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams
 
 try {
     $apiInstance->visa($tenant_id, $desk_id, $folder_id, $task_id, $simple_task_params);
@@ -457,7 +457,7 @@ Name | Type | Description  | Notes
  **desk_id** | **string**| Desk id |
  **folder_id** | **string**| Folder id |
  **task_id** | **string**| Task id |
- **simple_task_params** | [**\OpenAPI\Client\Model\SimpleTaskParams**](../Model/SimpleTaskParams.md)|  |
+ **simple_task_params** | [**\Libriciel\IparapheurV5\Client\Model\SimpleTaskParams**](../Model/SimpleTaskParams.md)|  |
 
 ### Return type
 

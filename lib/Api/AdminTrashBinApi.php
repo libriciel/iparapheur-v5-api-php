@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace Libriciel\IparapheurV5\Client\Api;
 
 use GuzzleHttp\Psr7\MultipartStream;
 use Http\Client\Common\Plugin\ErrorPlugin;
@@ -41,12 +41,12 @@ use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Http\Message\RequestFactory;
 use Http\Promise\Promise;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\DebugPlugin;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\FormDataProcessor;
-use OpenAPI\Client\ObjectSerializer;
+use Libriciel\IparapheurV5\Client\ApiException;
+use Libriciel\IparapheurV5\Client\Configuration;
+use Libriciel\IparapheurV5\Client\DebugPlugin;
+use Libriciel\IparapheurV5\Client\HeaderSelector;
+use Libriciel\IparapheurV5\Client\FormDataProcessor;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -61,7 +61,7 @@ use function sprintf;
  * AdminTrashBinApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -184,7 +184,7 @@ class AdminTrashBinApi
      * @param  string $tenant_id Tenant id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
@@ -201,7 +201,7 @@ class AdminTrashBinApi
      * @param  string $tenant_id Tenant id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -242,7 +242,7 @@ class AdminTrashBinApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -250,7 +250,7 @@ class AdminTrashBinApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -258,7 +258,7 @@ class AdminTrashBinApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -440,7 +440,7 @@ class AdminTrashBinApi
      * @param  string $tenant_id Tenant id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
@@ -457,7 +457,7 @@ class AdminTrashBinApi
      * @param  string $tenant_id Tenant id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -502,7 +502,7 @@ class AdminTrashBinApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -510,7 +510,7 @@ class AdminTrashBinApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -518,7 +518,7 @@ class AdminTrashBinApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -701,9 +701,9 @@ class AdminTrashBinApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PageFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
+     * @return \Libriciel\IparapheurV5\Client\Model\PageFolderRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse
      */
     public function listTrashBinFolders($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -721,9 +721,9 @@ class AdminTrashBinApi
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PageFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Libriciel\IparapheurV5\Client\Model\PageFolderRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listTrashBinFoldersWithHttpInfo($tenant_id, $page = 0, $size = 10, $sort = null)
     {
@@ -759,25 +759,25 @@ class AdminTrashBinApi
             switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageFolderRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\PageFolderRepresentation',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -799,7 +799,7 @@ class AdminTrashBinApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageFolderRepresentation',
+                '\Libriciel\IparapheurV5\Client\Model\PageFolderRepresentation',
                 $request,
                 $response,
             );
@@ -808,7 +808,7 @@ class AdminTrashBinApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageFolderRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\PageFolderRepresentation',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -816,7 +816,7 @@ class AdminTrashBinApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -824,7 +824,7 @@ class AdminTrashBinApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -832,7 +832,7 @@ class AdminTrashBinApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -882,7 +882,7 @@ class AdminTrashBinApi
      */
     public function listTrashBinFoldersAsyncWithHttpInfo($tenant_id, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\PageFolderRepresentation';
+        $returnType = '\Libriciel\IparapheurV5\Client\Model\PageFolderRepresentation';
         $request = $this->listTrashBinFoldersRequest($tenant_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)

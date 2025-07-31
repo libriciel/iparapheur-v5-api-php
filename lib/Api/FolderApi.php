@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace Libriciel\IparapheurV5\Client\Api;
 
 use GuzzleHttp\Psr7\MultipartStream;
 use Http\Client\Common\Plugin\ErrorPlugin;
@@ -41,12 +41,12 @@ use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Http\Message\RequestFactory;
 use Http\Promise\Promise;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\DebugPlugin;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\FormDataProcessor;
-use OpenAPI\Client\ObjectSerializer;
+use Libriciel\IparapheurV5\Client\ApiException;
+use Libriciel\IparapheurV5\Client\Configuration;
+use Libriciel\IparapheurV5\Client\DebugPlugin;
+use Libriciel\IparapheurV5\Client\HeaderSelector;
+use Libriciel\IparapheurV5\Client\FormDataProcessor;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -61,7 +61,7 @@ use function sprintf;
  * FolderApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -187,9 +187,9 @@ class FolderApi
      * @param  \SplFileObject[] $documents Documents (required)
      * @param  bool $auto_start If true, starts automatically the folder right after the draft creation (optional, default to true)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
+     * @return \Libriciel\IparapheurV5\Client\Model\FolderRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse
      */
     public function createFolder($tenant_id, $desk_id, $folder, $documents, $auto_start = true)
     {
@@ -208,9 +208,9 @@ class FolderApi
      * @param  \SplFileObject[] $documents Documents (required)
      * @param  bool $auto_start If true, starts automatically the folder right after the draft creation (optional, default to true)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Libriciel\IparapheurV5\Client\Model\FolderRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFolderWithHttpInfo($tenant_id, $desk_id, $folder, $documents, $auto_start = true)
     {
@@ -246,31 +246,31 @@ class FolderApi
             switch ($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\FolderRepresentation',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 406:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -292,7 +292,7 @@ class FolderApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderRepresentation',
+                '\Libriciel\IparapheurV5\Client\Model\FolderRepresentation',
                 $request,
                 $response,
             );
@@ -301,7 +301,7 @@ class FolderApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\FolderRepresentation',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -309,7 +309,7 @@ class FolderApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -317,7 +317,7 @@ class FolderApi
                 case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -325,7 +325,7 @@ class FolderApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -333,7 +333,7 @@ class FolderApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -385,7 +385,7 @@ class FolderApi
      */
     public function createFolderAsyncWithHttpInfo($tenant_id, $desk_id, $folder, $documents, $auto_start = true)
     {
-        $returnType = '\OpenAPI\Client\Model\FolderRepresentation';
+        $returnType = '\Libriciel\IparapheurV5\Client\Model\FolderRepresentation';
         $request = $this->createFolderRequest($tenant_id, $desk_id, $folder, $documents, $auto_start);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)
@@ -559,7 +559,7 @@ class FolderApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
@@ -577,7 +577,7 @@ class FolderApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -618,7 +618,7 @@ class FolderApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -626,7 +626,7 @@ class FolderApi
                 case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -634,7 +634,7 @@ class FolderApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -642,7 +642,7 @@ class FolderApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -842,7 +842,7 @@ class FolderApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
@@ -860,7 +860,7 @@ class FolderApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -905,7 +905,7 @@ class FolderApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -913,7 +913,7 @@ class FolderApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -921,7 +921,7 @@ class FolderApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1121,7 +1121,7 @@ class FolderApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
@@ -1139,7 +1139,7 @@ class FolderApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1184,7 +1184,7 @@ class FolderApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1192,7 +1192,7 @@ class FolderApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1200,7 +1200,7 @@ class FolderApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1398,16 +1398,16 @@ class FolderApi
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
-     * @param  \OpenAPI\Client\Model\State $state state (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\State $state state (required)
      * @param  string $type_id Type id (optional)
      * @param  string $subtype_id Subtype id (optional)
      * @param  int $page Zero-based page index (0..N) (optional, default to 0)
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
+     * @return \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplFolderRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse
      */
     public function listFolders($tenant_id, $desk_id, $state, $type_id = null, $subtype_id = null, $page = 0, $size = 10, $sort = null)
     {
@@ -1422,16 +1422,16 @@ class FolderApi
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
-     * @param  \OpenAPI\Client\Model\State $state (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\State $state (required)
      * @param  string $type_id Type id (optional)
      * @param  string $subtype_id Subtype id (optional)
      * @param  int $page Zero-based page index (0..N) (optional, default to 0)
      * @param  int $size The size of the page to be returned (optional, default to 10)
      * @param  string[] $sort Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported. (optional)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplFolderRepresentation|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse|\Libriciel\IparapheurV5\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listFoldersWithHttpInfo($tenant_id, $desk_id, $state, $type_id = null, $subtype_id = null, $page = 0, $size = 10, $sort = null)
     {
@@ -1467,25 +1467,25 @@ class FolderApi
             switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplFolderRepresentation',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -1507,7 +1507,7 @@ class FolderApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation',
+                '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplFolderRepresentation',
                 $request,
                 $response,
             );
@@ -1516,7 +1516,7 @@ class FolderApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation',
+                        '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplFolderRepresentation',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1524,7 +1524,7 @@ class FolderApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1532,7 +1532,7 @@ class FolderApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1540,7 +1540,7 @@ class FolderApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1559,7 +1559,7 @@ class FolderApi
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
-     * @param  \OpenAPI\Client\Model\State $state (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\State $state (required)
      * @param  string $type_id Type id (optional)
      * @param  string $subtype_id Subtype id (optional)
      * @param  int $page Zero-based page index (0..N) (optional, default to 0)
@@ -1586,7 +1586,7 @@ class FolderApi
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
-     * @param  \OpenAPI\Client\Model\State $state (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\State $state (required)
      * @param  string $type_id Type id (optional)
      * @param  string $subtype_id Subtype id (optional)
      * @param  int $page Zero-based page index (0..N) (optional, default to 0)
@@ -1598,7 +1598,7 @@ class FolderApi
      */
     public function listFoldersAsyncWithHttpInfo($tenant_id, $desk_id, $state, $type_id = null, $subtype_id = null, $page = 0, $size = 10, $sort = null)
     {
-        $returnType = '\OpenAPI\Client\Model\StandardApiPageImplFolderRepresentation';
+        $returnType = '\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplFolderRepresentation';
         $request = $this->listFoldersRequest($tenant_id, $desk_id, $state, $type_id, $subtype_id, $page, $size, $sort);
 
         return $this->httpAsyncClient->sendAsyncRequest($request)
@@ -1638,7 +1638,7 @@ class FolderApi
      *
      * @param  string $tenant_id Tenant id (required)
      * @param  string $desk_id Desk id (required)
-     * @param  \OpenAPI\Client\Model\State $state (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\State $state (required)
      * @param  string $type_id Type id (optional)
      * @param  string $subtype_id Subtype id (optional)
      * @param  int $page Zero-based page index (0..N) (optional, default to 0)
