@@ -11,15 +11,12 @@ This file explains how to set up and run the project locally.
 KEYCLOAK_USERNAME=
 KEYCLOAK_PASSWORD=
 KEYCLOAK_CLIENT_ID=ipcore-web
-KEYCLOAK_URL=https://iparapheur-5-0.partenaire.libriciel.fr/auth/realms/api/protocol/openid-connect/token
-IPARAPHEUR_URL=https://iparapheur-5-0.partenaire.libriciel.fr
-
+KEYCLOAK_URL=https://iparapheur-5-2.partenaire.libriciel.fr/auth/realms/api/protocol/openid-connect/token
+IPARAPHEUR_URL=https://iparapheur-5-2.partenaire.libriciel.fr
 
 2. Install PHP dependencies:
 
 make install
-
-
 
 ---
 
