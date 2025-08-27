@@ -2,10 +2,10 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use App\ApiClientFactory;
-use App\CliOptions;
-use App\ApiExecutor;
-use OpenAPI\Client\Api\WorkflowApi;
+use Libriciel\IparapheurV5\App\ApiClientFactory;
+use Libriciel\IparapheurV5\App\CliOptions;
+use Libriciel\IparapheurV5\App\ApiExecutor;
+use Libriciel\IparapheurV5\Client\Api\WorkflowApi;
 
 $cli = new CliOptions(
     ['tenant:', 'desk:', 'folder:', 'task:'],

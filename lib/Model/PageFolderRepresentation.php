@@ -6,7 +6,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace Libriciel\IparapheurV5\Client\Model;
 
 use ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 
 /**
  * PageFolderRepresentation Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,13 +62,13 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
         'total_elements' => 'int',
         'total_pages' => 'int',
         'size' => 'int',
-        'content' => '\OpenAPI\Client\Model\FolderRepresentation[]',
+        'content' => '\Libriciel\IparapheurV5\Client\Model\FolderRepresentation[]',
         'number' => 'int',
-        'sort' => '\OpenAPI\Client\Model\SortObject',
+        'sort' => '\Libriciel\IparapheurV5\Client\Model\SortObject',
         'first' => 'bool',
         'last' => 'bool',
         'number_of_elements' => 'int',
-        'pageable' => '\OpenAPI\Client\Model\PageableObject',
+        'pageable' => '\Libriciel\IparapheurV5\Client\Model\PageableObject',
         'empty' => 'bool'
     ];
 
@@ -445,7 +445,7 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets content
      *
-     * @return \OpenAPI\Client\Model\FolderRepresentation[]|null
+     * @return \Libriciel\IparapheurV5\Client\Model\FolderRepresentation[]|null
      */
     public function getContent()
     {
@@ -455,7 +455,7 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets content
      *
-     * @param \OpenAPI\Client\Model\FolderRepresentation[]|null $content content
+     * @param \Libriciel\IparapheurV5\Client\Model\FolderRepresentation[]|null $content content
      *
      * @return self
      */
@@ -499,7 +499,7 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets sort
      *
-     * @return \OpenAPI\Client\Model\SortObject|null
+     * @return \Libriciel\IparapheurV5\Client\Model\SortObject|null
      */
     public function getSort()
     {
@@ -509,7 +509,7 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets sort
      *
-     * @param \OpenAPI\Client\Model\SortObject|null $sort sort
+     * @param \Libriciel\IparapheurV5\Client\Model\SortObject|null $sort sort
      *
      * @return self
      */
@@ -607,7 +607,7 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets pageable
      *
-     * @return \OpenAPI\Client\Model\PageableObject|null
+     * @return \Libriciel\IparapheurV5\Client\Model\PageableObject|null
      */
     public function getPageable()
     {
@@ -617,7 +617,7 @@ class PageFolderRepresentation implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets pageable
      *
-     * @param \OpenAPI\Client\Model\PageableObject|null $pageable pageable
+     * @param \Libriciel\IparapheurV5\Client\Model\PageableObject|null $pageable pageable
      *
      * @return self
      */

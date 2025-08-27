@@ -2,10 +2,10 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use App\ApiClientFactory;
-use App\ApiExecutor;
-use App\CliOptions;
-use OpenAPI\Client\Api\TypologyApi;
+use Libriciel\IparapheurV5\App\ApiClientFactory;
+use Libriciel\IparapheurV5\App\ApiExecutor;
+use Libriciel\IparapheurV5\App\CliOptions;
+use Libriciel\IparapheurV5\Client\Api\TypologyApi;
 
 $cli = new CliOptions(
     ['tenant:', 'page::', 'size::', 'sort::'],

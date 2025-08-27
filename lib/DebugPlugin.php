@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client;
+namespace Libriciel\IparapheurV5\Client;
 
 use Http\Client\Common\Plugin;
 use Http\Promise\Promise;
@@ -41,7 +41,7 @@ use function is_resource;
  * PHP version 7.2
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

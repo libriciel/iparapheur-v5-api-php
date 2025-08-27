@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Api;
+namespace Libriciel\IparapheurV5\Client\Api;
 
 use GuzzleHttp\Psr7\MultipartStream;
 use Http\Client\Common\Plugin\ErrorPlugin;
@@ -41,12 +41,12 @@ use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Http\Message\RequestFactory;
 use Http\Promise\Promise;
-use OpenAPI\Client\ApiException;
-use OpenAPI\Client\Configuration;
-use OpenAPI\Client\DebugPlugin;
-use OpenAPI\Client\HeaderSelector;
-use OpenAPI\Client\FormDataProcessor;
-use OpenAPI\Client\ObjectSerializer;
+use Libriciel\IparapheurV5\Client\ApiException;
+use Libriciel\IparapheurV5\Client\Configuration;
+use Libriciel\IparapheurV5\Client\DebugPlugin;
+use Libriciel\IparapheurV5\Client\HeaderSelector;
+use Libriciel\IparapheurV5\Client\FormDataProcessor;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -61,7 +61,7 @@ use function sprintf;
  * WorkflowApi Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -186,7 +186,7 @@ class WorkflowApi
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -205,7 +205,7 @@ class WorkflowApi
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -246,7 +246,7 @@ class WorkflowApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -254,7 +254,7 @@ class WorkflowApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -262,7 +262,7 @@ class WorkflowApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -270,7 +270,7 @@ class WorkflowApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -487,9 +487,9 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params seal_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SealTaskParams $seal_task_params seal_task_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -507,9 +507,9 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SealTaskParams $seal_task_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -550,7 +550,7 @@ class WorkflowApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -558,7 +558,7 @@ class WorkflowApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -566,7 +566,7 @@ class WorkflowApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -574,7 +574,7 @@ class WorkflowApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -595,7 +595,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SealTaskParams $seal_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -619,7 +619,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SealTaskParams $seal_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -658,7 +658,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SealTaskParams $seal_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SealTaskParams $seal_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return RequestInterface
@@ -806,9 +806,9 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params simple_task_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -826,9 +826,9 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -869,7 +869,7 @@ class WorkflowApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -877,7 +877,7 @@ class WorkflowApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -885,7 +885,7 @@ class WorkflowApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -893,7 +893,7 @@ class WorkflowApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -914,7 +914,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -938,7 +938,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -977,7 +977,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return RequestInterface
@@ -1126,7 +1126,7 @@ class WorkflowApi
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id task_id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1145,7 +1145,7 @@ class WorkflowApi
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1186,7 +1186,7 @@ class WorkflowApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1194,7 +1194,7 @@ class WorkflowApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1202,7 +1202,7 @@ class WorkflowApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1210,7 +1210,7 @@ class WorkflowApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1427,9 +1427,9 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id task_id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params simple_task_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1447,9 +1447,9 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1490,7 +1490,7 @@ class WorkflowApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1498,7 +1498,7 @@ class WorkflowApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1506,7 +1506,7 @@ class WorkflowApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1514,7 +1514,7 @@ class WorkflowApi
                 case 407:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1535,7 +1535,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -1559,7 +1559,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -1598,7 +1598,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return RequestInterface
@@ -1747,7 +1747,7 @@ class WorkflowApi
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1766,7 +1766,7 @@ class WorkflowApi
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1807,7 +1807,7 @@ class WorkflowApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1815,7 +1815,7 @@ class WorkflowApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1823,7 +1823,7 @@ class WorkflowApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1831,7 +1831,7 @@ class WorkflowApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2048,9 +2048,9 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params simple_task_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2068,9 +2068,9 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \Libriciel\IparapheurV5\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2111,7 +2111,7 @@ class WorkflowApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2119,7 +2119,7 @@ class WorkflowApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2127,7 +2127,7 @@ class WorkflowApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2135,7 +2135,7 @@ class WorkflowApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2156,7 +2156,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -2180,7 +2180,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return Promise
@@ -2219,7 +2219,7 @@ class WorkflowApi
      * @param  string $desk_id Desk id (required)
      * @param  string $folder_id Folder id (required)
      * @param  string $task_id Task id (required)
-     * @param  \OpenAPI\Client\Model\SimpleTaskParams $simple_task_params (required)
+     * @param  \Libriciel\IparapheurV5\Client\Model\SimpleTaskParams $simple_task_params (required)
      *
      * @throws \InvalidArgumentException
      * @return RequestInterface

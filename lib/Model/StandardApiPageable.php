@@ -6,7 +6,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace Libriciel\IparapheurV5\Client\Model;
 
 use ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 
 /**
  * StandardApiPageable Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class StandardApiPageable implements ModelInterface, ArrayAccess, \JsonSerializa
         'page_size' => 'int',
         'paged' => 'bool',
         'unpaged' => 'bool',
-        'sort' => '\OpenAPI\Client\Model\StandardApiSort'
+        'sort' => '\Libriciel\IparapheurV5\Client\Model\StandardApiSort'
     ];
 
     /**
@@ -464,7 +464,7 @@ class StandardApiPageable implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets sort
      *
-     * @return \OpenAPI\Client\Model\StandardApiSort|null
+     * @return \Libriciel\IparapheurV5\Client\Model\StandardApiSort|null
      */
     public function getSort()
     {
@@ -474,7 +474,7 @@ class StandardApiPageable implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets sort
      *
-     * @param \OpenAPI\Client\Model\StandardApiSort|null $sort sort
+     * @param \Libriciel\IparapheurV5\Client\Model\StandardApiSort|null $sort sort
      *
      * @return self
      */

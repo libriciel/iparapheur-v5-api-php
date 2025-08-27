@@ -51,13 +51,13 @@
   },
   "autoload": {
     "psr-4": {
-      "OpenAPI\\Client\\": "lib/",
-      "App\\": "src/"
+      "Libriciel\\IparapheurV5\\Client\\": "lib/",
+      "Libriciel\\IparapheurV5\\App\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "OpenAPI\\Client\\Test\\": "test/"
+      "Libriciel\\IparapheurV5\\Client\\Test\\": "test/"
     }
   },
   "name": "libriciel/iparapheur-v5-api-php"

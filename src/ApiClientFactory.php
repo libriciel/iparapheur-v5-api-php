@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace Libriciel\IparapheurV5\App;
 
 use Dotenv\Dotenv;
 use Http\Discovery\Psr18Client;
-use OpenAPI\Client\Configuration;
+use Libriciel\IparapheurV5\Client\Configuration;
 use RuntimeException;
 use JsonException;
 

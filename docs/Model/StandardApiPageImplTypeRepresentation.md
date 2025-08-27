@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**content** | [**\OpenAPI\Client\Model\TypeRepresentation[]**](TypeRepresentation.md) |  | [optional]
+**content** | [**\Libriciel\IparapheurV5\Client\Model\TypeRepresentation[]**](TypeRepresentation.md) |  | [optional]
 **empty** | **bool** |  | [optional]
 **first** | **bool** |  | [optional]
 **last** | **bool** |  | [optional]
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **size** | **int** |  | [optional]
 **total_elements** | **int** |  | [optional]
 **total_pages** | **int** |  | [optional]
-**sort** | [**\OpenAPI\Client\Model\StandardApiSort**](StandardApiSort.md) |  | [optional]
-**pageable** | [**\OpenAPI\Client\Model\StandardApiPageable**](StandardApiPageable.md) |  | [optional]
+**sort** | [**\Libriciel\IparapheurV5\Client\Model\StandardApiSort**](StandardApiSort.md) |  | [optional]
+**pageable** | [**\Libriciel\IparapheurV5\Client\Model\StandardApiPageable**](StandardApiPageable.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

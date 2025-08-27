@@ -1,4 +1,4 @@
-# OpenAPI\Client\TenantApi
+# Libriciel\IparapheurV5\Client\TenantApi
 
 All URIs are relative to http://localhost:8080.
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `listTenants()`
 
 ```php
-listTenants($page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation
+listTenants($page, $size, $sort): \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTenantRepresentation
 ```
 
 List tenants attached with the current user
@@ -25,10 +25,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\TenantApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\TenantApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\StandardApiPageImplTenantRepresentation**](../Model/StandardApiPageImplTenantRepresentation.md)
+[**\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplTenantRepresentation**](../Model/StandardApiPageImplTenantRepresentation.md)
 
 ### Authorization
 

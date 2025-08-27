@@ -6,7 +6,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,17 +28,17 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace Libriciel\IparapheurV5\Client\Model;
 
 use ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 
 /**
  * SealTaskParams Class Doc Comment
  *
  * @category Class
  * @description The public annotation is visible to any users, and will be stored in task history. It is mandatory for any reject, and should be longer than 3 characters.  The private annotation will only be sent to the workflow&#39;s next user. It won&#39;t be archived anywhere.
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

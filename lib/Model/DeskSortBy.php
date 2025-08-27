@@ -6,7 +6,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,14 +28,14 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
-use OpenAPI\Client\ObjectSerializer;
+namespace Libriciel\IparapheurV5\Client\Model;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 
 /**
  * DeskSortBy Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

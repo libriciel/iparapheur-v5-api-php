@@ -6,7 +6,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -28,16 +28,16 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace Libriciel\IparapheurV5\Client\Model;
 
 use ArrayAccess;
-use OpenAPI\Client\ObjectSerializer;
+use Libriciel\IparapheurV5\Client\ObjectSerializer;
 
 /**
  * StandardApiPageImplSubtypeRepresentation Class Doc Comment
  *
  * @category Class
- * @package  OpenAPI\Client
+ * @package  Libriciel\IparapheurV5\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class StandardApiPageImplSubtypeRepresentation implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'content' => '\OpenAPI\Client\Model\SubtypeRepresentation[]',
+        'content' => '\Libriciel\IparapheurV5\Client\Model\SubtypeRepresentation[]',
         'empty' => 'bool',
         'first' => 'bool',
         'last' => 'bool',
@@ -68,8 +68,8 @@ class StandardApiPageImplSubtypeRepresentation implements ModelInterface, ArrayA
         'size' => 'int',
         'total_elements' => 'int',
         'total_pages' => 'int',
-        'sort' => '\OpenAPI\Client\Model\StandardApiSort',
-        'pageable' => '\OpenAPI\Client\Model\StandardApiPageable'
+        'sort' => '\Libriciel\IparapheurV5\Client\Model\StandardApiSort',
+        'pageable' => '\Libriciel\IparapheurV5\Client\Model\StandardApiPageable'
     ];
 
     /**
@@ -364,7 +364,7 @@ class StandardApiPageImplSubtypeRepresentation implements ModelInterface, ArrayA
     /**
      * Gets content
      *
-     * @return \OpenAPI\Client\Model\SubtypeRepresentation[]|null
+     * @return \Libriciel\IparapheurV5\Client\Model\SubtypeRepresentation[]|null
      */
     public function getContent()
     {
@@ -374,7 +374,7 @@ class StandardApiPageImplSubtypeRepresentation implements ModelInterface, ArrayA
     /**
      * Sets content
      *
-     * @param \OpenAPI\Client\Model\SubtypeRepresentation[]|null $content content
+     * @param \Libriciel\IparapheurV5\Client\Model\SubtypeRepresentation[]|null $content content
      *
      * @return self
      */
@@ -607,7 +607,7 @@ class StandardApiPageImplSubtypeRepresentation implements ModelInterface, ArrayA
     /**
      * Gets sort
      *
-     * @return \OpenAPI\Client\Model\StandardApiSort|null
+     * @return \Libriciel\IparapheurV5\Client\Model\StandardApiSort|null
      */
     public function getSort()
     {
@@ -617,7 +617,7 @@ class StandardApiPageImplSubtypeRepresentation implements ModelInterface, ArrayA
     /**
      * Sets sort
      *
-     * @param \OpenAPI\Client\Model\StandardApiSort|null $sort sort
+     * @param \Libriciel\IparapheurV5\Client\Model\StandardApiSort|null $sort sort
      *
      * @return self
      */
@@ -634,7 +634,7 @@ class StandardApiPageImplSubtypeRepresentation implements ModelInterface, ArrayA
     /**
      * Gets pageable
      *
-     * @return \OpenAPI\Client\Model\StandardApiPageable|null
+     * @return \Libriciel\IparapheurV5\Client\Model\StandardApiPageable|null
      */
     public function getPageable()
     {
@@ -644,7 +644,7 @@ class StandardApiPageImplSubtypeRepresentation implements ModelInterface, ArrayA
     /**
      * Sets pageable
      *
-     * @param \OpenAPI\Client\Model\StandardApiPageable|null $pageable pageable
+     * @param \Libriciel\IparapheurV5\Client\Model\StandardApiPageable|null $pageable pageable
      *
      * @return self
      */

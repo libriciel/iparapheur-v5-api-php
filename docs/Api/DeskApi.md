@@ -1,4 +1,4 @@
-# OpenAPI\Client\DeskApi
+# Libriciel\IparapheurV5\Client\DeskApi
 
 All URIs are relative to http://localhost:8080.
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `listUserDesks()`
 
 ```php
-listUserDesks($tenant_id, $page, $size, $sort): \OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation
+listUserDesks($tenant_id, $page, $size, $sort): \Libriciel\IparapheurV5\Client\Model\StandardApiPageImplDeskRepresentation
 ```
 
 List desks attached to the current user
@@ -25,10 +25,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: spring_oauth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Libriciel\IparapheurV5\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\DeskApi(
+$apiInstance = new Libriciel\IparapheurV5\Client\Api\DeskApi(
     // If you want use custom http client, pass your client which implements `Psr\Http\Client\ClientInterface`.
     // This is optional, `Psr18ClientDiscovery` will be used to find http client. For instance `GuzzleHttp\Client` implements that interface
     new GuzzleHttp\Client(),
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\StandardApiPageImplDeskRepresentation**](../Model/StandardApiPageImplDeskRepresentation.md)
+[**\Libriciel\IparapheurV5\Client\Model\StandardApiPageImplDeskRepresentation**](../Model/StandardApiPageImplDeskRepresentation.md)
 
 ### Authorization
 

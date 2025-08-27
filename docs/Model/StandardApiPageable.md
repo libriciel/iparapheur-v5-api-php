@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **page_size** | **int** |  | [optional]
 **paged** | **bool** |  | [optional]
 **unpaged** | **bool** |  | [optional]
-**sort** | [**\OpenAPI\Client\Model\StandardApiSort**](StandardApiSort.md) |  | [optional]
+**sort** | [**\Libriciel\IparapheurV5\Client\Model\StandardApiSort**](StandardApiSort.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

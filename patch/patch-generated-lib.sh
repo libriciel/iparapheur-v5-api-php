@@ -280,7 +280,7 @@ PATCH_METHOD=$(cat <<'EOF'
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -288,7 +288,7 @@ PATCH_METHOD=$(cat <<'EOF'
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -296,7 +296,7 @@ PATCH_METHOD=$(cat <<'EOF'
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ PATCH_METHOD=$(cat <<'EOF'
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -424,7 +424,7 @@ PATCH_METHOD=$(cat <<'EOF'
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -432,7 +432,7 @@ PATCH_METHOD=$(cat <<'EOF'
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -552,7 +552,7 @@ PATCH_METHOD=$(cat <<'EOF'
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -560,7 +560,7 @@ PATCH_METHOD=$(cat <<'EOF'
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -568,7 +568,7 @@ PATCH_METHOD=$(cat <<'EOF'
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorResponse',
+                        '\Libriciel\IparapheurV5\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -623,6 +623,10 @@ jq '.["require-dev"] += {
   "squizlabs/php_codesniffer": "^3.13"
 }' "$COMPOSER_FILE" > composer.tmp && mv composer.tmp "$COMPOSER_FILE"
 
-jq '.autoload."psr-4"."App\\" = "src/"' "$COMPOSER_FILE" > composer.tmp && mv composer.tmp "$COMPOSER_FILE"
+jq '.autoload."psr-4" = {
+  "Libriciel\\IparapheurV5\\Client\\": "lib/",
+  "Libriciel\\IparapheurV5\\App\\": "src/"
+}' "$COMPOSER_FILE" > composer.tmp && mv composer.tmp "$COMPOSER_FILE"
 
 echo "Patchs appliqués avec succès."
+
